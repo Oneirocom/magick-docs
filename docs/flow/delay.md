@@ -1,0 +1,52 @@
+# Delay
+
+The Delay node pauses the execution of a spell for a specified duration before allowing the flow to continue. It is useful for introducing intentional delays or timing intervals between actions in a spell.
+
+## Inputs
+
+- `flow` (required): The incoming flow that will be delayed.
+- `duration` (float, default: 1): The duration of the delay in seconds. 
+
+## Outputs
+
+- `flow`: The flow output after the specified delay has elapsed.
+
+## Configuration
+
+This node has no additional configuration options.
+
+## Usage
+
+1. Connect the `flow` input to the node preceding the Delay node in your spell.
+2. Set the `duration` input to the desired delay time in seconds. The default value is 1 second if not specified.
+3. Connect the `flow` output to the next node in your spell that should execute after the delay.
+
+When the spell reaches the Delay node, execution will pause for the specified `duration` before continuing to the next connected node.
+
+## Example
+
+Here's an example of how to use the Delay node in a spell:
+
+```markdown
+1. Start
+2. HTTP Request
+   URL: https://api.example.com/data
+3. Delay
+   duration: 5
+4. Log
+   message: Data received after 5 second delay
+5. End
+```
+
+In this example, the spell makes an HTTP request to fetch some data. The Delay node is then used to pause execution for 5 seconds before logging a message and ending the spell. This introduces an intentional delay between the HTTP request and the logging statement.
+
+## Best Practices
+
+- Use the Delay node sparingly, as excessive delays can make your spells feel slow and unresponsive. Only introduce delays when absolutely necessary.
+- Be mindful of the overall execution time of your spell when adding Delay nodes. Long running spells may hit timeouts or cause performance issues.
+- Consider using the Delay node in combination with other time-based nodes like Cron Schedule or Interval to build powerful automations with precise timing control.
+
+## Common Issues
+
+- Forgetting to set the `duration` input will cause the Delay node to use the default value of 1 second, which may not be the intended behavior. Always double check your delay durations.
+- Connecting the `flow` output of the Delay node back to its own `flow` input will create an infinite loop that will cause your spell to hang indefinitely. Avoid creating circular flows.

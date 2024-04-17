@@ -1,0 +1,63 @@
+# Search Knowledge
+
+The Search Knowledge node allows you to search for relevant information within a knowledge base and retrieve the most pertinent results. It is particularly useful when you need to find specific information or answers based on a given query.
+
+## Inputs
+
+- `flow` (required): The input flow containing the data to be processed.
+- `query` (required): The search query or keywords to look for in the knowledge base.
+- `count` (optional, default: 3): The maximum number of search results to return.
+- `metadata` (optional, default: {}): Additional metadata or parameters to pass to the search engine.
+
+## Outputs
+
+- `flow`: The output flow with the search results appended.
+- `knowledge`: An array containing the retrieved knowledge items that match the search query.
+- `data`: An array containing the raw data of the search results.
+
+## Configuration
+
+This node does not have any additional configuration options.
+
+## Usage
+
+1. Connect the input `flow` to the node from which you want to initiate the search.
+2. Set the `query` input to specify the search keywords or query you want to use.
+3. Optionally, adjust the `count` input to control the maximum number of search results to retrieve (default is 3).
+4. If needed, provide any additional `metadata` or parameters required by the search engine.
+5. Connect the `flow` output to the next node in your spell to continue processing the data.
+6. Use the `knowledge` output to access the retrieved knowledge items that match the search query.
+7. If you need access to the raw data of the search results, use the `data` output.
+
+## Example
+
+Here's an example of how to use the Search Knowledge node in a spell:
+
+```markdown
+1. Start (Trigger) 
+2. Set Variable (query: "Magick best practices")
+3. Search Knowledge
+   - query: $query
+   - count: 5
+4. Create Email
+   - to: "user@example.com" 
+   - subject: "Search Results"
+   - body: $knowledge
+5. Send Email
+```
+
+In this example, the spell is triggered and a search query is set using the Set Variable node. The Search Knowledge node then performs a search using the specified query and retrieves the top 5 results. The retrieved knowledge items are used to create an email body, which is then sent using the Send Email node.
+
+## Best Practices
+
+- Be specific and concise with your search queries to get the most relevant results.
+- Adjust the `count` input based on your requirements. Retrieving too many results may impact performance.
+- Utilize the `metadata` input to pass any additional parameters or filters supported by the search engine.
+- Process and format the retrieved `knowledge` items as needed before using them in subsequent nodes.
+
+## Common Issues
+
+- If the search query is too broad or ambiguous, the retrieved results may not be relevant to your intended use case.
+- Ensure that the knowledge base being searched contains the information you expect. If the desired information is not available, the search results may be empty or unsatisfactory.
+
+By leveraging the Search Knowledge node, you can easily integrate knowledge search capabilities into your Magick spells, enabling you to find and retrieve relevant information based on specific queries.

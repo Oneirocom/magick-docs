@@ -1,0 +1,46 @@
+# Merge
+
+The Merge node combines two arrays into a single array. It takes two input arrays and outputs a new array containing all the elements from both input arrays in the order they were provided.
+
+## Inputs
+
+1. `array1` (array): The first array to merge. Default value is an empty array.
+2. `array2` (array): The second array to merge. Default value is an empty array.
+
+## Outputs
+
+1. `result` (array): The merged array containing all elements from `array1` followed by all elements from `array2`.
+
+## Configuration
+
+This node has no additional configuration options.
+
+## Usage
+
+1. Connect the first array to the `array1` input of the Merge node.
+2. Connect the second array to the `array2` input of the Merge node.
+3. The merged array will be available at the `result` output.
+
+## Example
+
+Suppose you have two arrays:
+- `fruits`: `["apple", "banana", "orange"]`
+- `vegetables`: `["carrot", "broccoli"]`
+
+Connect `fruits` to the `array1` input and `vegetables` to the `array2` input of the Merge node. The `result` output will be:
+
+```json
+["apple", "banana", "orange", "carrot", "broccoli"]
+```
+
+You can then use this merged array in other nodes of your spell.
+
+## Best Practices
+
+- Ensure that the data types of the elements in both input arrays are compatible. While the Merge node doesn't enforce strict type checking, unexpected behavior may occur if the elements have mismatched types.
+- If you need to merge more than two arrays, you can chain multiple Merge nodes together, connecting the `result` output of one node to the `array1` input of the next.
+
+## Common Issues
+
+- If either of the input arrays is not connected or contains an invalid value, the Merge node will output an empty array.
+- The Merge node does not remove duplicate elements. If the same element exists in both input arrays, it will appear twice in the output array.

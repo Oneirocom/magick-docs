@@ -1,0 +1,87 @@
+# Add Knowledge
+
+The Add Knowledge node allows you to add knowledge to your Magick flow from a variety of data sources. This node is a fundamental building block for working with knowledge in Magick.
+
+## Inputs
+
+- `flow` (required): The input flow to which the knowledge will be added.
+- `knowledge` (required): The knowledge content to be added, in string format. 
+- `dataType` (optional, default: "auto"): The type of the knowledge data. Can be one of:
+  - "auto" (default): Automatically detect the data type
+  - "text": Plain text 
+  - "youtube_video": A YouTube video
+  - "pdf_file": A PDF file
+  - "web_page": A web page
+  - "sitemap": A sitemap
+  - "xml": An XML file
+  - "docx": A Microsoft Word document
+  - "docs_site": A documentation site
+  - "notion": A Notion page
+  - "csv": A CSV file
+  - "mdx": An MDX file
+  - "qna_pair": A question-answer pair
+  - "image": An image file
+  - "unstructured": Unstructured data
+  - "json": A JSON file
+  - "openapi": An OpenAPI specification
+  - "gmail": A Gmail message
+  - "substack": A Substack post
+  - "youtube_channel": A YouTube channel
+  - "discord": A Discord message
+  - "custom": Custom data type
+  - "rss_feed": An RSS feed
+  - "beehiiv": A Beehiiv post
+  - "google_drive": A Google Drive file
+  - "directory": A directory
+  - "slack": A Slack message
+  - "dropbox": A Dropbox file
+  - "text_file": A text file
+
+## Outputs
+
+- `flow`: The output flow with the added knowledge.
+
+## Configuration
+
+This node has no additional configuration options.
+
+## Usage
+
+1. Connect the input flow to the `flow` input of the Add Knowledge node.
+2. Provide the knowledge content you want to add in the `knowledge` input. This should be a string.
+3. (Optional) Select the appropriate `dataType` for your knowledge if it is not automatically detected correctly. 
+4. Connect the `flow` output to the next node in your spell.
+
+## Example 
+
+Here's an example of using the Add Knowledge node to add some text to a flow:
+
+```
+// Create a new flow
+CREATE flow
+
+// Add some knowledge
+ADD knowledge 
+  flow = flow
+  knowledge = "Magick is a powerful tool for building AI apps."
+
+// Use the knowledge in a spell
+GET flow
+TRANSFORM flow
+  prompt = "Summarize this: {{flow}}"
+SEND message
+  content = "{{flow.summary}}"
+```
+
+In this example, we create a new flow, add a piece of text knowledge to it using the Add Knowledge node, and then use that knowledge in a spell to generate a summary and send it as a message.
+
+## Best Practices
+
+- Make sure to provide valid, well-formatted data in the `knowledge` input that matches the selected `dataType`.
+- If the automatic data type detection is not working as expected, explicitly set the `dataType` to ensure correct processing.
+- Be mindful of the size of the knowledge you are adding. Very large data could impact performance.
+
+## Common Issues
+
+- If the knowledge is not being added correctly, double check that the `knowledge` input is a valid string and the `dataType` is set appropriately.
+- Some data types may require additional processing or setup (e.g. authenticating to access a Google Drive file). Make sure you have completed any necessary prerequisites.
