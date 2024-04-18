@@ -1,0 +1,56 @@
+---
+title: "Integer"
+---
+
+# MAX
+
+The MAX node is a utility node that takes two integer inputs and outputs the larger of the two values. It provides a simple way to compare two numbers and select the maximum value within a spell.
+
+## Inputs
+
+1. `a` (integer, default: 0): The first integer value to compare.
+2. `b` (integer, default: 0): The second integer value to compare.
+
+## Outputs
+
+1. `result` (integer): The maximum value between the two input integers.
+
+## Configuration
+
+This node does not have any additional configuration options.
+
+## Usage
+
+To use the MAX node, follow these steps:
+
+1. Add the MAX node to your spell.
+2. Connect the two integer values you want to compare to the `a` and `b` inputs of the node.
+3. The node will output the larger of the two input values through the `result` output.
+4. Connect the `result` output to the desired destination node or use it as needed in your spell.
+
+## Example
+
+Here's an example of how to use the MAX node in a spell:
+
+```
+1. Create a new spell and add two Integer Input nodes.
+2. Configure the first Integer Input node with a value of 5 and the second with a value of 10.
+3. Add a MAX node to the spell.
+4. Connect the output of the first Integer Input node to the `a` input of the MAX node.
+5. Connect the output of the second Integer Input node to the `b` input of the MAX node.
+6. Add a Debug node and connect the `result` output of the MAX node to the input of the Debug node.
+7. Run the spell.
+```
+
+In this example, the MAX node will compare the values 5 and 10, and output the larger value, which is 10. The Debug node will display the result, showing that the maximum value between the two inputs is indeed 10.
+
+## Best Practices
+
+- Ensure that the inputs connected to the MAX node are of the correct type (integer). Connecting inputs of different types may lead to unexpected behavior.
+- Use the MAX node when you need to compare two integer values and select the larger one. It's a simple and efficient way to make decisions based on numeric comparisons.
+
+## Common Issues
+
+- If either of the inputs is not connected or receives a non-integer value, the MAX node will use the default value of 0 for that input. Make sure to properly connect and provide integer values to the inputs to avoid unintended results.
+
+By using the MAX node, you can easily compare two integer values and obtain the maximum value within your spell. It's a handy utility node for making decisions and selecting values based on numeric comparisons.

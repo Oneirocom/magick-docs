@@ -1,0 +1,52 @@
+---
+title: "Boolean"
+---
+
+# ∨ (Boolean OR)
+
+The Boolean OR node performs a logical OR operation on two boolean inputs and outputs the result. It returns `true` if at least one of the inputs is `true`, and `false` only if both inputs are `false`.
+
+## Inputs
+
+1. `a` (boolean): The first boolean value. Defaults to `false` if not connected.
+2. `b` (boolean): The second boolean value. Defaults to `false` if not connected.
+
+## Outputs
+
+1. `result` (boolean): The result of the logical OR operation on the two input values.
+
+## Configuration
+
+This node has no configuration options.
+
+## Usage
+
+1. Add the Boolean OR node to your spell.
+2. Connect boolean values to the `a` and `b` input ports. These can come from other nodes or be set manually.
+3. The `result` output port will emit `true` if at least one of `a` or `b` is `true`, and `false` if both are `false`.
+4. Connect the `result` output to other nodes as needed in your spell.
+
+## Example
+
+Suppose you have a spell that needs to trigger an action if either a button is pressed OR a certain condition is met. You can use the Boolean OR node to combine these two conditions:
+
+```
+[Button Pressed] --> a |
+                        ∨ --> [Trigger Action]
+   [Condition Met] --> b |
+```
+
+In this case, `[Trigger Action]` will receive `true` and fire whenever either `[Button Pressed]` or `[Condition Met]` (or both) are `true`.
+
+## Best Practices
+
+- Make sure the values you connect to the `a` and `b` inputs are actually booleans. Connecting other data types may lead to unexpected behavior.
+- If you only need one input condition, you can leave the other input disconnected. It will default to `false` which will not affect the result.
+- For more complex logical conditions, you can chain multiple Boolean OR nodes together. The output of one can feed into the input of the next.
+
+## Common Issues
+
+- If the node is always outputting `true` even when you expect `false`, double check that you haven't accidentally connected a `true` value to one of the inputs.
+- Remember that the OR operation returns `true` if *either or both* inputs are `true`. If you need `true` only when *both* are `true`, use the Boolean AND node instead.
+
+The Boolean OR node is a simple but versatile logic gate that is essential for creating conditional flows in your Magick spells. Use it anytime you need to trigger actions or route data based on multiple conditions.

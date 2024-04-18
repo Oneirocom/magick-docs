@@ -1,0 +1,53 @@
+---
+title: "Float"
+---
+
+# TAN (Tangent)
+
+The TAN node calculates the tangent of an input angle in radians. It is commonly used in mathematical and geometric operations within a Magick spell.
+
+## Inputs
+
+1. `a` (float, default: 0): The input angle in radians.
+
+## Outputs
+
+1. `result` (float): The tangent of the input angle.
+
+## Configuration
+
+This node has no additional configuration options.
+
+## Usage
+
+To use the TAN node:
+
+1. Connect a float value representing an angle in radians to the `a` input port.
+2. The node will calculate the tangent of the input angle and output the result via the `result` output port.
+3. Connect the `result` output to the desired destination node(s) in your spell.
+
+## Example
+
+Here's an example of how to use the TAN node in a Magick spell:
+
+```
+1. Create a Constant node and set its value to 0.7854 (approximately π/4 radians, or 45 degrees).
+2. Connect the Constant node's output to the `a` input port of the TAN node.
+3. Connect the TAN node's `result` output port to the input of a Format String node.
+4. Configure the Format String node to display the result, e.g., "The tangent of 45 degrees is {0}".
+5. Connect the Format String node's output to a Print String node to display the result in the console.
+```
+
+In this example, the spell will calculate the tangent of 45 degrees (π/4 radians) and display the result in the console.
+
+## Best Practices
+
+- Ensure that the input angle is provided in radians. If your angle is in degrees, you can use the DEG2RAD node to convert it to radians before connecting it to the TAN node.
+- Keep in mind that the tangent function has asymptotes at odd multiples of π/2 (90 degrees, 270 degrees, etc.). Inputs close to these values may result in very large output values.
+
+## Common Issues
+
+- If the input angle is not in radians, the output will be incorrect. Always double-check that your input is in the correct units.
+- For input angles close to the asymptotes (odd multiples of π/2), the output may be very large or may even cause floating-point errors. Be cautious when working with such angles.
+
+By understanding and utilizing the TAN node effectively, you can perform tangent calculations seamlessly within your Magick spells, enabling you to tackle a wide range of mathematical and geometric challenges.

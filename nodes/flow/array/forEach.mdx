@@ -1,0 +1,55 @@
+---
+title: "For Each"
+---
+
+# For Each
+
+The For Each node in Magick allows you to iterate over each item in an array, performing a set of actions on each item. It is useful when you need to process or manipulate the individual elements of an array one by one.
+
+## Inputs
+
+- `flow`: The incoming flow that triggers the node to start iterating over the array.
+- `array`: The array to iterate over. By default, it is set to an empty array.
+
+## Outputs
+
+- `completed`: The outgoing flow that is triggered when the iteration is finished.
+- `loopBody`: The flow that represents the actions to be performed on each item in the array.
+- `index`: The current index of the item being processed in the array.
+
+## Configuration Options
+
+- `valueType`: The type of the items in the array. This is used to determine the type of the "Array Item" socket.
+- `valueTypeOptions`: An object that specifies the available types for the "Array Item" socket. The default options are: "string", "number", "float", "boolean", "object", and "array".
+
+## Instructions
+
+1. Connect the array you want to iterate over to the `array` input of the For Each node.
+2. Connect the `loopBody` output to the nodes that represent the actions you want to perform on each item in the array.
+3. Use the `index` output to access the current index of the item being processed, if needed.
+4. Connect the `completed` output to the nodes that should be executed after the iteration is finished.
+5. If necessary, configure the `valueType` option to match the type of the items in your array.
+
+## Example
+
+Suppose you have an array of numbers and you want to multiply each number by 2. Here's how you can use the For Each node to achieve this:
+
+1. Connect the array of numbers to the `array` input of the For Each node.
+2. Connect the `loopBody` output to a Multiply node.
+3. Connect the "Array Item" socket (which represents each item in the array) to one of the inputs of the Multiply node.
+4. Set the other input of the Multiply node to the value 2.
+5. Connect the output of the Multiply node to a new array using an Add Item to Array node.
+6. Connect the `completed` output of the For Each node to any nodes that should be executed after the multiplication is done.
+
+## Best Practices
+
+- Make sure to properly connect the `loopBody` output to the nodes that perform the desired actions on each array item.
+- Use the `index` output if you need to access the current index of the item being processed.
+- Configure the `valueType` option to match the type of the items in your array for better type safety and clarity.
+
+## Common Issues
+
+- If the For Each node doesn't seem to be iterating over the array, double-check that the `array` input is properly connected and contains the expected data.
+- If you're not seeing the expected output, ensure that the nodes connected to the `loopBody` output are correctly processing each array item and passing the results to the next nodes.
+
+By using the For Each node, you can efficiently process and manipulate arrays in your Magick spells, enabling powerful data transformations and automations.

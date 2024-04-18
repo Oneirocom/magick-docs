@@ -1,0 +1,47 @@
+---
+title: "Integer"
+---
+
+# Math Less Than (Integer)
+
+The Math Less Than (Integer) node compares two integer values and outputs a boolean indicating whether the first value is less than the second.
+
+## Inputs
+
+1. `a` (integer, default: 0): The first value to compare.
+2. `b` (integer, default: 0): The second value to compare.
+
+## Outputs
+
+1. `result` (boolean): True if `a` is less than `b`, false otherwise.
+
+## Configuration
+
+This node has no additional configuration options.
+
+## Usage
+
+To use the Math Less Than (Integer) node:
+
+1. Connect the integer values you want to compare to the `a` and `b` input ports. You can either link these from the outputs of other nodes or specify default values.
+2. The node will output a boolean value to the `result` port, which will be true if `a` is less than `b`, and false otherwise.
+3. You can then use this boolean output to control the flow of your spell, for example by connecting it to the condition port of a Flow If node.
+
+## Example
+
+Suppose you have a spell that needs to perform different actions based on whether a user's age is below a certain threshold. You could use the Math Less Than (Integer) node like this:
+
+1. Connect the user's age (assumed to be an integer) to the `a` port.
+2. Set the default value of the `b` port to the age threshold, e.g., 18.
+3. Connect the `result` port to a Flow If node's condition port.
+4. Configure the Flow If node's "then" and "else" branches to perform the appropriate actions based on whether the user's age is below the threshold or not.
+
+## Best Practices
+
+- Ensure that the values you connect to the `a` and `b` ports are actually integers. Connecting other data types may lead to unexpected behavior.
+- Remember that this node performs a strict less than comparison. If you need to check for "less than or equal to", you should use the Math Less Than Or Equal (Integer) node instead.
+
+## Common Issues
+
+- If the node is not outputting the expected boolean value, double-check that you've connected the `a` and `b` inputs correctly and that they are both integers.
+- Keep in mind that this node does not perform any type conversion. If you need to compare values that are not initially integers, you'll need to first convert them using a node like the Cast To Integer node.

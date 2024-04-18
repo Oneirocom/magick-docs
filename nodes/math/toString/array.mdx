@@ -1,0 +1,46 @@
+---
+title: "Array"
+---
+
+# To String (Array)
+
+The To String (Array) node in Magick converts an array of values into a string representation. This node is useful when you need to display, log, or manipulate the contents of an array as a string.
+
+## Inputs
+
+- `a` (Array, default: `[]`): The input array to be converted to a string.
+
+## Outputs
+
+- `result` (String): The string representation of the input array.
+
+## Configuration
+
+This node does not have any configuration options.
+
+## Usage
+
+1. Connect an array output from another node to the `a` input of the To String (Array) node.
+2. The node will automatically convert the input array into a string representation.
+3. Connect the `result` output to another node that accepts a string input, such as a Display Text node or a Log node.
+
+## Example
+
+Suppose you have an array of names that you want to display as a comma-separated list. You can use the To String (Array) node to achieve this:
+
+1. Create an Array node and populate it with the names: `["Alice", "Bob", "Charlie"]`.
+2. Connect the output of the Array node to the `a` input of the To String (Array) node.
+3. Create a Display Text node and connect the `result` output of the To String (Array) node to the `text` input of the Display Text node.
+4. Run the spell. The Display Text node will show the string: `Alice,Bob,Charlie`.
+
+## Best Practices
+
+- Use the To String (Array) node when you need to convert an array to a string for display, logging, or further processing.
+- Keep in mind that the default string representation of an array uses commas to separate the elements. If you need a different separator, you may need to use additional string manipulation nodes.
+
+## Common Issues
+
+- If the input array contains complex objects or nested arrays, the resulting string representation may not be easily readable. In such cases, consider using more advanced serialization techniques or custom formatting.
+- Be aware that converting large arrays to strings can result in long string outputs, which may not be suitable for display or storage in certain contexts.
+
+By using the To String (Array) node, you can easily convert arrays to their string representations, enabling you to work with array data in a variety of contexts within your Magick spells.

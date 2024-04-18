@@ -1,0 +1,54 @@
+---
+title: "Send Message"
+---
+
+# Send Discord Message
+
+The Send Discord Message node allows you to send a message to a specified channel in Discord from your Magick spell. This is useful for sending notifications, alerts, or any other information from your spell to a Discord server.
+
+## Inputs
+
+- `flow` (required): The flow from the previous node in the spell.
+- `content` (required): The text content of the message to send to Discord. This can include plain text, emoji, and basic markdown formatting.
+- `channel` (required): The ID of the Discord channel to send the message to. This should be a string in the format `CHANNEL_ID`.
+
+## Outputs
+
+- `flow`: The flow continues to the next node in the spell after the message is sent.
+
+## Configuration
+
+This node does not have any additional configuration options.
+
+## Usage
+
+1. Add the Send Discord Message node to your spell.
+2. Connect the `flow` input to the output of the previous node in your spell.
+3. Set the `content` input to the text you want to include in your Discord message. You can include emoji and basic markdown formatting.
+4. Set the `channel` input to the ID of the Discord channel where you want to send the message. You can find the channel ID by right-clicking the channel in Discord and selecting "Copy ID".
+5. Connect the `flow` output to the next node in your spell, if applicable.
+
+## Example
+
+Here's an example of how to use the Send Discord Message node in a spell:
+
+1. Use a Trigger node to start the spell, such as a Schedule trigger to run the spell daily.
+2. Use a HTTP Request node to fetch some data from an API.
+3. Use a Transform Data node to extract the relevant information from the API response.
+4. Use the Send Discord Message node to send a summary of the extracted data to a Discord channel.
+   - Set `content` to a string that includes the summary information, e.g. "Daily update: There were 25 new signups today!"
+   - Set `channel` to the ID of your "daily-updates" Discord channel.
+5. Use a Debug node to log a message indicating the spell ran successfully.
+
+## Best Practices
+
+- Be mindful of the content you send to public Discord channels. Avoid sending sensitive information.
+- Use clear and concise language in your messages to make them easy for your audience to understand.
+- Take advantage of Discord's formatting options to make your messages more readable and visually appealing.
+- If sending messages to a busy channel, consider using Discord threads to keep conversations organized.
+
+## Troubleshooting
+
+- Make sure you have the correct channel ID specified in the `channel` input. An incorrect ID will cause the message to fail to send.
+- Check that your Magick app has the necessary permissions in your Discord server to send messages to the specified channel.
+- If your message content includes special characters, make sure they are properly escaped to avoid formatting issues.

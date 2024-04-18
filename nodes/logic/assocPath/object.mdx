@@ -1,0 +1,81 @@
+---
+title: "Object"
+---
+
+# Assoc Path
+
+The Assoc Path node in Magick allows you to set a value at a specified path within a nested object. It provides a convenient way to update or add properties deep within an object structure without mutating the original object.
+
+## Inputs
+
+1. `path` (string, default: `""`) - The path to the property you want to set, specified as a string of keys separated by dots (e.g., `"a.b.c"`).
+2. `newValue` (object, default: `{}`) - The new value you want to set at the specified path.
+3. `obj` (object, default: `{}`) - The original object in which you want to set the value.
+
+## Outputs
+
+1. `result` (object) - A new object with the value set at the specified path, leaving the original object unchanged.
+
+## Configuration
+
+This node has no additional configuration options.
+
+## Usage
+
+To use the Assoc Path node:
+
+1. Connect an object to the `obj` input. This is the object you want to update.
+2. Specify the path to the property you want to set in the `path` input. Use dot notation to navigate nested objects (e.g., `"a.b.c"`).
+3. Connect the new value you want to set to the `newValue` input.
+4. The node will output a new object with the value set at the specified path, leaving the original object unchanged.
+
+## Example
+
+Suppose you have the following object:
+
+```json
+{
+  "user": {
+    "name": "John",
+    "age": 30,
+    "address": {
+      "city": "New York",
+      "country": "USA"
+    }
+  }
+}
+```
+
+If you want to update the `city` property within the `address` object, you can use the Assoc Path node like this:
+
+- Set the `obj` input to the original object.
+- Set the `path` input to `"user.address.city"`.
+- Set the `newValue` input to `"Los Angeles"`.
+
+The node will output a new object with the updated `city` property:
+
+```json
+{
+  "user": {
+    "name": "John", 
+    "age": 30,
+    "address": {
+      "city": "Los Angeles",
+      "country": "USA"
+    }
+  }
+}
+```
+
+## Best Practices
+
+- Use clear and concise path strings to avoid confusion.
+- Be cautious when setting values in deeply nested objects, as it can make the code harder to read and maintain.
+- Remember that the Assoc Path node does not mutate the original object, so make sure to use the output object if you want to work with the updated values.
+
+## Common Issues
+
+- Ensure that the path string is correctly formatted with keys separated by dots. Incorrect path formats will result in unexpected behavior.
+- If the specified path does not exist in the original object, the Assoc Path node will create the necessary nested objects to set the value.
+
+By using the Assoc Path node, you can easily update or add values to specific paths within nested objects in your Magick spells, making your code more readable and maintainable.

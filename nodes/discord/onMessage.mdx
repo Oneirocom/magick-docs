@@ -1,0 +1,67 @@
+---
+title: "On Message"
+---
+
+# On Discord Message
+
+The On Discord Message node is an event node that triggers when a new message is received in a connected Discord channel. It allows you to capture and respond to incoming Discord messages within your Magick spell.
+
+## Inputs
+
+This node does not have any input ports.
+
+## Outputs
+
+- `flow` (flow): The flow output that allows the spell to continue executing.
+- `content` (string): The text content of the received Discord message.
+- `sender` (string): The username or nickname of the user who sent the message.
+- `channel` (string): The name or ID of the Discord channel where the message was received.
+- `context` (object): An object containing additional context information about the message event.
+- `event` (object): The raw event object received from the Discord API.
+
+## Configuration
+
+- `hiddenProperties` (array, default: `["hiddenProperties", "eventState"]`): An array of property names that should be hidden from the node's configuration in the Magick interface.
+- `eventState` (array, default: `[]`): An array used internally by the node to store event-related state information.
+- `eventStateProperties` (array, default: `["connector", "client", "channel", "agentId", "sender"]`): An array of property names that should be stored in the `eventState` array.
+
+## Usage
+
+1. Add the On Discord Message node to your spell.
+2. Connect the node to a Discord connector node that is properly authenticated and connected to your desired Discord server and channel.
+3. The node will automatically trigger whenever a new message is received in the connected channel.
+4. Use the output ports to access the message content, sender information, and other relevant data.
+5. Connect the `flow` output to other nodes in your spell to perform actions based on the received message.
+
+## Example
+
+Here's an example of how you can use the On Discord Message node in a spell:
+
+```
+Discord Connector
+  |
+  v
+On Discord Message
+  |
+  |-content-> String Contains ("hello")
+  |            |
+  |            |-true-> Send Discord Message ("Hello! How can I assist you today?")
+  |
+  |-sender-> String Equals ("JohnDoe")
+              |
+              |-true-> Send Discord Message ("Hi John! Welcome back.")
+```
+
+In this example, the On Discord Message node is connected to a Discord Connector. When a message is received, it checks if the message content contains the word "hello" and if the sender's username is "JohnDoe". If the conditions are met, it sends appropriate response messages using the Send Discord Message node.
+
+## Best Practices
+
+- Make sure to properly configure and authenticate the connected Discord Connector node to ensure the On Discord Message node can receive events.
+- Use the `content` output to access and process the text content of the received message.
+- Utilize the `sender` output to identify the user who sent the message and perform user-specific actions if needed.
+- Combine the On Discord Message node with other nodes like String Contains, String Equals, or RegEx Match to create conditional flows based on the message content or sender.
+
+## Common Issues
+
+- If the node is not triggering when messages are sent in the connected Discord channel, ensure that the Discord Connector is properly set up and authenticated with the correct permissions.
+- Be mindful of rate limits and API usage restrictions imposed by Discord to avoid exceeding limits and getting your bot or application throttled or banned.

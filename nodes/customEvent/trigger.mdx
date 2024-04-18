@@ -1,0 +1,51 @@
+---
+title: "Trigger"
+---
+
+# Trigger
+
+The Trigger node is a fundamental component in Magick that allows you to initiate a spell based on a custom event. It acts as the starting point for your spell, waiting for a specific event to occur before triggering the execution of the connected nodes.
+
+## Inputs
+
+- `flow`: The input flow port that allows the Trigger node to be connected to other nodes in the spell.
+
+## Outputs
+
+- `flow`: The output flow port that is activated when the specified custom event is triggered, allowing the execution to continue to the next connected node.
+
+## Configuration
+
+- `customEventId` (string, default: "-1"): The unique identifier of the custom event that the Trigger node should listen for. This ID should match the event you want to trigger the spell.
+
+## Usage
+
+1. Drag and drop the Trigger node onto the canvas.
+2. Connect the `flow` output port of the Trigger node to the input port of the next node in your spell.
+3. In the configuration panel of the Trigger node, set the `customEventId` to the ID of the custom event you want to listen for.
+4. Deploy your spell.
+5. When the specified custom event is triggered, the Trigger node will activate, and the execution will continue to the next connected node in the spell.
+
+## Example
+
+Let's say you have a spell that sends a notification when a specific custom event is triggered. Here's how you can use the Trigger node to start the spell:
+
+1. Create a new spell and add a Trigger node to the canvas.
+2. Connect the `flow` output of the Trigger node to the input of a Notification node.
+3. Configure the Trigger node by setting the `customEventId` to the ID of the custom event you want to listen for (e.g., "myCustomEvent").
+4. Configure the Notification node with the desired notification settings.
+5. Deploy the spell.
+
+Now, whenever the custom event with the specified ID is triggered, the Trigger node will activate, and the Notification node will send the configured notification.
+
+## Best Practices
+
+- Choose a unique and descriptive `customEventId` to avoid conflicts with other custom events in your system.
+- Keep your spells focused and modular by using separate Trigger nodes for different custom events, rather than trying to handle multiple events in a single spell.
+
+## Common Issues
+
+- Make sure the `customEventId` in the Trigger node configuration matches exactly with the ID of the custom event you want to listen for. Any mismatch will prevent the spell from triggering.
+- If your spell is not triggering as expected, double-check that the custom event is being properly triggered in your system and that the event ID is correct.
+
+By using the Trigger node, you can create powerful and responsive spells that react to specific custom events in your application or system.

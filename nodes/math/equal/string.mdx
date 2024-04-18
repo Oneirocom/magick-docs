@@ -1,0 +1,84 @@
+---
+title: "String"
+---
+
+# Equal (String)
+
+The Equal (String) node compares two input strings and outputs a boolean value indicating whether they are equal.
+
+## Inputs
+
+1. `a` (string): The first string to compare. Default value is an empty string.
+2. `b` (string): The second string to compare. Default value is an empty string.
+
+## Outputs
+
+1. `result` (boolean): The result of the equality comparison. Returns `true` if the input strings are equal, and `false` otherwise.
+
+## Configuration
+
+This node has no configuration options.
+
+## Usage
+
+To use the Equal (String) node:
+
+1. Connect the first string to compare to the `a` input.
+2. Connect the second string to compare to the `b` input.
+3. The `result` output will emit `true` if the input strings are equal, and `false` otherwise.
+
+## Example
+
+Here's an example of how to use the Equal (String) node in a spell:
+
+```json
+{
+  "nodes": [
+    {
+      "type": "input/string",
+      "id": "string1",
+      "data": {
+        "string": "hello"
+      }
+    },
+    {
+      "type": "input/string", 
+      "id": "string2",
+      "data": {
+        "string": "world"
+      }
+    },
+    {
+      "type": "math/equal/string",
+      "id": "equalNode",
+      "inputs": {
+        "a": "string1",
+        "b": "string2"
+      }
+    },
+    {
+      "type": "output/boolean",
+      "id": "output",
+      "inputs": {
+        "boolean": "equalNode"
+      }
+    }
+  ]
+}
+```
+
+In this example:
+1. Two string input nodes provide the strings "hello" and "world".
+2. The Equal (String) node compares these two strings. 
+3. The output boolean node emits the result of the comparison, which in this case would be `false` since "hello" does not equal "world".
+
+## Best Practices
+
+- Ensure that both inputs are properly connected before running the spell.
+- Keep in mind that the comparison is case-sensitive. "Hello" and "hello" will be considered unequal.
+- If you need to compare strings while ignoring case, consider using a string manipulation node to convert both strings to the same case before the comparison.
+
+## Common Issues
+
+- Forgetting to connect one or both inputs will result in the node comparing against empty strings, which may lead to unexpected results.
+- Attempting to compare non-string values will cause an error. Ensure that any values passed to this node are explicitly cast as strings.

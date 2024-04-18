@@ -1,0 +1,54 @@
+---
+title: "Float"
+---
+
+# TRUNC (math/trunc/float)
+
+The TRUNC node truncates a floating-point number to an integer by removing the fractional part.
+
+## Inputs
+
+1. `a` (float, default: 0): The input floating-point number to be truncated.
+
+## Outputs
+
+1. `result` (float): The truncated integer value as a floating-point number.
+
+## Configuration
+
+This node has no configuration options.
+
+## Usage
+
+To use the TRUNC node:
+
+1. Connect a floating-point number to the `a` input port. This is the number you want to truncate.
+2. The truncated integer value will be available at the `result` output port.
+
+## Example
+
+Let's say you have a spell that calculates the average of a list of numbers, but you want to display the result as an integer. You can use the TRUNC node to remove the fractional part of the average.
+
+Here's how the spell might look:
+
+1. Use a LIST node to define the list of numbers.
+2. Connect the LIST node to an AVERAGE node to calculate the mean value.
+3. Connect the AVERAGE node's output to the TRUNC node's `a` input.
+4. The truncated integer result will be available at the TRUNC node's `result` output.
+
+```mermaid
+graph LR
+A[LIST] --> B[AVERAGE]
+B --> C[TRUNC]
+C --> D[INTEGER RESULT]
+```
+
+## Best Practices
+
+- Use TRUNC when you need to convert a floating-point number to an integer without rounding. If you want to round to the nearest integer, consider using the ROUND node instead.
+- Keep in mind that TRUNC always rounds towards zero. For negative numbers, this means rounding up towards zero.
+
+## Common Issues
+
+- If the input is already an integer, TRUNC will have no effect and will return the same value.
+- TRUNC does not change the data type of the input. The result will still be a floating-point number, even though it has no fractional part. If you need the result as an actual integer data type, consider using a type conversion node after TRUNC.

@@ -1,0 +1,58 @@
+---
+title: "Gate"
+---
+
+# Gate
+
+The Gate node is a flow control node that allows you to conditionally allow or block the flow of execution in your spell based on external triggers. It acts like a gate or valve, letting the flow pass through when opened and blocking it when closed.
+
+## Inputs
+
+- `flow` (required): The main flow input that the Gate will control.
+- `open`: A flow signal to open the Gate and allow the main flow to pass through.
+- `close`: A flow signal to close the Gate and block the main flow.
+- `toggle`: A flow signal to toggle the Gate between open and closed states.
+- `startClosed` (boolean, default: false): If true, the Gate will start in the closed state. Otherwise, it starts open.
+
+## Outputs
+
+- `flow`: The controlled flow output. Emits the main `flow` input when the Gate is open, and blocks it when closed.
+
+## Usage
+
+1. Connect your main execution flow to the Gate's `flow` input.
+2. (Optional) Connect flow signals to the `open`, `close`, and/or `toggle` inputs to control the Gate's state.
+3. Set the `startClosed` option if you want the Gate to initially block the flow.
+4. Connect the Gate's `flow` output to the next node(s) in your spell.
+
+When the Gate receives a signal on its `open` input, it will allow the main `flow` to pass through to the output. A signal on `close` will block the flow. The `toggle` input switches the Gate between open and closed states each time it receives a signal.
+
+## Example
+
+Suppose you have a spell that needs to conditionally send an HTTP request based on some external condition. You can use a Gate node to control the flow:
+
+```
+Trigger --> Gate --> HTTP Request
+              ^
+              |
+          Condition
+```
+
+The Trigger node starts the flow, which is connected to the Gate's `flow` input. The Condition node (e.g. a Button or Delay node) is connected to the Gate's `toggle` input. 
+
+- When the Condition node fires, it toggles the Gate open, allowing the flow to continue to the HTTP Request node. 
+- If the Condition doesn't fire, the Gate remains closed and blocks the flow, preventing the HTTP request.
+
+## Best Practices
+
+- Use Gates judiciously to control flow and resources. Too many Gates can make a spell hard to follow.
+- Clearly label Gate nodes and their control inputs (open, close, toggle) to make the flow logic easy to understand at a glance.
+- Consider using a single `toggle` input instead of separate `open` and `close` where appropriate to simplify the spell graph.
+
+## Common Issues
+
+- Forgetting to set `startClosed` when you need the Gate to block the initial flow.
+- Connecting control signals to the wrong Gate inputs.
+- Creating infinite loops by connecting a Gate's output back to its own control inputs incorrectly.
+
+With careful use, the Gate node provides a powerful way to dynamically control the execution flow of your spells based on events and conditions.

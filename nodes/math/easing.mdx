@@ -1,0 +1,73 @@
+---
+title: "Easing"
+---
+
+# Easing
+
+The Easing node applies an easing function to an input value over time. Easing functions are used to create smooth, natural-looking animations and transitions by modifying the rate of change of a value.
+
+## Inputs
+
+1. `easingFunction` (string, default: "linear"): The type of easing function to apply. Available options include:
+   - "linear"
+   - "quadratic"
+   - "cubic"
+   - "quartic"
+   - "quintic"
+   - "sinusoidal"
+   - "exponential"
+   - "circular"
+   - "elastic"
+   - "back"
+   - "bounce"
+
+2. `easingMode` (string, default: "inOut"): The easing mode to use. Available options are:
+   - "in": The easing function is applied at the beginning of the animation.
+   - "out": The easing function is applied at the end of the animation.
+   - "inOut": The easing function is applied at both the beginning and end of the animation.
+
+3. `t` (float, default: 0): The input value to be eased, typically representing the progress of an animation over time. Should be a value between 0 and 1.
+
+## Outputs
+
+1. `t` (float): The eased value, transformed by the selected easing function and mode.
+
+## Configuration
+
+This node has no additional configuration options.
+
+## Usage
+
+1. Connect a value between 0 and 1 to the `t` input, typically driven by a node that generates a progress value over time, such as the `Animate` node.
+
+2. Select the desired `easingFunction` from the dropdown menu to choose the type of easing effect to apply.
+
+3. Choose the `easingMode` to determine whether the easing function is applied at the beginning ("in"), end ("out"), or both ("inOut") of the animation.
+
+4. Connect the output `t` value to the property you want to animate, such as the position, rotation, or scale of a 3D object.
+
+## Example
+
+Here's an example of how to use the Easing node to create a smooth animation:
+
+1. Create an `Animate` node and configure it to output a value from 0 to 1 over a desired duration.
+
+2. Connect the output of the `Animate` node to the `t` input of the `Easing` node.
+
+3. Set the `easingFunction` to "quadratic" and the `easingMode` to "inOut" for a smooth, natural-looking animation.
+
+4. Connect the output `t` of the `Easing` node to the property you want to animate, such as the Y position of a 3D object.
+
+5. Run the spell to see the object smoothly animate up and down using the quadratic easing function.
+
+## Best Practices
+
+- Choose an easing function that best suits the type of animation you're creating. For example, use "elastic" or "bounce" for playful, energetic animations, or "quadratic" and "cubic" for more subtle, natural-looking movements.
+
+- Experiment with different easing modes to achieve the desired effect. Use "in" for animations that start slowly and accelerate, "out" for animations that decelerate towards the end, and "inOut" for a symmetric easing effect.
+
+## Common Issues
+
+- Ensure that the `t` input value is always between 0 and 1. Values outside this range may produce unexpected results.
+
+- If the animation appears jerky or abrupt, double-check that the `Animate` node (or another node providing the `t` input) is configured correctly and outputting a smooth progression from 0 to 1.

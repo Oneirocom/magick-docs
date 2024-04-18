@@ -1,0 +1,54 @@
+---
+title: "Float"
+---
+
+# π (math/pi/float)
+
+The π node (math/pi/float) provides the mathematical constant pi (π) as a floating-point number. Pi is a fundamental constant in mathematics, representing the ratio of a circle's circumference to its diameter. It is an irrational number, meaning it has an infinite number of decimal places without any repeating pattern.
+
+## Inputs
+
+This node has no inputs.
+
+## Outputs
+
+1. `result` (float): The value of pi as a floating-point number.
+
+## Configuration
+
+This node has no configuration options.
+
+## Usage
+
+To use the π node in your spell:
+
+1. Add the π node to your graph.
+2. Connect the `result` output to the input of another node that expects a floating-point number.
+
+The π node will constantly output the value of pi, which can be used in mathematical calculations or any other operation that requires this constant.
+
+## Example
+
+Here's an example of how you might use the π node in a spell:
+
+```
+1. Add a π node to your graph.
+2. Add a Number node and set its value to 5 (representing the radius of a circle).
+3. Add a Multiplication node.
+4. Connect the `result` output of the π node to the first input of the Multiplication node.
+5. Connect the output of the Number node to the second input of the Multiplication node.
+6. Add another Multiplication node.
+7. Connect the output of the first Multiplication node to both inputs of the second Multiplication node.
+8. The output of the second Multiplication node will be the area of the circle (π * radius^2).
+```
+
+This spell calculates the area of a circle with a radius of 5 units by multiplying pi by the square of the radius.
+
+## Best Practices
+
+- Use the π node whenever you need the value of pi in your calculations.
+- Keep in mind that the π node outputs a floating-point approximation of pi, not the exact value (which would require infinite precision).
+
+## Common Issues
+
+There are no common issues specific to the π node, as it simply outputs a constant value. However, be aware of the limitations of floating-point precision when using this value in complex calculations.

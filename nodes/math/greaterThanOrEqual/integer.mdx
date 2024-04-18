@@ -1,0 +1,58 @@
+---
+title: "Integer"
+---
+
+# ≥ (Greater Than or Equal to)
+
+The `≥` node compares two integer inputs and outputs a boolean value indicating whether the first input is greater than or equal to the second input.
+
+## Inputs
+
+1. `a` (integer): The first integer value to compare. Default value is 0.
+2. `b` (integer): The second integer value to compare. Default value is 0.
+
+## Outputs
+
+1. `result` (boolean): The result of the comparison. Returns `true` if `a` is greater than or equal to `b`, and `false` otherwise.
+
+## Configuration
+
+This node does not have any configuration options.
+
+## Usage
+
+The `≥` node is useful when you need to compare two integer values and determine if the first value is greater than or equal to the second value. This can be helpful in various scenarios, such as:
+
+- Checking if a user's input meets a minimum requirement
+- Comparing scores or values in a game or application
+- Implementing conditional logic based on numeric thresholds
+
+To use the `≥` node:
+
+1. Connect the first integer value to the `a` input.
+2. Connect the second integer value to the `b` input.
+3. The `result` output will emit a boolean value indicating whether `a` is greater than or equal to `b`.
+
+## Example
+
+Suppose you have a spell that checks if a user's age is greater than or equal to 18. You can use the `≥` node to perform this comparison:
+
+```markdown
+1. Create an Integer Input node for the user's age and connect it to the `a` input of the `≥` node.
+2. Create another Integer Input node with a value of 18 and connect it to the `b` input of the `≥` node.
+3. Connect the `result` output of the `≥` node to a Boolean Output node.
+```
+
+Now, when the user enters their age, the spell will output `true` if the age is greater than or equal to 18, and `false` otherwise.
+
+## Best Practices
+
+- Ensure that the inputs connected to the `a` and `b` inputs are of the correct type (integer). Connecting non-integer values may lead to unexpected behavior.
+- Use the `≥` node in combination with other comparison and logical nodes to create more complex conditions and decision-making logic.
+
+## Common Issues
+
+- If the `result` output is not emitting the expected value, double-check that the inputs are connected correctly and are of the integer type.
+- Keep in mind that the `≥` node only compares integer values. If you need to compare floating-point numbers or other data types, you'll need to use a different comparison node or convert the values to integers first.
+
+By using the `≥` node, you can easily compare two integer values and determine if the first value is greater than or equal to the second value, enabling you to create more sophisticated logic in your Magick spells.

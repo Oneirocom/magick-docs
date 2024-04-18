@@ -1,0 +1,47 @@
+---
+title: "Float"
+---
+
+# Equal (Float with Tolerance)
+
+The Equal (Float with Tolerance) node compares two floating-point numbers and checks if they are equal within a specified tolerance. This is useful when working with floating-point arithmetic, where rounding errors can cause exact equality comparisons to fail unexpectedly.
+
+## Inputs
+
+1. `a` (float, default: 0): The first number to compare.
+2. `b` (float, default: 0): The second number to compare.
+3. `tolerance` (float, default: 0): The maximum allowed difference between `a` and `b` for them to be considered equal.
+
+## Outputs
+
+1. `result` (boolean): True if `a` and `b` are equal within the specified tolerance, false otherwise.
+
+## Configuration
+
+This node has no configuration options.
+
+## Usage
+
+1. Connect the first number to compare to the `a` input.
+2. Connect the second number to compare to the `b` input.
+3. Specify the maximum allowed difference for equality in the `tolerance` input. If left unconnected, the tolerance defaults to 0.
+4. The `result` output will emit true if `a` and `b` are equal within the tolerance, and false otherwise.
+
+## Example
+
+Suppose you have two floating-point numbers that are the result of some calculations, and you want to check if they are essentially equal, allowing for small rounding errors. You can use the Equal (Float with Tolerance) node like this:
+
+1. Connect the first calculated number to the `a` input.
+2. Connect the second calculated number to the `b` input.
+3. Set the `tolerance` input to a small value, like 0.00001.
+4. Connect the `result` output to the input of a Filter node to conditionally pass data through based on the equality check.
+
+## Tips
+
+- When comparing floating-point numbers, always consider using a tolerance instead of exact equality. This helps avoid issues caused by rounding errors inherent in floating-point arithmetic.
+- Choose a tolerance value appropriate for your specific use case. If the numbers you're comparing are very large, you may need a larger tolerance. If you require high precision, use a smaller tolerance.
+
+## Gotchas
+
+- Keep in mind that the tolerance is an absolute value, not a percentage or relative difference. If comparing numbers with very different magnitudes, a fixed tolerance may not be appropriate.
+- Be cautious when chaining multiple equality checks together, as the tolerances can compound and lead to unexpected results. It's often better to refactor your logic to avoid multiple approximate comparisons.

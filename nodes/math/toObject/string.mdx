@@ -1,0 +1,56 @@
+---
+title: "String"
+---
+
+# To Object (String)
+
+The To Object (String) node in Magick converts a string representation of an object into an actual JavaScript object. This is useful when you have object data in string format, such as from a text file or API response, and need to work with it as a native object in your spell.
+
+## Inputs
+
+1. `a` (string, required): The string representation of the object to be converted. This string should be in valid JSON format.
+
+## Outputs
+
+1. `result` (object): The converted JavaScript object.
+
+## Configuration
+
+This node has no additional configuration options.
+
+## Usage
+
+1. Connect a node that provides a string representation of an object (in JSON format) to the `a` input of the To Object (String) node.
+2. The node will parse the string and convert it into a JavaScript object.
+3. The resulting object will be available at the `result` output, which you can then connect to other nodes in your spell.
+
+## Example
+
+Suppose you have a string containing JSON data:
+
+```json
+'{"name":"John", "age":30, "city":"New York"}'
+```
+
+You can use the To Object (String) node to convert this string into a usable JavaScript object:
+
+1. Connect a node providing the JSON string to the `a` input of the To Object (String) node.
+2. The node will output the following object at its `result` output:
+   ```json
+   {
+     "name": "John",
+     "age": 30,
+     "city": "New York"
+   }
+   ```
+3. You can now connect this `result` output to other nodes that expect an object input, such as a Get Object Property node to access individual properties of the object.
+
+## Best Practices
+
+- Ensure that the input string is in valid JSON format. If the string is not properly formatted, the node will throw an error.
+- Remember that the resulting object will have properties with data types inferred from the JSON string (e.g., numbers will be numbers, strings will be strings, etc.).
+
+## Common Issues
+
+- If the input string is not valid JSON, the node will throw an error. Double-check that your string is properly formatted and contains only valid JSON data.
+- Be cautious when working with large JSON strings, as converting them to objects can be memory-intensive. If you are dealing with very large datasets, consider streaming the data or processing it in smaller chunks.

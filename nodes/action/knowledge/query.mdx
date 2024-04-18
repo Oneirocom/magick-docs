@@ -1,0 +1,59 @@
+---
+title: "Query"
+---
+
+# Query Knowledge
+
+The Query Knowledge node allows you to retrieve information from a knowledge base within a Magick flow. It provides a flexible way to access stored knowledge and integrate it into your spells.
+
+## Inputs
+
+- `flow` (required): The input flow containing the data to be processed.
+- `query` (optional): The query string used to search the knowledge base. If left empty, the node will return all available knowledge.
+
+## Outputs
+
+- `flow`: The output flow with the retrieved knowledge added.
+- `knowledge`: The knowledge retrieved from the knowledge base based on the provided query.
+
+## Configuration
+
+This node does not have any additional configuration options.
+
+## Usage
+
+1. Connect the input flow to the `flow` input port of the Query Knowledge node.
+2. Optionally, provide a query string in the `query` input field to search for specific knowledge. Leave it empty to retrieve all knowledge.
+3. Connect the `flow` output port to the next node in your spell to continue processing the flow with the retrieved knowledge.
+4. Use the `knowledge` output port to access the retrieved knowledge in subsequent nodes or for further processing.
+
+## Example
+
+Here's an example of how to use the Query Knowledge node in a Magick spell:
+
+```markdown
+1. Start (Trigger) 
+2. Query Knowledge
+   - query: "magick best practices"
+3. Generate Text 
+   - prompt: "Summarize the following knowledge: {{knowledge}}"
+4. Send Email
+   - to: "user@example.com"
+   - subject: "Magick Best Practices"
+   - body: "{{text}}"
+```
+
+In this example, the Query Knowledge node is used to retrieve knowledge related to "magick best practices" from the knowledge base. The retrieved knowledge is then passed to a Generate Text node, which summarizes the knowledge. Finally, the summarized text is sent as an email using the Send Email node.
+
+## Best Practices
+
+- Be specific with your query to retrieve the most relevant knowledge.
+- If you want to retrieve all available knowledge, leave the `query` input empty.
+- Use the retrieved knowledge in combination with other nodes to create powerful and dynamic spells.
+
+## Common Issues
+
+- If the `query` input is too broad or ambiguous, the node may return a large amount of knowledge, which can impact performance.
+- Ensure that the knowledge base contains relevant and up-to-date information for accurate results.
+
+By leveraging the Query Knowledge node, you can easily access and integrate stored knowledge into your Magick spells, enabling more intelligent and context-aware processing.

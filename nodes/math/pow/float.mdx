@@ -1,0 +1,50 @@
+---
+title: "Float"
+---
+
+# POW
+
+The POW node calculates the result of raising a base number to a specified power. It's useful when you need to perform exponentiation in your spells.
+
+## Inputs
+
+- `a` (float): The base number to be raised to a power. Default value is 0.
+- `b` (float): The exponent or power to which the base number should be raised. Default value is 0.
+
+## Outputs
+
+- `result` (float): The result of raising the base number `a` to the power of `b`.
+
+## Configuration
+
+This node has no additional configuration options.
+
+## Usage
+
+1. Add the POW node to your spell.
+2. Connect a node providing the base number to the `a` input.
+3. Connect a node providing the exponent to the `b` input.
+4. The `result` output will contain the calculated value of `a` raised to the power of `b`.
+
+## Example
+
+Let's say you want to calculate the area of a square given its side length. You can use the POW node to square the side length:
+
+1. Create a Constant node with the value of the side length, e.g., 5.
+2. Connect the Constant node to the `a` input of the POW node.
+3. Create another Constant node with the value 2 and connect it to the `b` input of the POW node.
+4. The `result` output of the POW node will contain the area of the square, which is 25 (5^2).
+
+You can then use the `result` output in further calculations or connect it to other nodes as needed.
+
+## Best Practices
+
+- Ensure that the inputs to the POW node are of the correct type (float). Connecting incompatible types may lead to unexpected results or errors.
+- Be cautious when using very large or very small numbers as the base or exponent, as this can lead to overflow or underflow issues.
+
+## Common Issues
+
+- If the `result` output is always 0, check that the `a` and `b` inputs are properly connected and are not both 0.
+- If the `result` output is unexpectedly large or small, verify that the input values are within a reasonable range and that you are not unintentionally performing an extreme calculation.
+
+By using the POW node, you can easily incorporate exponentiation into your Magick spells, enabling you to perform calculations involving powers and exponential relationships.

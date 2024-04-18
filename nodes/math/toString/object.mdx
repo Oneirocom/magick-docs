@@ -1,0 +1,60 @@
+---
+title: "Object"
+---
+
+# To String
+
+The To String node in Magick converts an input object to a string representation. It is useful when you need to serialize an object for storage, transmission, or display purposes.
+
+## Inputs
+
+1. `a` (object, default: `{}`): The input object to be converted to a string.
+
+## Outputs
+
+1. `result` (string): The string representation of the input object.
+
+## Configuration
+
+This node does not have any configuration options.
+
+## Usage
+
+To use the To String node, follow these steps:
+
+1. Add the To String node to your spell.
+2. Connect the output of the node that produces the object you want to convert to the `a` input of the To String node.
+3. The resulting string will be available at the `result` output of the To String node.
+
+## Example
+
+Here's an example of how to use the To String node in a spell:
+
+1. Create a new spell and add a JSON Parse node.
+2. Configure the JSON Parse node with the following JSON string:
+   ```json
+   {
+     "name": "John Doe",
+     "age": 30,
+     "city": "New York"
+   }
+   ```
+3. Add a To String node and connect the `result` output of the JSON Parse node to the `a` input of the To String node.
+4. Add a Debug node and connect the `result` output of the To String node to the `value` input of the Debug node.
+5. Run the spell.
+
+The Debug node will output the following string:
+```
+{"name":"John Doe","age":30,"city":"New York"}
+```
+
+## Best Practices
+
+- Use the To String node when you need to convert an object to a string representation for further processing, storage, or display.
+- Be aware that the string representation of an object may not include all the object's properties or methods. It is primarily used for serialization and debugging purposes.
+
+## Common Issues
+
+- If the input object contains circular references or complex data structures, the resulting string representation may not be complete or accurate. In such cases, consider using more advanced serialization techniques or libraries.
+
+By using the To String node, you can easily convert objects to their string representations within your Magick spells, enabling you to work with stringified data when needed.

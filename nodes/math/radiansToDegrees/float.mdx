@@ -1,0 +1,51 @@
+---
+title: "Float"
+---
+
+# To Degrees (math/radiansToDegrees/float)
+
+The To Degrees node converts an angle measured in radians to its equivalent value in degrees. This is a common operation when working with angles in mathematical or graphical contexts.
+
+## Inputs
+
+1. `a` (float, default: 0): The angle in radians to be converted to degrees.
+
+## Outputs
+
+1. `result` (float): The equivalent angle in degrees.
+
+## Configuration
+
+This node has no configuration options.
+
+## Usage
+
+To use the To Degrees node:
+
+1. Add the To Degrees node to your spell.
+2. Connect the angle in radians you want to convert to the `a` input.
+3. The equivalent angle in degrees will be output from the `result` output.
+
+## Example
+
+Here's an example of how to use the To Degrees node in a spell:
+
+```
+1. Add a Constant node and set its value to `3.14159` (approximately π radians).
+2. Connect the Constant node to the `a` input of a To Degrees node.
+3. The To Degrees node will output approximately `180` degrees.
+```
+
+In this example, we convert π radians (about 3.14159) to degrees. The To Degrees node outputs the result, which is approximately 180 degrees, since π radians is equivalent to a 180° rotation.
+
+## Best Practices
+
+- Remember that this node expects the input angle to be in radians. If your angle is in degrees, you'll need to convert it to radians first using the To Radians node.
+- The conversion from radians to degrees is an exact operation, so there's no loss of precision.
+
+## Common Issues
+
+- Forgetting to convert degrees to radians before using this node is a common mistake. Always double-check your angle units.
+- If the result seems incorrect, verify that your input is actually in radians.
+
+The To Degrees node is a simple but essential utility for working with angles in your spells. Use it whenever you need to convert from the radian measure commonly used in mathematical contexts to the more familiar degree representation.

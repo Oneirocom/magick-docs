@@ -1,0 +1,56 @@
+---
+title: "Float"
+---
+
+# MAX
+
+The MAX node is a utility node that takes two floating-point numbers as input and outputs the larger of the two values. It provides a simple way to compare numbers and select the maximum value within a spell.
+
+## Inputs
+
+1. `a` (float, default: 0): The first number to compare.
+2. `b` (float, default: 0): The second number to compare.
+
+## Outputs
+
+1. `result` (float): The maximum value between the two input numbers.
+
+## Configuration
+
+This node does not have any configuration options.
+
+## Usage
+
+To use the MAX node, follow these steps:
+
+1. Add the MAX node to your spell.
+2. Connect the `a` input to the first number you want to compare.
+3. Connect the `b` input to the second number you want to compare.
+4. The `result` output will provide the maximum value between the two input numbers.
+
+## Example
+
+Here's an example of how to use the MAX node in a spell:
+
+```
+1. Add a Trigger node to start the spell.
+2. Connect the Trigger node to two Number nodes, set to values 5 and 8 respectively.
+3. Add a MAX node and connect the outputs of the two Number nodes to its `a` and `b` inputs.
+4. Add a Debug node and connect the `result` output of the MAX node to its input.
+5. Run the spell.
+```
+
+In this example, the MAX node will compare the values 5 and 8, and output the maximum value 8 to the Debug node.
+
+## Best Practices
+
+- Use the MAX node when you need to select the larger value between two numbers in your spell logic.
+- Connect the `a` and `b` inputs to the appropriate number sources in your spell.
+- Remember that the MAX node only works with floating-point numbers. If you need to compare integers, use the MAX (Integer) node instead.
+
+## Common Issues
+
+- Ensure that both `a` and `b` inputs are properly connected to number sources. If either input is left unconnected, the MAX node will use the default value of 0.
+- Be aware that the MAX node does not handle non-numeric inputs. Connecting a non-numeric value (e.g., a string) to either input will result in an error.
+
+By using the MAX node, you can easily compare and select the maximum value between two numbers in your Magick spells, enabling you to build more complex logic and decision-making processes.

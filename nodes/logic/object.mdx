@@ -1,0 +1,73 @@
+---
+title: "Object"
+---
+
+# Object
+
+The Object node in Magick is a fundamental utility node that allows you to create, manipulate, and output JavaScript objects within your spells. It provides a simple way to work with structured data and can be used in a wide variety of scenarios.
+
+## Inputs
+
+- `a` (object, default: `{}`): The input object to be processed or modified by the node. If no input is provided, an empty object `{}` will be used as the default.
+
+## Outputs
+
+- `result` (object): The resulting object after any modifications or transformations have been applied.
+
+## Configuration
+
+This node does not have any additional configuration options.
+
+## Usage
+
+1. Add an Object node to your spell.
+2. Connect the desired input object to the `a` input port. If you want to start with an empty object, you can skip this step.
+3. The Object node will output the input object as-is, without any modifications, through the `result` output port.
+4. You can then connect the `result` output to other nodes in your spell to perform further operations or use the object data as needed.
+
+## Example
+
+Here's a simple example of how you can use the Object node in a Magick spell:
+
+```json
+{
+  "nodes": [
+    {
+      "type": "logic/object",
+      "id": "object1",
+      "inputs": {
+        "a": {
+          "name": "John",
+          "age": 30,
+          "city": "New York"
+        }
+      }
+    },
+    {
+      "type": "debug/log",
+      "id": "log1",
+      "inputs": {
+        "message": "{{object1.result}}"
+      }
+    }
+  ]
+}
+```
+
+In this example:
+1. The Object node `object1` is created with an input object containing properties like `name`, `age`, and `city`.
+2. The `result` output of `object1` is connected to the `message` input of a Debug Log node `log1`.
+3. When the spell is run, the Debug Log node will log the object data to the console.
+
+## Best Practices
+
+- Use the Object node to create and manage structured data within your spells.
+- Connect the `result` output to other nodes that expect object data as input.
+- If you need to modify the object, you can use other nodes like the Edit Object node to add, remove, or update properties.
+
+## Common Issues
+
+- Ensure that the input data connected to the `a` input port is a valid JavaScript object. Passing non-object data may lead to unexpected behavior.
+- Be mindful of the object structure and property names when accessing or modifying the object data in other nodes.
+
+By using the Object node in Magick, you can easily work with structured data and integrate it seamlessly into your spells. It provides a foundation for creating more complex data manipulations and enables you to build powerful and flexible spells.

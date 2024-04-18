@@ -1,0 +1,44 @@
+---
+title: "Boolean"
+---
+
+# To String (Boolean)
+
+The To String (Boolean) node in Magick converts a boolean value (`true` or `false`) into its string representation.
+
+## Inputs
+
+- `a` (boolean): The boolean value to be converted to a string. Default value is `false`.
+
+## Outputs
+
+- `result` (string): The string representation of the input boolean value.
+
+## Configuration
+
+This node does not have any configuration options.
+
+## Usage
+
+1. Connect a node that outputs a boolean value (such as a comparison node or a boolean constant node) to the `a` input of the To String (Boolean) node.
+2. The `result` output will contain the string representation of the input boolean value, either `"true"` or `"false"`.
+
+## Example
+
+Suppose you have a spell that checks if a number is greater than 10 and you want to display the result as a string. You can use the To String (Boolean) node to convert the boolean output of the comparison node to a string.
+
+1. Connect a Number node to the `a` input of a Greater Than node.
+2. Set the `b` input of the Greater Than node to `10`.
+3. Connect the `result` output of the Greater Than node to the `a` input of the To String (Boolean) node.
+4. Connect the `result` output of the To String (Boolean) node to a Display Alert node to show the string representation of the comparison result.
+
+Now, when the spell is run, it will display "true" if the input number is greater than 10, or "false" otherwise.
+
+## Best Practices
+
+- Use the To String (Boolean) node when you need to convert a boolean value to a string for display purposes or for concatenating with other strings.
+- Keep in mind that the output will always be lowercase ("true" or "false").
+
+## Common Issues
+
+There are no common issues or gotchas associated with the To String (Boolean) node, as it performs a straightforward conversion from boolean to string.

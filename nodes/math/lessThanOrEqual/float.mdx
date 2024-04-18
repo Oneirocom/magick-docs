@@ -1,0 +1,76 @@
+---
+title: "Float"
+---
+
+# ≤ (Less Than or Equal)
+
+The `≤` node compares two floating-point numbers and outputs a boolean value indicating whether the first input is less than or equal to the second input.
+
+## Inputs
+
+1. `a` (float, default: 0): The first number to compare.
+2. `b` (float, default: 0): The second number to compare.
+
+## Outputs
+
+1. `result` (boolean): True if `a` is less than or equal to `b`, false otherwise.
+
+## Configuration
+
+This node has no configuration options.
+
+## Usage
+
+To use the `≤` node:
+
+1. Connect the first number to compare to the `a` input.
+2. Connect the second number to compare to the `b` input.
+3. The `result` output will emit `true` if `a` is less than or equal to `b`, and `false` otherwise.
+
+## Example
+
+Here's an example of how to use the `≤` node in a spell:
+
+```json
+{
+  "nodes": [
+    {
+      "type": "input/number",
+      "id": "1",
+      "data": { "value": 5 },
+      "outputs": { "output": { "connections": [{ "node": "3", "input": "a" }] } }
+    },
+    {
+      "type": "input/number",
+      "id": "2",
+      "data": { "value": 7 },
+      "outputs": { "output": { "connections": [{ "node": "3", "input": "b" }] } }
+    },
+    {
+      "type": "math/lessThanOrEqual/float",
+      "id": "3",
+      "outputs": { "result": { "connections": [{ "node": "4", "input": "in" }] } }
+    },
+    {
+      "type": "output/boolean",
+      "id": "4",
+      "inputs": { "in": { "connections": [{ "node": "3", "output": "result" }] } }
+    }
+  ]
+}
+```
+
+In this example:
+1. The first `input/number` node provides the value `5` to the `a` input of the `≤` node.
+2. The second `input/number` node provides the value `7` to the `b` input of the `≤` node.
+3. The `≤` node compares `5` and `7`, and since `5` is less than `7`, it outputs `true`.
+4. The `output/boolean` node receives the `true` value and outputs it from the spell.
+
+## Best Practices
+
+- Ensure that the inputs to the `≤` node are both floating-point numbers. Connecting other data types may cause unexpected behavior.
+- Remember that the order of the inputs matters. The node checks if `a` is less than or equal to `b`, not the other way around.
+
+## Common Issues
+
+- If either of the inputs is not a floating-point number, the node will not function correctly. Make sure to properly cast or convert input values to floats before connecting them to this node.

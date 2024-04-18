@@ -1,0 +1,44 @@
+---
+title: "Float"
+---
+
+# FLOOR
+
+The FLOOR node rounds down a floating-point number to the nearest integer less than or equal to the input value. It is useful when you need to convert a float to an integer by always rounding downwards.
+
+## Inputs
+
+1. `a` (float, default: 0): The floating-point number to be rounded down.
+
+## Outputs
+
+1. `result` (float): The largest integer less than or equal to the input value.
+
+## Configuration
+
+This node has no configuration options.
+
+## Usage
+
+1. Connect a floating-point number to the `a` input of the FLOOR node.
+2. The node will output the largest integer less than or equal to the input value via the `result` output.
+
+## Example
+
+Suppose you have a spell that calculates the average of two numbers, but you need to round down the result to the nearest integer. You can use the FLOOR node to achieve this.
+
+1. Connect the output of the node that calculates the average to the `a` input of the FLOOR node.
+2. The FLOOR node will round down the average value to the nearest integer.
+3. Connect the `result` output of the FLOOR node to the input of the next node in your spell.
+
+For instance, if the average value is 3.7, the FLOOR node will output 3.
+
+## Best Practices
+
+- Use the FLOOR node when you need to convert a floating-point number to an integer by always rounding downwards.
+- Keep in mind that the FLOOR node always rounds down, even for negative numbers. For example, FLOOR(-3.7) will output -4.
+
+## Common Issues
+
+- Ensure that the input to the FLOOR node is a floating-point number. If you provide an integer input, the node will simply pass through the integer unchanged.
+- Remember that the output of the FLOOR node is still a floating-point number, even though it represents an integer value. If you need to use the result as an integer in other parts of your spell, you may need to explicitly convert it to an integer type.

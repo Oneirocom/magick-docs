@@ -1,0 +1,49 @@
+---
+title: "Boolean"
+---
+
+# ¬ (Boolean Negate)
+
+The Boolean Negate node (represented by the "¬" symbol) is a simple logical operator that inverts the value of a boolean input. If the input is `true`, the output will be `false`, and vice versa.
+
+## Inputs
+
+- `a` (boolean, default: `false`): The boolean value to be negated.
+
+## Outputs
+
+- `result` (boolean): The negated value of the input.
+
+## Configuration
+
+This node has no configuration options.
+
+## Usage
+
+1. Connect a boolean value to the `a` input of the Boolean Negate node.
+2. The negated value will be available at the `result` output.
+
+## Example
+
+Consider a spell where you want to perform an action only if a certain condition is not met. You can use the Boolean Negate node to invert the condition before connecting it to a trigger or filter node.
+
+```markdown
+1. [Input] Condition (boolean) 
+2. [Math] ¬ (Boolean Negate)
+   - a: [connected to Condition output]
+3. [Logic] If
+   - condition: [connected to ¬ (Boolean Negate) result output]
+   - then: [Action to perform when condition is not met]
+```
+
+In this example, the Boolean Negate node inverts the `Condition` input before it is passed to the `If` node. The action connected to the `then` input of the `If` node will only be executed when the original `Condition` is `false`.
+
+## Best Practices
+
+- Use the Boolean Negate node to simplify your spell's logic by inverting conditions directly, rather than using more complex expressions.
+- Consider readability when using the Boolean Negate node. In some cases, it may be clearer to write the inverted condition explicitly rather than using the negate node.
+
+## Common Issues
+
+- Ensure that the input connected to the Boolean Negate node is actually a boolean value. Connecting other data types may lead to unexpected behavior.
+- Remember that the Boolean Negate node only inverts the value; it does not change the value type. The output will always be a boolean.

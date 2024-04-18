@@ -1,0 +1,45 @@
+---
+title: "Integer"
+---
+
+# Integer
+
+The Integer node is a simple utility node that allows you to input an integer value and pass it to other nodes in your spell. It is useful when you need to provide a specific integer value as an input to another node.
+
+## Inputs
+
+- `a` (integer, default: 0): The integer value to be passed through the node.
+
+## Outputs
+
+- `result` (integer): The input integer value, passed through unchanged.
+
+## Configuration
+
+This node has no configuration options.
+
+## Usage
+
+1. Add an Integer node to your spell.
+2. Connect the `result` output to the input of the node that requires an integer value.
+3. Set the value of the `a` input to the desired integer.
+
+## Example
+
+Suppose you have a spell that generates a random number between 0 and a maximum value. You can use the Integer node to provide the maximum value:
+
+1. Add a Random Number node to your spell.
+2. Add an Integer node to your spell.
+3. Connect the `result` output of the Integer node to the `max` input of the Random Number node.
+4. Set the `a` input of the Integer node to the desired maximum value, e.g., 100.
+
+Now, the Random Number node will generate a random integer between 0 and the value provided by the Integer node.
+
+## Best Practices
+
+- Use the Integer node whenever you need to input a specific integer value into your spell.
+- Consider renaming the node to something more descriptive of its purpose in your spell, e.g., "Max Random Value" or "Number of Items".
+
+## Common Issues
+
+There are no common issues or gotchas associated with the Integer node, as it simply passes through the input value unchanged.

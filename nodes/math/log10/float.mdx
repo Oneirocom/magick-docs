@@ -1,0 +1,55 @@
+---
+title: "Float"
+---
+
+# LOG10
+
+The LOG10 node in Magick calculates the base-10 logarithm of a given floating-point number. It is a useful utility node for mathematical operations and can be employed in various scenarios where logarithmic scaling or computation is required.
+
+## Inputs
+
+1. `a` (float, default: 0): The input floating-point number for which the base-10 logarithm will be calculated.
+
+## Outputs
+
+1. `result` (float): The base-10 logarithm of the input value.
+
+## Configuration
+
+This node does not have any additional configuration options.
+
+## Usage
+
+To use the LOG10 node, follow these steps:
+
+1. Add the LOG10 node to your spell.
+2. Connect the `a` input to a node that provides the floating-point number you want to calculate the base-10 logarithm for.
+3. The `result` output will contain the base-10 logarithm of the input value, which can be connected to other nodes for further processing.
+
+## Example
+
+Here's an example of how to use the LOG10 node in a spell:
+
+```
+1. Create a new spell and add a Numeric Input node.
+2. Set the value of the Numeric Input node to the number you want to calculate the base-10 logarithm for, e.g., 100.
+3. Add a LOG10 node to the spell.
+4. Connect the output of the Numeric Input node to the `a` input of the LOG10 node.
+5. Add a Numeric Output node to the spell.
+6. Connect the `result` output of the LOG10 node to the input of the Numeric Output node.
+7. Run the spell.
+```
+
+The Numeric Output node will display the base-10 logarithm of the input value, which in this case would be 2 (since log10(100) = 2).
+
+## Best Practices
+
+- Ensure that the input value is a positive, non-zero number, as the logarithm is undefined for negative numbers and zero.
+- Keep in mind that the LOG10 node calculates the base-10 logarithm. If you need to calculate logarithms with a different base, you can use the change of base formula or other logarithm nodes provided by Magick.
+
+## Common Issues
+
+- If the input value is negative or zero, the LOG10 node will output NaN (Not a Number) or -Infinity, respectively. Make sure to handle these cases appropriately in your spell logic.
+- Be cautious when using the LOG10 node with very small or very large numbers, as the resulting logarithm values may lead to numerical instability or precision issues in subsequent calculations.
+
+By understanding and utilizing the LOG10 node effectively, you can incorporate base-10 logarithmic calculations seamlessly into your Magick spells, enabling you to tackle a wide range of mathematical and computational challenges.

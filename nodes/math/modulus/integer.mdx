@@ -1,0 +1,55 @@
+---
+title: "Integer"
+---
+
+# MOD (math/modulus/integer)
+
+The MOD node calculates the modulus (remainder) of dividing two integers. It returns the remainder that results from dividing the first input integer by the second input integer.
+
+## Inputs
+
+1. `a` (integer, default: 0): The dividend, or the number to be divided.
+2. `b` (integer, default: 0): The divisor, or the number to divide by.
+
+## Outputs
+
+1. `result` (integer): The remainder after dividing `a` by `b`.
+
+## Configuration
+
+This node has no configuration options.
+
+## Usage
+
+1. Connect an integer value to the `a` input to specify the dividend.
+2. Connect an integer value to the `b` input to specify the divisor.
+3. The node will output the remainder of dividing `a` by `b` via the `result` output.
+
+## Example
+
+Let's say you have a spell that needs to determine if a given number is odd or even. You can use the MOD node to check if the number is divisible by 2.
+
+1. Connect the integer you want to check to the `a` input of the MOD node.
+2. Connect the integer 2 to the `b` input of the MOD node.
+3. If the `result` output is 0, the input number is even. If the `result` is 1, the input number is odd.
+
+Here's what the spell might look like:
+
+```
+Number to Check -> [MOD].a
+                      |
+          2 ----> [MOD].b
+                      |
+                   [MOD].result -- 0 --> Even
+                                 \- 1 --> Odd
+```
+
+## Best Practices
+
+- Make sure to handle the case where `b` is 0, as dividing by zero is undefined. You may want to add a check before the MOD node to handle this case gracefully.
+- Keep in mind that the result of the modulo operation will always have the same sign as the divisor (`b`). 
+
+## Common Issues
+
+- If the `b` input is 0, the node will throw an error as division by zero is not allowed. Always ensure that `b` is not 0 before using this node.
+- Be careful when using negative numbers, as the behavior of the modulo operator can be unintuitive. In Magick, `a % b` always returns a value with the same sign as `b`.

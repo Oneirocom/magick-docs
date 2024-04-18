@@ -1,0 +1,45 @@
+---
+title: "Boolean"
+---
+
+# To Float (Boolean)
+
+The To Float (Boolean) node in Magick converts a boolean value (`true` or `false`) into its corresponding floating-point representation. This node is useful when you need to use boolean values in mathematical operations or functions that expect floating-point inputs.
+
+## Inputs
+
+- `a` (boolean, default: `false`): The boolean value to be converted to a floating-point number.
+
+## Outputs
+
+- `result` (float): The floating-point representation of the input boolean value. `true` is converted to `1.0`, and `false` is converted to `0.0`.
+
+## Configuration
+
+This node does not have any configuration options.
+
+## Usage
+
+1. Connect a node that produces a boolean output (such as a comparison node or a boolean constant node) to the `a` input of the To Float (Boolean) node.
+2. The node will output the corresponding floating-point value (`1.0` for `true`, `0.0` for `false`) from the `result` output.
+3. Connect the `result` output to the input of another node that expects a floating-point value, such as a mathematical operation or function node.
+
+## Example
+
+Suppose you have a boolean value indicating whether a user is logged in, and you want to use this value to calculate a score multiplier. You can use the To Float (Boolean) node to convert the boolean value to a floating-point number and then use it in a multiplication operation.
+
+1. Create a boolean constant node representing the user's logged-in status (e.g., `true` for logged in, `false` for not logged in).
+2. Connect the boolean constant node to the `a` input of a To Float (Boolean) node.
+3. Create a float constant node with the base score multiplier value (e.g., `1.5`).
+4. Connect the `result` output of the To Float (Boolean) node and the float constant node to the inputs of a Multiply node.
+5. The Multiply node will output the final score multiplier, which will be `1.5` if the user is logged in or `0.0` if the user is not logged in.
+
+## Best Practices
+
+- Use the To Float (Boolean) node when you need to use boolean values in mathematical operations or functions that expect floating-point inputs.
+- Be aware that the node converts `true` to `1.0` and `false` to `0.0`. If you need different floating-point values for `true` and `false`, you can use a Select node or an If node to assign custom values based on the boolean input.
+
+## Common Issues
+
+- Make sure to connect a boolean value to the `a` input of the To Float (Boolean) node. Connecting other data types may lead to unexpected behavior or errors.
+- Remember that the node outputs `1.0` for `true` and `0.0` for `false`. If you require different output values, you'll need to use additional nodes to modify the output accordingly.

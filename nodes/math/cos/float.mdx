@@ -1,0 +1,51 @@
+---
+title: "Float"
+---
+
+# COS (math/cos/float)
+
+The COS node calculates the cosine of an angle given in radians. It is a fundamental trigonometric function commonly used in mathematical expressions and graphics programming.
+
+## Inputs
+
+1. `a` (float, default: 0): The input angle in radians.
+
+## Outputs
+
+1. `result` (float): The cosine of the input angle.
+
+## Configuration
+
+This node has no additional configuration options.
+
+## Usage
+
+To use the COS node:
+
+1. Connect a float value representing an angle in radians to the `a` input port.
+2. The node will calculate the cosine of the input angle and output the result via the `result` output port.
+3. Connect the `result` output to the desired destination node(s) in your spell.
+
+## Example
+
+Here's an example of how to use the COS node in a Magick spell:
+
+```
+1. Create a Float node and set its value to `PI / 4` (45 degrees in radians).
+2. Connect the Float node's output to the `a` input port of the COS node.
+3. Create a Debug Print node and connect the `result` output of the COS node to its input.
+4. Run the spell.
+```
+
+The Debug Print node will output the cosine of 45 degrees, which is approximately 0.7071.
+
+## Tips
+
+- Remember that the input angle must be in radians, not degrees. To convert degrees to radians, multiply the angle in degrees by `PI / 180`.
+- The cosine function is periodic with a period of 2π radians. This means that `cos(a) = cos(a + 2π)` for any angle `a`.
+- The cosine of 0 is always 1, and the cosine of π/2 (90 degrees) is always 0.
+
+## Common Issues
+
+- Ensure that the input angle is in radians. If the result seems incorrect, double-check that you are not accidentally providing the angle in degrees.
+- Be aware of the floating-point precision limitations in computer arithmetic. For very large or very small angles, the result may not be exact due to rounding errors.

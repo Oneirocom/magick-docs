@@ -1,0 +1,59 @@
+---
+title: "Float"
+---
+
+# Greater Than (Float)
+
+The Greater Than (Float) node compares two floating-point numbers and outputs a boolean value indicating whether the first input is greater than the second.
+
+## Inputs
+
+1. `a` (float, default: 0): The first number to compare.
+2. `b` (float, default: 0): The second number to compare.
+
+## Outputs
+
+1. `result` (boolean): True if `a` is greater than `b`, false otherwise.
+
+## Configuration
+
+This node has no configuration options.
+
+## Usage
+
+The Greater Than (Float) node is useful when you need to make decisions based on comparing two floating-point numbers. It can be used in a variety of scenarios, such as:
+
+- Checking if a sensor reading exceeds a certain threshold
+- Determining if a user input is within a valid range
+- Comparing scores or ratings in a game or application
+
+To use the Greater Than (Float) node:
+
+1. Connect the first number to compare to the `a` input.
+2. Connect the second number to compare to the `b` input.
+3. The `result` output will emit a boolean value indicating whether `a` is greater than `b`.
+
+## Example
+
+Suppose you have a temperature sensor connected to a Magick spell, and you want to trigger an action if the temperature exceeds 30 degrees Celsius. You can use the Greater Than (Float) node to compare the sensor reading with the threshold value.
+
+```markdown
+1. Connect the temperature sensor output to the `a` input of the Greater Than (Float) node.
+2. Set the `b` input to the constant value 30.
+3. Connect the `result` output to a Trigger node.
+4. Configure the Trigger node to perform the desired action when it receives a true value.
+```
+
+Now, whenever the temperature sensor reading is greater than 30 degrees Celsius, the Greater Than (Float) node will output true, triggering the connected action.
+
+## Best Practices
+
+- Ensure that the inputs connected to the Greater Than (Float) node are of the correct type (float). Connecting inputs of different types may lead to unexpected behavior.
+- Remember that the comparison is strictly "greater than". If you need to check for "greater than or equal to", consider using a combination of the Greater Than (Float) and Equal (Float) nodes.
+
+## Common Issues
+
+- Floating-point comparisons may sometimes yield unexpected results due to the inherent limitations of floating-point representation. If you need exact comparisons, consider using integer values instead.
+- Be cautious when comparing very large or very small floating-point numbers, as they may be subject to rounding errors or precision loss.
+
+By understanding and utilizing the Greater Than (Float) node effectively, you can create powerful decision-making logic in your Magick spells based on comparing floating-point values.

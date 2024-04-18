@@ -1,0 +1,55 @@
+---
+title: "Float"
+---
+
+# Math Subtract Float
+
+The Math Subtract Float node performs subtraction on two floating-point numbers. It takes two input values, subtracts the second value from the first, and outputs the result.
+
+## Inputs
+
+1. `a` (float, default: 0): The first value in the subtraction operation.
+2. `b` (float, default: 0): The second value in the subtraction operation, which will be subtracted from `a`.
+
+## Outputs
+
+1. `result` (float): The result of subtracting `b` from `a`.
+
+## Configuration
+
+This node has no additional configuration options.
+
+## Usage
+
+To use the Math Subtract Float node:
+
+1. Add the Math Subtract Float node to your spell.
+2. Connect the `a` input to the first value you want to subtract from.
+3. Connect the `b` input to the value you want to subtract.
+4. The `result` output will contain the result of the subtraction operation.
+
+## Example
+
+Here's an example of how to use the Math Subtract Float node in a spell:
+
+```
+1. Add a Trigger node and set it to "On App Start".
+2. Add a Math Subtract Float node.
+3. Add two Number nodes and set their values to 10.5 and 3.7.
+4. Connect the first Number node to the `a` input of the Math Subtract Float node.
+5. Connect the second Number node to the `b` input of the Math Subtract Float node.
+6. Add a Debug Log node and connect the `result` output of the Math Subtract Float node to its `message` input.
+7. Run the spell.
+```
+
+The Debug Log will output the result of 10.5 - 3.7, which is 6.8.
+
+## Best Practices
+
+- Ensure that the input values are valid floating-point numbers. Non-numeric inputs may cause unexpected behavior.
+- Remember that the order of inputs matters: `a` is the value being subtracted from, and `b` is the value being subtracted.
+
+## Common Issues
+
+- If either input is not a valid floating-point number, the node may output `NaN` (Not a Number) or an unexpected result.
+- Be cautious when subtracting very large or very small numbers, as floating-point precision limitations may affect the accuracy of the result.

@@ -1,0 +1,60 @@
+---
+title: "Expect True"
+---
+
+# Assert Expect True
+
+The Assert Expect True node is an action node that allows you to assert that a given condition is true within your spell. If the condition is not true, the node will throw an error and halt the execution of the spell. This node is useful for adding runtime checks and validations to your spells.
+
+## Inputs
+
+- `flow` (required): The input flow from the previous node in the spell.
+- `condition` (required): A boolean value representing the condition you want to assert as true. Default value is `false`.
+- `description` (optional): A string describing the assertion. This can be helpful for understanding the purpose of the assertion when reviewing the spell. Default value is an empty string.
+
+## Outputs
+
+- `flow`: The output flow to the next node in the spell. This output is only triggered if the assertion passes.
+
+## Configuration
+
+This node does not have any additional configuration options.
+
+## Usage
+
+1. Connect the `flow` input to the output of the previous node in your spell.
+2. Set the `condition` input to the boolean expression you want to assert as true.
+3. (Optional) Provide a `description` for the assertion to make your spell more readable and maintainable.
+4. Connect the `flow` output to the next node in your spell.
+
+## Example
+
+Here's an example of how to use the Assert Expect True node in a spell:
+
+```markdown
+1. Start
+2. HTTP Request
+   URL: "https://api.example.com/users/123"
+   Method: GET
+3. Assert Expect True
+   condition: {{ HTTP Request.status === 200 }}
+   description: "Expect API request to succeed"
+4. Parse JSON
+   json: {{ HTTP Request.data }}
+5. Log
+   message: "User data: {{Parse JSON}}"
+```
+
+In this example, the Assert Expect True node is used to check that the HTTP request in the previous step returned a 200 OK status code. If the status is not 200, the assertion will fail and the spell will stop executing. The `description` helps clarify the purpose of the assertion.
+
+## Best Practices
+
+- Use Assert Expect True to validate critical assumptions and preconditions in your spell.
+- Provide clear and concise descriptions for your assertions to improve the readability and maintainability of your spell.
+- Place assertions strategically to catch issues early and avoid wasted execution.
+
+## Common Issues
+
+- Forgetting to connect the `flow` input or output can cause your spell to behave unexpectedly. Always ensure the node is properly connected in the flow.
+- Asserting conditions that are too broad or too narrow can make your spell brittle. Strike a balance and assert what is truly important.
+- Over-using assertions can make your spell hard to read and maintain. Use them judiciously.

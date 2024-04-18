@@ -1,0 +1,80 @@
+---
+title: "String"
+---
+
+# Length
+
+The Length node is a utility node that calculates the length of a given string input. It is commonly used in text processing and validation workflows to determine the number of characters in a string.
+
+## Inputs
+
+- `a` (string, default: ""): The input string to calculate the length of.
+
+## Outputs
+
+- `result` (integer): The length of the input string.
+
+## Configuration
+
+This node does not have any configuration options.
+
+## Usage
+
+1. Connect a node that provides a string output to the `a` input of the Length node.
+2. The Length node will calculate the number of characters in the input string.
+3. The `result` output will contain the length of the input string as an integer value.
+4. Connect the `result` output to other nodes that require the string length for further processing or validation.
+
+## Example
+
+Here's an example of how to use the Length node in a spell:
+
+```json
+{
+  "nodes": [
+    {
+      "type": "data/input/string",
+      "id": "inputString",
+      "configuration": {
+        "value": "Hello, World!"
+      }
+    },
+    {
+      "type": "logic/length/string",
+      "id": "lengthNode"
+    },
+    {
+      "type": "data/output/number",
+      "id": "outputLength"
+    }
+  ],
+  "edges": [
+    {
+      "source": "inputString.output",
+      "target": "lengthNode.a"
+    },
+    {
+      "source": "lengthNode.result",
+      "target": "outputLength.input"
+    }
+  ]
+}
+```
+
+In this example:
+1. The `data/input/string` node provides the input string "Hello, World!".
+2. The `logic/length/string` node calculates the length of the input string.
+3. The `data/output/number` node outputs the length of the string, which is 13.
+
+## Best Practices
+
+- Use the Length node when you need to determine the number of characters in a string for validation, formatting, or further processing.
+- Connect the Length node to a string input source, such as a `data/input/string` node or the output of another node that provides a string value.
+- Use the `result` output of the Length node to pass the string length to other nodes that require this information.
+
+## Common Issues
+
+- Ensure that the input connected to the `a` input of the Length node is a valid string. Connecting a non-string value may result in unexpected behavior or errors.
+- Keep in mind that the Length node counts all characters in the string, including whitespace characters like spaces, tabs, and newline characters.
+
+By using the Length node, you can easily calculate the length of a string and use that information in your Magick spells for various text processing and validation tasks.

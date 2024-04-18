@@ -1,0 +1,51 @@
+---
+title: "Boolean"
+---
+
+# To Integer (Boolean)
+
+The To Integer (Boolean) node in Magick converts a boolean value to an integer. It takes a boolean input and outputs the corresponding integer value, where `true` is converted to `1` and `false` is converted to `0`.
+
+## Inputs
+
+- `a` (boolean): The boolean value to be converted to an integer. Default value is `false`.
+
+## Outputs
+
+- `result` (integer): The integer value corresponding to the input boolean, where `true` is converted to `1` and `false` is converted to `0`.
+
+## Configuration
+
+This node does not have any configuration options.
+
+## Usage
+
+1. Connect a node that outputs a boolean value to the `a` input of the To Integer (Boolean) node.
+2. The node will automatically convert the boolean value to its corresponding integer value.
+3. The resulting integer value will be available at the `result` output, which can be connected to other nodes in your spell.
+
+## Example
+
+Suppose you have a Compare node that outputs a boolean value indicating whether a condition is true or false. You want to use this boolean value to control the flow of your spell using a Switch node, which requires an integer input. You can use the To Integer (Boolean) node to convert the boolean output of the Compare node to an integer that can be used by the Switch node.
+
+```markdown
+1. Compare Node (Outputs: boolean)
+   |
+2. To Integer (Boolean) Node (Inputs: boolean, Outputs: integer)
+   |
+3. Switch Node (Inputs: integer)
+```
+
+In this example, the Compare node's boolean output is connected to the `a` input of the To Integer (Boolean) node. The To Integer (Boolean) node converts the boolean value to an integer (`true` to `1`, `false` to `0`), which is then connected to the input of the Switch node.
+
+## Best Practices
+
+- Use the To Integer (Boolean) node when you need to convert a boolean value to an integer, typically for nodes that require integer inputs.
+- Be mindful of the expected input type of the nodes you are connecting to the output of the To Integer (Boolean) node.
+
+## Common Issues
+
+- Ensure that the input to the To Integer (Boolean) node is a boolean value. Connecting a non-boolean value may lead to unexpected behavior or errors.
+- Remember that the output of this node is an integer, not a boolean. If you require a boolean value, you may need to use a different node or conversion method.
+
+By using the To Integer (Boolean) node, you can easily convert boolean values to integers, enabling greater flexibility in your spell's logic and flow control.

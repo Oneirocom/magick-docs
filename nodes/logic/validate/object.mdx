@@ -1,0 +1,73 @@
+---
+title: "Object"
+---
+
+# Validate
+
+The Validate node checks if the input data conforms to a specified JSON schema. It is useful for ensuring data integrity, validating user input, or enforcing a specific structure on data flowing through your spell.
+
+## Inputs
+
+1. `schema` (object, default: `{}`): The JSON schema to validate the data against. It should follow the JSON Schema specification.
+2. `data` (object, default: `{}`): The data object to be validated against the provided schema.
+
+## Outputs
+
+1. `result` (boolean): Indicates whether the validation was successful. Returns `true` if the data is valid according to the schema, and `false` otherwise.
+2. `errors` (array): If the validation fails, this output provides an array of validation error messages describing the specific issues encountered.
+
+## Configuration
+
+This node does not have any additional configuration options.
+
+## Usage
+
+1. Connect a JSON schema object to the `schema` input. This schema should define the expected structure and constraints of the data you want to validate.
+2. Connect the data object you want to validate to the `data` input.
+3. The `result` output will indicate whether the validation was successful or not.
+4. If the validation fails, the `errors` output will provide an array of error messages detailing the validation issues.
+
+## Example
+
+Suppose you have a spell that processes user registration data. You want to ensure that the user input follows a specific structure before proceeding with the registration. Here's how you can use the Validate node:
+
+1. Define a JSON schema for the user registration data:
+   ```json
+   {
+     "type": "object",
+     "properties": {
+       "username": { "type": "string", "minLength": 3, "maxLength": 20 },
+       "email": { "type": "string", "format": "email" },
+       "age": { "type": "integer", "minimum": 18 }
+     },
+     "required": ["username", "email", "age"]
+   }
+   ```
+
+2. Connect this schema to the `schema` input of the Validate node.
+3. Connect the user registration data (e.g., from a form submission) to the `data` input of the Validate node.
+4. The `result` output will be `true` if the user data is valid according to the schema, and `false` otherwise.
+5. If the validation fails, the `errors` output will provide an array of error messages, such as:
+   ```json
+   [
+     "username must be at least 3 characters long",
+     "email must be a valid email address",
+     "age must be greater than or equal to 18"
+   ]
+   ```
+
+6. Use a Branch node to handle the validation result. If `result` is `true`, proceed with the registration process. If `result` is `false`, handle the validation errors (e.g., display error messages to the user).
+
+## Best Practices
+
+- Ensure that your JSON schema accurately represents the expected structure and constraints of your data.
+- Use descriptive error messages in your schema to help identify and troubleshoot validation issues easily.
+- Handle validation errors gracefully in your spell, providing clear feedback to users when their input is invalid.
+
+## Common Issues
+
+- Make sure the `schema` input is a valid JSON schema object. Incorrect schema syntax can lead to unexpected validation results.
+- Be cautious when defining complex schemas with nested objects or arrays. Test your schema thoroughly to ensure it validates data correctly.
+- If the `data` input is not a valid JSON object, the validation may fail with a parsing error.
+
+By using the Validate node, you can ensure data integrity and maintain a consistent structure throughout your spell, catching any invalid data early in the process.

@@ -1,0 +1,54 @@
+---
+title: "Integer"
+---
+
+# SIGN
+
+The SIGN node is a utility node that determines the sign of an integer input. It outputs an integer value indicating whether the input is positive, negative, or zero.
+
+## Inputs
+
+- `a` (integer, default: 0): The input integer value to determine the sign of.
+
+## Outputs
+
+- `result` (integer): An integer value representing the sign of the input:
+  - 1 if the input is positive
+  - -1 if the input is negative
+  - 0 if the input is zero
+
+## Configuration
+
+This node has no configuration options.
+
+## Usage
+
+To use the SIGN node, simply connect an integer value to its `a` input. The node will output an integer indicating the sign of the input value.
+
+This node is useful in situations where you need to make decisions or perform different actions based on whether a value is positive, negative, or zero. For example, you might use the SIGN node to control the direction of movement in a game or simulation, or to determine which branch of a conditional flow to take.
+
+## Example
+
+Here's a simple example spell that uses the SIGN node to determine the sign of a random integer and display a corresponding message:
+
+```
+1. Create a Random Integer node and configure its range (e.g., -10 to 10).
+2. Connect the output of the Random Integer node to the `a` input of a SIGN node.
+3. Create a Switch node and connect the `result` output of the SIGN node to its `input` port.
+4. Configure the Switch node with three cases:
+   - Case 1: value 1, output "The number is positive!"
+   - Case 2: value -1, output "The number is negative!"
+   - Case 3: value 0, output "The number is zero!"
+5. Connect the output of the Switch node to a Debug Print node.
+```
+
+When this spell is run, it will generate a random integer, determine its sign using the SIGN node, and then display a message indicating whether the number is positive, negative, or zero.
+
+## Best Practices
+
+- Make sure to connect an integer value to the `a` input of the SIGN node. Connecting other data types may lead to unexpected behavior.
+- Use the SIGN node in combination with other nodes, such as Switch or Condition nodes, to make decisions based on the sign of a value.
+
+## Common Issues
+
+There are no common issues or gotchas to watch out for with the SIGN node, as it has a straightforward purpose and no configuration options. However, ensure that you are connecting an integer value to its input to avoid any type mismatch issues.

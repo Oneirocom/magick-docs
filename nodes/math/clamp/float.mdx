@@ -1,0 +1,51 @@
+---
+title: "Float"
+---
+
+# CLAMP
+
+The CLAMP node constrains a value to be within a specified range. It takes a value and clamps it between a minimum and maximum value. If the input value is less than the minimum, the node outputs the minimum value. If the input is greater than the maximum, the node outputs the maximum value. If the input falls between the minimum and maximum, the node outputs the input value unchanged.
+
+## Inputs
+
+1. `a` (float, default: 0): The value to be clamped.
+2. `b` (float, default: 0): The minimum value of the range.
+3. `c` (float, default: 0): The maximum value of the range.
+
+## Outputs
+
+1. `result` (float): The clamped value.
+
+## Configuration
+
+This node has no configuration options.
+
+## Usage
+
+To use the CLAMP node:
+
+1. Connect a value to the `a` input. This is the value that will be clamped.
+2. Connect a value to the `b` input. This is the minimum value of the range.
+3. Connect a value to the `c` input. This is the maximum value of the range.
+4. The clamped value will be output from the `result` output.
+
+## Example
+
+Suppose you have a spell that generates a random number between -10 and 10, but you want to constrain the output to be between 0 and 5. You can use the CLAMP node to achieve this:
+
+1. Connect the output of the random number generator to the `a` input of the CLAMP node.
+2. Set the `b` input to 0 (the minimum value).
+3. Set the `c` input to 5 (the maximum value).
+4. The `result` output will now provide a value between 0 and 5, inclusive.
+
+## Best Practices
+
+- Ensure that the minimum value (`b`) is less than or equal to the maximum value (`c`). If `b` is greater than `c`, the node will always output the value of `b`.
+- Remember that the CLAMP node includes the endpoints of the range. If you want to exclude the endpoints, you'll need to adjust the minimum and maximum values accordingly.
+
+## Common Issues
+
+- If the CLAMP node is not behaving as expected, double-check that the inputs are connected correctly and that the minimum and maximum values are set appropriately.
+- Keep in mind that the CLAMP node works with floating-point values. If you need to clamp integer values, you may need to use a separate node to round the result.
+
+The CLAMP node is a simple but useful utility for constraining values to a desired range. It's often used to sanitize user input, normalize data, or prevent values from exceeding certain thresholds in your Magick spells.

@@ -1,0 +1,46 @@
+---
+title: "String"
+---
+
+# To Integer (String)
+
+The To Integer (String) node in Magick converts a string representation of an integer into an actual integer value. This is useful when you have a number stored as text and need to perform mathematical operations or comparisons on it.
+
+## Inputs
+
+- `a` (string, default: ""): The string to convert to an integer.
+
+## Outputs
+
+- `result` (integer): The integer value parsed from the input string.
+
+## Configuration
+
+This node has no configuration options.
+
+## Usage
+
+1. Connect a node that provides a string output to the `a` input of the To Integer (String) node.
+2. The node will parse the string and output the corresponding integer value from the `result` output.
+3. Connect the `result` output to other nodes that expect an integer input, such as math operation nodes or comparison nodes.
+
+## Example
+
+Let's say you have a spell that retrieves a user's age as a string from a form submission. To perform calculations or comparisons based on the age, you need to convert it to an integer:
+
+1. Connect the output of the form submission node to the `a` input of the To Integer (String) node.
+2. Connect the `result` output of the To Integer (String) node to a comparison node, such as the Greater Than node.
+3. Set the other input of the Greater Than node to a fixed integer value, like 18.
+4. The Greater Than node will now output true or false depending on whether the user's age is over 18.
+
+## Best Practices
+
+- Ensure that the input string represents a valid integer. If the string contains non-numeric characters or is empty, the node will output 0.
+- Be aware of the integer range limitations in JavaScript. The safe integer range is from -(2^53 - 1) to (2^53 - 1). Converting strings outside this range may result in loss of precision.
+
+## Common Issues
+
+- Passing a string that contains non-numeric characters will result in an output of 0. Make sure to validate and sanitize the input string if needed.
+- Leading or trailing whitespace in the input string is automatically trimmed before parsing the integer.
+
+By using the To Integer (String) node, you can easily convert string-based numbers into actual integer values, enabling mathematical operations and comparisons in your Magick spells.

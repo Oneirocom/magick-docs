@@ -1,0 +1,54 @@
+---
+title: "Float"
+---
+
+# SIGN
+
+The SIGN node in Magick is a utility node that determines the sign of a floating-point number. It takes a single input value and outputs a value indicating whether the input is positive, negative, or zero.
+
+## Inputs
+
+- `a` (float): The input value for which to determine the sign. Default value is 0.
+
+## Outputs
+
+- `result` (float): The sign of the input value. Possible values are:
+  - 1.0 if the input is positive
+  - -1.0 if the input is negative
+  - 0.0 if the input is zero
+
+## Configuration
+
+This node has no additional configuration options.
+
+## Usage
+
+To use the SIGN node:
+
+1. Connect the floating-point value you want to analyze to the `a` input.
+2. The `result` output will emit 1.0, -1.0, or 0.0 depending on the sign of the input value.
+
+## Example
+
+Here's an example of how the SIGN node can be used in a Magick spell:
+
+```
+// ... (other nodes)
+SIGN(
+  a: NUMBER(3.14)
+)
+// SIGN will output 1.0 since 3.14 is positive
+// ... (other nodes)
+```
+
+In this example, the SIGN node is used to determine the sign of the constant value 3.14. Since 3.14 is positive, the SIGN node will output 1.0.
+
+## Best Practices
+
+- Use SIGN when you need to make decisions or route values based on whether a number is positive, negative or zero.
+- Remember that SIGN treats 0.0 as a special case, distinct from positive and negative numbers.
+
+## Gotchas
+
+- SIGN only works with floating-point numbers. If you need to determine the sign of an integer, first convert it to a float.
+- Be careful not to confuse the output of 0.0 (indicating a zero input) with a false or null value. The output is still a float.

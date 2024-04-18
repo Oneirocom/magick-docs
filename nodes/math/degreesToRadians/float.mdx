@@ -1,0 +1,76 @@
+---
+title: "Float"
+---
+
+# To Radians (math/degreesToRadians/float)
+
+The To Radians node converts an angle measured in degrees to its equivalent value in radians. This is a common operation when working with trigonometric functions or performing calculations involving angles.
+
+## Inputs
+
+1. `a` (float, default: 0): The angle in degrees to be converted to radians.
+
+## Outputs
+
+1. `result` (float): The equivalent angle in radians.
+
+## Configuration
+
+This node has no configuration options.
+
+## Usage
+
+To use the To Radians node:
+
+1. Add the To Radians node to your spell.
+2. Connect the angle in degrees you want to convert to the `a` input.
+3. The equivalent angle in radians will be output from the `result` output.
+
+## Example
+
+Here's an example of how to use the To Radians node in a spell:
+
+```json
+{
+  "nodes": [
+    {
+      "type": "math/degreesToRadians/float",
+      "id": "toRadiansNode",
+      "inputs": {
+        "a": 45
+      }
+    },
+    {
+      "type": "math/sin/float",
+      "id": "sinNode",
+      "inputs": {
+        "a": "@toRadiansNode.result"
+      }
+    },
+    {
+      "type": "output/float",
+      "id": "outputNode",
+      "inputs": {
+        "value": "@sinNode.result"
+      }
+    }
+  ]
+}
+```
+
+In this example:
+1. The To Radians node (`toRadiansNode`) takes an input angle of 45 degrees and converts it to radians.
+2. The output of `toRadiansNode` is connected to the input of a Sin node (`sinNode`), which calculates the sine of the angle in radians.
+3. Finally, the result of `sinNode` is sent to an Output node (`outputNode`) to display the result.
+
+This spell demonstrates how the To Radians node can be used to convert degrees to radians before passing the value to a trigonometric function like sine.
+
+## Best Practices
+
+- Remember that many mathematical functions in programming languages, including trigonometric functions, expect angles to be in radians. Always convert degrees to radians before using these functions.
+- If you're working primarily with radians, consider converting degrees to radians early in your spell to maintain consistency.
+
+## Common Issues
+
+- Forgetting to convert degrees to radians before using trigonometric functions is a common mistake. If you get unexpected results when using angles, double-check that you've performed the necessary conversion.
+- Keep in mind that the conversion factor between degrees and radians is π/180. Make sure you're using the correct conversion factor.

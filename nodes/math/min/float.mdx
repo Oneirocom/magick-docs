@@ -1,0 +1,50 @@
+---
+title: "Float"
+---
+
+# MIN
+
+The MIN node is a utility node that takes two floating-point numbers as input and outputs the smaller of the two values. It is useful when you need to determine the minimum value between two numbers in your spell.
+
+## Inputs
+
+- `a` (float): The first number to compare. Default value is 0.
+- `b` (float): The second number to compare. Default value is 0.
+
+## Outputs
+
+- `result` (float): The smaller value between the two input numbers.
+
+## Configuration
+
+This node has no additional configuration options.
+
+## Usage
+
+1. Connect the first number you want to compare to the `a` input.
+2. Connect the second number you want to compare to the `b` input.
+3. The `result` output will provide the minimum value between `a` and `b`.
+
+## Example
+
+Suppose you have a spell that generates two random numbers between 0 and 100, and you want to use the smaller number for further processing. You can use the MIN node to determine the minimum value:
+
+```
+// Generate two random numbers
+[Random Float] (min: 0, max: 100) -> [MIN].a
+[Random Float] (min: 0, max: 100) -> [MIN].b
+
+// Use the minimum value
+[MIN].result -> [Some Other Node]
+```
+
+In this example, the two random numbers are connected to the `a` and `b` inputs of the MIN node. The `result` output will provide the smaller of the two generated numbers, which can then be used as input for subsequent nodes in your spell.
+
+## Tips
+
+- If you connect only one input, the MIN node will output that value regardless of the other input.
+- You can chain multiple MIN nodes together to find the minimum value among more than two numbers.
+
+## Caution
+
+Be aware that if either of the inputs is not connected or receives a non-numeric value, the MIN node will output 0 (the default value for unconnected inputs).

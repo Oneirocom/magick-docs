@@ -1,0 +1,44 @@
+---
+title: "Float"
+---
+
+# Math Sqrt Float
+
+The Math Sqrt Float node calculates the square root of a given floating-point number. It is useful when you need to find the square root of a value in your spell.
+
+## Inputs
+
+1. `a` (float, default: 0): The input number for which to calculate the square root.
+
+## Outputs
+
+1. `result` (float): The square root of the input number.
+
+## Configuration
+
+This node has no configuration options.
+
+## Usage
+
+1. Connect a node that provides a floating-point number to the `a` input of the Math Sqrt Float node.
+2. The node will calculate the square root of the input number and output the result through the `result` output.
+3. Connect the `result` output to the input of another node to use the calculated square root value in your spell.
+
+## Example
+
+Suppose you have a spell that needs to calculate the square root of a user-provided number. You can use the Math Sqrt Float node to achieve this:
+
+1. Create an Input Number node to allow the user to enter a number.
+2. Connect the output of the Input Number node to the `a` input of the Math Sqrt Float node.
+3. Create a Debug Log node and connect the `result` output of the Math Sqrt Float node to the input of the Debug Log node.
+4. When the spell is run, the user will be prompted to enter a number. The Math Sqrt Float node will calculate the square root of this number, and the result will be logged to the debug console.
+
+## Best Practices
+
+- Ensure that the input to the Math Sqrt Float node is a non-negative number, as the square root of a negative number is undefined in the real number system.
+- If you need to calculate the square root of a complex number or a matrix, consider using a more specialized library or custom code.
+
+## Common Issues
+
+- If the input to the Math Sqrt Float node is a negative number, the node will output `NaN` (Not a Number). Make sure to validate or constrain the input to non-negative numbers if necessary.
+- Be aware of the precision limitations of floating-point numbers when working with very large or very small numbers.

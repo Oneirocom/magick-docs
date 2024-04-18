@@ -1,0 +1,52 @@
+---
+title: "Float"
+---
+
+# Math Add Float (+)
+
+The Math Add Float node performs addition on two floating-point numbers. It takes two input values, adds them together, and outputs the result.
+
+## Inputs
+
+1. `a` (float, default: 0): The first number to add.
+2. `b` (float, default: 0): The second number to add.
+
+## Outputs
+
+1. `result` (float): The sum of the two input numbers.
+
+## Configuration
+
+This node has no configuration options.
+
+## Usage
+
+1. Connect the first number to the `a` input port.
+2. Connect the second number to the `b` input port.
+3. The node will output the sum of the two numbers via the `result` output port.
+
+## Example
+
+Here's an example of how to use the Math Add Float node in a spell:
+
+```
+1. Create a Math Add Float node.
+2. Create two Number nodes and set their values to 3.14 and 2.71.
+3. Connect the output of the first Number node to the `a` input of the Math Add Float node.
+4. Connect the output of the second Number node to the `b` input of the Math Add Float node.
+5. Create a Debug Print node and connect the `result` output of the Math Add Float node to its input.
+6. Run the spell.
+```
+
+The Debug Print node will output the value 5.85, which is the sum of 3.14 and 2.71.
+
+## Best Practices
+
+- Ensure that the input values are of the correct type (float). Connecting inputs of the wrong type may lead to unexpected behavior.
+- Remember that the order of the inputs does not affect the result, as addition is commutative.
+
+## Common Issues
+
+- If either of the input values is not a valid floating-point number, the node will output a NaN (Not a Number) value. Ensure that all inputs are properly formatted floating-point numbers.
+
+The Math Add Float node is a fundamental building block for performing arithmetic operations in Magick spells. By chaining together multiple Math nodes, complex calculations can be performed on data as it flows through the spell.

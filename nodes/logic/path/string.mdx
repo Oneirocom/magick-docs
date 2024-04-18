@@ -1,0 +1,61 @@
+---
+title: "String"
+---
+
+# Path
+
+The Path node in Magick allows you to extract a value from a nested object or array using a dot-notation path string. It's useful when you need to retrieve a specific piece of data from a complex data structure.
+
+## Inputs
+
+1. `pathToSearch` (string, required): The dot-notation path string that specifies the location of the value you want to extract from the input object. For example, `"user.address.city"` would retrieve the `city` value from the `address` object nested within the `user` object.
+
+2. `obj` (object, required): The input object or array from which you want to extract a value using the specified path.
+
+## Outputs
+
+1. `result` (string): The value extracted from the input object at the specified path location. If the path is not found in the object, the output will be an empty string.
+
+## Configuration
+
+This node does not have any additional configuration options.
+
+## Usage
+
+1. Connect the object or array you want to search to the `obj` input of the Path node.
+
+2. Enter the dot-notation path string that leads to the value you want to extract in the `pathToSearch` input. For example, if you want to get the city from an address object nested within a user object, you would enter `"user.address.city"`.
+
+3. The extracted value will be available at the `result` output of the Path node. You can then use this output as an input for other nodes in your spell.
+
+## Example
+
+Suppose you have a JSON object representing a user with the following structure:
+
+```json
+{
+  "name": "John Doe",
+  "age": 30,
+  "address": {
+    "street": "123 Main St",
+    "city": "Anytown",
+    "country": "USA"
+  }
+}
+```
+
+To extract the city from this user object, you would:
+
+1. Connect the user JSON object to the `obj` input of the Path node.
+2. Set the `pathToSearch` input to `"address.city"`.
+3. The `result` output of the Path node will contain the string `"Anytown"`, which you can use in other parts of your spell.
+
+## Best Practices
+
+- Make sure to use the correct dot-notation syntax for the path string. Nested objects are separated by dots (`.`), and array indices are specified using square brackets (`[]`).
+- If the specified path does not exist in the input object, the Path node will output an empty string. Handle this case appropriately in your spell logic.
+
+## Common Issues
+
+- Incorrect path string syntax: Ensure that your path string follows the correct dot-notation format, with objects separated by dots and array indices in square brackets.
+- Trying to access a non-existent path: If the specified path does not exist in the input object, the Path node will output an empty string. Check your path string and input object structure if you're not getting the expected result.

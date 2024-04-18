@@ -1,0 +1,50 @@
+---
+title: "Debounce"
+---
+
+# Debounce
+
+The Debounce node is used to control the rate of flow in a spell by introducing a delay between the input and output flows. It is particularly useful when you want to limit the frequency of a certain action or event, such as making API requests or updating a UI element.
+
+## Inputs
+
+- `flow`: The input flow that triggers the debounce.
+- `waitDuration`: The amount of time (in seconds) to wait before allowing the flow to continue. Default value is 0.
+- `cancel`: An optional flow input that, when triggered, cancels the current debounce and resets the timer.
+
+## Outputs
+
+- `flow`: The output flow that is triggered after the specified `waitDuration` has elapsed since the last input `flow` trigger.
+
+## Configuration
+
+This node has no additional configuration options.
+
+## Usage
+
+1. Connect the `flow` input to the event or action you want to debounce.
+2. Set the `waitDuration` input to the desired delay time in seconds.
+3. Optionally, connect the `cancel` input to a flow that should cancel the current debounce and reset the timer.
+4. Connect the `flow` output to the nodes that should be triggered after the debounce delay.
+
+## Example
+
+Suppose you have a spell that makes an API request every time a user types in a search box. To avoid making too many requests while the user is still typing, you can use the Debounce node to introduce a short delay:
+
+```markdown
+1. Connect the search box's "onChange" event to the Debounce node's `flow` input.
+2. Set the Debounce node's `waitDuration` to 0.5 (500 milliseconds).
+3. Connect the Debounce node's `flow` output to the node that makes the API request.
+```
+
+Now, the API request will only be made if the user pauses typing for at least 500ms. If the user types another character within that time, the debounce resets and waits another 500ms.
+
+## Best Practices
+
+- Choose an appropriate `waitDuration` based on the specific use case. A longer duration will reduce the frequency of the debounced action but may feel less responsive to the user.
+- Use the `cancel` input when you need a way to immediately cancel a pending debounce and reset the timer, such as when the user clears the search box.
+
+## Common Issues
+
+- If the `waitDuration` is set too low, the debounce may not have a noticeable effect on the flow rate.
+- Be mindful of where you place the Debounce node in your spell. Placing it too early or too late in the flow can lead to unexpected behavior.

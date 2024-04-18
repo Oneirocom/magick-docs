@@ -1,0 +1,54 @@
+---
+title: "String"
+---
+
+# To Boolean (String)
+
+The To Boolean (String) node converts a string value to a boolean (`true` or `false`). It evaluates the input string and returns `true` if the string is `"true"` (case-insensitive), and `false` otherwise.
+
+## Inputs
+
+- `a` (string, default: `""`) - The input string to be converted to a boolean value.
+
+## Outputs
+
+- `result` (boolean) - The boolean result of the conversion. Returns `true` if the input string is `"true"` (case-insensitive), and `false` otherwise.
+
+## Configuration
+
+This node does not have any configuration options.
+
+## Usage
+
+1. Connect a string value to the `a` input of the To Boolean (String) node.
+2. The node will evaluate the input string and output the corresponding boolean value (`true` or `false`) from the `result` output.
+
+## Example
+
+Suppose you have a string value that represents a boolean, such as `"true"` or `"false"`, and you want to convert it to an actual boolean value for further processing in your spell.
+
+1. Add a To Boolean (String) node to your spell.
+2. Connect the string value (e.g., `"true"` or `"false"`) to the `a` input of the node.
+3. The node will output the corresponding boolean value (`true` or `false`) from the `result` output.
+4. You can then use the boolean output in other nodes that expect a boolean input, such as a Branch node or a Filter node.
+
+Here's an example spell that demonstrates the usage of the To Boolean (String) node:
+
+```mermaid
+graph LR
+A[String: "true"] --> B[To Boolean (String)]
+B --> C{Branch}
+C -->|True| D[Action 1]
+C -->|False| E[Action 2]
+```
+
+In this example, the string value `"true"` is connected to the To Boolean (String) node, which converts it to the boolean value `true`. The boolean output is then connected to a Branch node, which executes "Action 1" if the value is `true`, and "Action 2" if the value is `false`.
+
+## Best Practices
+
+- Ensure that the input string is either `"true"` or `"false"` (case-insensitive) for accurate boolean conversion. Other string values will be considered as `false`.
+- Use the To Boolean (String) node when you have a string representation of a boolean value that needs to be converted to an actual boolean for further processing in your spell.
+
+## Common Issues
+
+- If the input string is not `"true"` or `"false"` (case-insensitive), the node will output `false`. Make sure to provide the correct string values for accurate boolean conversion.

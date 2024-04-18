@@ -1,0 +1,54 @@
+---
+title: "On Tick"
+---
+
+# On Tick
+
+The On Tick node is a fundamental event node in Magick that triggers its output flow on every frame of the application's update loop. It allows you to execute logic continuously over time.
+
+## Inputs
+
+The On Tick node has no inputs.
+
+## Outputs
+
+1. **flow** (flow): The output flow that is triggered on every frame. Connect this to the nodes you want to execute each frame.
+
+2. **deltaSeconds** (float): The time in seconds that has elapsed since the previous frame. This is useful for creating frame rate-independent animations or behaviors.
+
+## Configuration
+
+The On Tick node has no configuration options.
+
+## Usage
+
+To use the On Tick node:
+
+1. Add an On Tick node to your spell.
+2. Connect the "flow" output to the nodes you want to execute on every frame. 
+3. (Optional) Connect the "deltaSeconds" output to nodes that need to know the frame time delta, such as nodes that animate properties.
+
+The connected nodes will now execute continuously, once per frame, for as long as the spell is running.
+
+## Example
+
+Here's a simple example of using the On Tick node to continuously rotate a 3D model:
+
+```
+On Tick 
+|-- deltaSeconds --> Multiply (by 90) --> Rotate (Y-axis) --> 3D Model
+```
+
+In this spell, the On Tick node triggers the rotation of the model every frame. The "deltaSeconds" output is multiplied by 90 to convert it to degrees per second, and this value is used to rotate the model around its Y-axis. The result is the model spinning at 90 degrees per second.
+
+## Best Practices
+
+- Use On Tick judiciously. Executing heavy logic every single frame can impact performance. Consider if you really need continuous execution or if a slower tick rate or event-driven approach would suffice.
+- Take advantage of the "deltaSeconds" output to create smooth, frame rate-independent animations and behaviors. Multiplying a value by deltaSeconds essentially converts it to a "per second" rate.
+
+## Common Issues
+
+- Connecting too many expensive nodes to On Tick can slow down your spell significantly as they will all execute every frame. Profile your spell's performance and optimize where needed.
+- Forgetting to use deltaSeconds for time-based values can lead to inconsistent results across different devices or frame rates. Always consider if a value should be expressed as "per second" rather than "per frame".
+
+The On Tick node is a powerful tool for creating dynamic, continuously updating experiences in Magick. Use it to bring your spells to life!

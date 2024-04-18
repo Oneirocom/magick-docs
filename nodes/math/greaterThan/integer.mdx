@@ -1,0 +1,49 @@
+---
+title: "Integer"
+---
+
+# Greater Than (Integer)
+
+The Greater Than (Integer) node compares two integer values and outputs a boolean indicating whether the first value is greater than the second.
+
+## Inputs
+
+1. `a` (integer, default: 0): The first value to compare.
+2. `b` (integer, default: 0): The second value to compare.
+
+## Outputs
+
+1. `result` (boolean): True if `a` is greater than `b`, false otherwise.
+
+## Configuration
+
+This node has no configuration options.
+
+## Usage
+
+To use the Greater Than (Integer) node:
+
+1. Connect the integer values you want to compare to the `a` and `b` input ports.
+2. The `result` output port will emit a boolean value indicating whether `a` is greater than `b`.
+
+## Example
+
+Suppose you have a spell that needs to check if a user's age is greater than 18. You can use the Greater Than (Integer) node to make this comparison.
+
+1. Connect the user's age (an integer value) to the `a` input port.
+2. Connect the integer value 18 to the `b` input port.
+3. The `result` output port will emit `true` if the user's age is greater than 18, and `false` otherwise.
+
+You can then use the `result` value to conditionally execute different parts of your spell based on the user's age.
+
+## Best Practices
+
+- Ensure that the values connected to the `a` and `b` inputs are of type integer. Connecting other data types may lead to unexpected behavior.
+- Remember that this node only checks if `a` is strictly greater than `b`. If you need to check for greater than or equal to, you should use a combination of the Greater Than and Equal nodes.
+
+## Common Issues
+
+- If either of the input values is missing or not an integer, the node will output `false`. Make sure to properly handle missing or invalid data earlier in your spell.
+- Be careful not to confuse the order of the inputs. The node checks if `a` is greater than `b`, not the other way around.
+
+By using the Greater Than (Integer) node, you can easily compare two integer values and make decisions in your spells based on the result. This simple but powerful node is a key building block for creating more complex logic and flow control in your Magick spells.

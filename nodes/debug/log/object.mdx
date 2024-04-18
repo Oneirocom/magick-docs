@@ -1,0 +1,87 @@
+---
+title: "Object"
+---
+
+# Log
+
+The Log node is a utility node that allows you to log messages and data to the console during the execution of a spell. It is useful for debugging, monitoring, and understanding the flow of data through your spell.
+
+## Inputs
+
+- `flow` (required): The input flow that triggers the Log node.
+- `text` (optional, default: ""): The message to be logged to the console.
+- `severity` (optional, default: "info"): The severity level of the log message. Can be one of "info", "warning", or "error".
+- `payload` (optional, default: {}): An object containing additional data to be logged along with the message.
+
+## Outputs
+
+- `flow`: The output flow that is triggered after the log message is recorded.
+
+## Configuration
+
+This node has no additional configuration options.
+
+## Usage
+
+1. Connect the `flow` input to the desired point in your spell where you want to log a message.
+2. (Optional) Set the `text` input to the message you want to log.
+3. (Optional) Choose the appropriate `severity` level for your log message.
+4. (Optional) Provide an object to the `payload` input to include additional data in the log.
+5. Connect the `flow` output to the next node in your spell.
+
+When the spell is executed and the Log node is triggered, it will output the specified message and severity to the console, along with any provided payload data.
+
+## Example
+
+Here's an example of how to use the Log node in a spell:
+
+```json
+{
+  "nodes": [
+    {
+      "type": "data/input/string",
+      "id": "inputString1",
+      "data": "Hello, World!"
+    },
+    {
+      "type": "debug/log/object",
+      "id": "log1",
+      "inputs": {
+        "text": "Input received:",
+        "severity": "info",
+        "payload": "inputString1.output"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "from": "inputString1.output",
+      "to": "log1.payload"
+    },
+    {
+      "from": "inputString1.output",
+      "to": "log1.flow"
+    }
+  ]
+}
+```
+
+In this example, the Log node is used to log the message "Input received:" along with the data from the `inputString1` node. The severity is set to "info". When the spell is run, it will output:
+
+```
+[info] Input received: Hello, World!
+```
+
+## Best Practices
+
+- Use meaningful log messages that provide context about what is happening in your spell.
+- Choose the appropriate severity level for your logs. Use "info" for general messages, "warning" for potential issues, and "error" for critical problems.
+- Be mindful of logging sensitive or private data. Avoid including passwords, API keys, or personal information in logs.
+
+## Common Issues
+
+- Forgetting to connect the `flow` input can result in the Log node not being triggered.
+- Not providing a `text` input will result in an empty log message.
+- Incorrect severity levels may lead to confusion when reviewing logs.
+
+By using the Log node strategically throughout your spell, you can gain valuable insights into its execution and make debugging and monitoring easier.

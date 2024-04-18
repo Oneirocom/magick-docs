@@ -1,0 +1,52 @@
+---
+title: "Integer"
+---
+
+# Switch on Int
+
+The Switch on Int node allows you to route the flow of your spell based on the value of an integer input. It's useful when you need to execute different actions or paths depending on a specific integer condition.
+
+## Inputs
+
+- `flow` (required): The input flow that will be routed based on the integer selection.
+- `selection` (required): The integer value that determines which output the flow will be routed to. Default value is 0.
+
+## Outputs
+
+- `default`: The default output flow if the `selection` input does not match any of the configured cases.
+- Additional outputs will be dynamically generated based on the `numCases` configuration.
+
+## Configuration
+
+- `numCases`: The number of cases (integer values) the switch should handle. This determines the number of additional outputs the node will have.
+
+## Usage
+
+1. Connect the input flow to the `flow` input of the Switch on Int node.
+2. Connect the integer value you want to switch on to the `selection` input.
+3. Configure the `numCases` option to specify how many different integer cases you want to handle.
+4. The node will generate additional outputs labeled `case0`, `case1`, etc., based on the `numCases` value.
+5. Connect the appropriate output to the next node in your spell for each case you want to handle.
+6. If the `selection` input doesn't match any of the configured cases, the flow will be routed to the `default` output.
+
+## Example
+
+Let's say you have a spell that needs to perform different actions based on a user's age. You could use the Switch on Int node to route the flow like this:
+
+1. Connect the user's age (as an integer) to the `selection` input.
+2. Set the `numCases` configuration to 3 to handle three age ranges: child (0-12), teenager (13-19), and adult (20+).
+3. The node will generate four outputs: `default`, `case0`, `case1`, and `case2`.
+4. Connect the `case0` output to the nodes that handle the logic for children.
+5. Connect the `case1` output to the nodes that handle the logic for teenagers.
+6. Connect the `case2` output to the nodes that handle the logic for adults.
+7. Connect the `default` output to handle any age values that don't fall into the specified ranges.
+
+## Best Practices
+
+- Make sure the `selection` input is connected to an integer value. If it's not an integer, the flow will always be routed to the `default` output.
+- Configure the `numCases` option to cover all the cases you need to handle. If you need to add more cases later, you'll need to reconfigure the node and reconnect the outputs.
+
+## Common Issues
+
+- If the `selection` input is not connected or receives a non-integer value, the flow will always be routed to the `default` output.
+- If you change the `numCases` configuration after connecting the outputs, you'll need to reconnect them to ensure the flow is routed correctly.

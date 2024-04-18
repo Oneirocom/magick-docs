@@ -1,0 +1,49 @@
+---
+title: "Do Once"
+---
+
+# DoOnce
+
+The DoOnce node is a flow control node that allows a portion of a spell to be executed only once, even if the node receives multiple triggers. It is useful for initializing variables, setting up one-time configurations, or performing actions that should only happen a single time regardless of how many times the spell is run.
+
+## Inputs
+
+- `flow` (flow): The main flow input that triggers the node's execution.
+- `reset` (flow): An optional flow input that, when triggered, resets the DoOnce node, allowing the main flow to be executed again the next time it is triggered.
+
+## Outputs
+
+- `flow` (flow): The flow output that is triggered only once when the main `flow` input is triggered, unless the node is reset.
+
+## Configuration
+
+The DoOnce node does not have any configuration options.
+
+## Usage
+
+1. Add a DoOnce node to your spell.
+2. Connect the desired portion of your spell to the `flow` output of the DoOnce node.
+3. Trigger the `flow` input of the DoOnce node to execute the connected portion of the spell once.
+4. If you need to allow the connected portion to execute again, trigger the `reset` input of the DoOnce node.
+
+## Example
+
+Imagine you have a spell that processes data from a database and sends notifications based on certain conditions. You want to ensure that the database connection is established only once, even if the spell is triggered multiple times.
+
+1. Add a DoOnce node to your spell.
+2. Connect the database connection logic to the `flow` output of the DoOnce node.
+3. Connect the rest of your spell (data processing and notification sending) after the database connection logic.
+4. Trigger the spell. The database connection will be established once, and the rest of the spell will execute normally.
+5. If the database connection is lost and needs to be re-established, trigger the `reset` input of the DoOnce node before triggering the spell again.
+
+## Best Practices
+
+- Use the DoOnce node for initialization tasks, one-time configurations, or actions that should only be performed once in a spell's lifecycle.
+- Be mindful of when you need to reset the DoOnce node. Only use the `reset` input when necessary to avoid unintended behavior.
+
+## Common Issues
+
+- Forgetting to reset the DoOnce node when needed can lead to unexpected behavior, as the intended "one-time" action will not be executed again until the node is reset.
+- Resetting the DoOnce node too frequently can defeat its purpose and lead to inefficiencies in your spell.
+
+By using the DoOnce node appropriately, you can ensure that specific parts of your spell are executed only once, making your spells more efficient and predictable.

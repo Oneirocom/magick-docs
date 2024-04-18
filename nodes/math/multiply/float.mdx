@@ -1,0 +1,52 @@
+---
+title: "Float"
+---
+
+# Math Multiply Float
+
+The Math Multiply Float node performs a simple multiplication operation on two floating-point numbers. It takes two input values, multiplies them together, and outputs the result.
+
+## Inputs
+
+1. `a` (float, default: 0): The first number to multiply.
+2. `b` (float, default: 0): The second number to multiply.
+
+## Outputs
+
+1. `result` (float): The product of the two input numbers.
+
+## Configuration
+
+This node has no additional configuration options.
+
+## Usage
+
+To use the Math Multiply Float node:
+
+1. Add the Math Multiply Float node to your spell.
+2. Connect the `a` input to the first number you want to multiply.
+3. Connect the `b` input to the second number you want to multiply.
+4. The `result` output will contain the product of the two input numbers.
+
+## Example
+
+Suppose you have a spell that calculates the area of a rectangle given its length and width. You can use the Math Multiply Float node to multiply the length and width together:
+
+```
+[Input:Length] -> [a][Math Multiply Float][result] -> [Input:Area]
+[Input:Width]  -> [b]
+```
+
+In this example, the `Length` input is connected to the `a` input of the Math Multiply Float node, and the `Width` input is connected to the `b` input. The `result` output of the node is then connected to the `Area` output of the spell.
+
+## Best Practices
+
+- Ensure that both input values are of the correct data type (float). Connecting inputs of the wrong type may cause unexpected behavior.
+- Remember that the order of the inputs does not affect the result, as multiplication is commutative.
+
+## Common Issues
+
+- If either of the input values is not a valid floating-point number, the node will output `NaN` (Not a Number). Make sure to handle this case appropriately in your spell.
+- Be aware of the limitations of floating-point precision. In some cases, the result may not be exactly what you expect due to rounding errors.
+
+By using the Math Multiply Float node, you can easily perform multiplication operations on floating-point numbers within your Magick spells. This simple yet essential node is a building block for many common mathematical operations.

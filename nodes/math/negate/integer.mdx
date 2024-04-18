@@ -1,0 +1,53 @@
+---
+title: "Integer"
+---
+
+# Math Negate Integer
+
+The Math Negate Integer node performs a negation operation on an input integer value. It multiplies the input by -1, effectively changing its sign from positive to negative or vice versa.
+
+## Inputs
+
+1. `a` (integer, default: 0): The input integer value to be negated.
+
+## Outputs
+
+1. `result` (integer): The negated value of the input integer.
+
+## Configuration
+
+This node does not have any configuration options.
+
+## Usage
+
+To use the Math Negate Integer node:
+
+1. Connect an integer value to the `a` input port. This is the value that will be negated.
+2. The negated value will be available at the `result` output port, which can be connected to other nodes in your spell.
+
+## Example
+
+Let's say you have a spell that calculates the difference between two values, but you want to ensure the result is always positive. You can use the Math Negate Integer node to negate the difference if it's negative.
+
+Here's how the spell might look:
+
+1. Connect the first value to a Math Subtract node's `a` input.
+2. Connect the second value to the Math Subtract node's `b` input.
+3. Connect the Math Subtract node's `result` output to a Math Negate Integer node's `a` input.
+4. Connect a Math Greater Than node's `a` input to the Math Subtract node's `result` output.
+5. Connect a constant value of 0 to the Math Greater Than node's `b` input.
+6. Connect the Math Greater Than node's `result` output to a Math If node's `condition` input.
+7. Connect the Math Negate Integer node's `result` output to the Math If node's `then` input.
+8. Connect the Math Subtract node's `result` output to the Math If node's `else` input.
+
+Now, if the difference between the two input values is negative, the Math Negate Integer node will make it positive. The Math If node will return the negated value if the difference is less than 0, otherwise it will return the original difference.
+
+## Best Practices
+
+- Be mindful of the input value's sign. Negating a negative value will make it positive.
+- Remember that the Math Negate Integer node only works with integers. For floating-point numbers, use the Math Negate Float node instead.
+
+## Common Issues
+
+- Forgetting to handle negative differences: If you subtract a larger number from a smaller one, the result will be negative. Use the Math Negate Integer node in combination with a Math If node to handle this case if needed.
+- Incorrect data type: Ensure that the input to the Math Negate Integer node is actually an integer. Connecting a different data type will cause unexpected behavior.

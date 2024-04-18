@@ -1,0 +1,54 @@
+---
+title: "Integer"
+---
+
+# To Float (Integer)
+
+The To Float (Integer) node in Magick converts an integer value to a floating-point number. This is useful when you need to perform mathematical operations that require floating-point precision or when working with nodes that expect float inputs.
+
+## Inputs
+
+- `a` (integer, default: 0): The integer value to be converted to a float.
+
+## Outputs
+
+- `result` (float): The floating-point representation of the input integer.
+
+## Configuration
+
+This node does not have any configuration options.
+
+## Usage
+
+1. Connect the integer value you want to convert to the `a` input of the To Float (Integer) node.
+2. The node will output the floating-point equivalent of the input integer through its `result` output.
+3. Connect the `result` output to the desired destination node or use it for further processing.
+
+## Example
+
+Suppose you have an integer value representing the number of items in a list, and you want to calculate the average price of those items. However, the node that calculates the average expects floating-point inputs. In this case, you can use the To Float (Integer) node to convert the integer count to a float before passing it to the average calculation node.
+
+Here's an example spell:
+
+```
+1. Create a Number node and set its value to the integer count of items (e.g., 5).
+2. Connect the output of the Number node to the `a` input of a To Float (Integer) node.
+3. Create a List of Numbers node and populate it with the prices of the items (e.g., [10.99, 5.49, 8.75, 12.50, 7.99]).
+4. Connect the output of the List of Numbers node to the `list` input of an Average node.
+5. Connect the `result` output of the To Float (Integer) node to the `count` input of the Average node.
+6. The Average node will output the calculated average price of the items.
+```
+
+In this example, the To Float (Integer) node is used to convert the integer count of items to a float, enabling the Average node to correctly calculate the average price.
+
+## Best Practices
+
+- Use the To Float (Integer) node whenever you need to convert an integer to a floating-point number for compatibility with other nodes or mathematical operations.
+- Be aware that converting an integer to a float may introduce slight precision differences due to the nature of floating-point representation.
+
+## Common Issues
+
+- Ensure that the input to the To Float (Integer) node is a valid integer. Passing non-integer values may result in unexpected behavior or errors.
+- Keep in mind that the floating-point result may have a different precision than the original integer value, especially for large numbers.
+
+By using the To Float (Integer) node, you can seamlessly convert integer values to floating-point numbers, enabling greater flexibility and compatibility within your Magick spells.

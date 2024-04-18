@@ -1,0 +1,47 @@
+---
+title: "Float"
+---
+
+# LOG2
+
+The LOG2 node calculates the base-2 logarithm of a given floating-point number. It is useful when you need to determine the power to which the number 2 must be raised to obtain the input value.
+
+## Inputs
+
+1. `a` (float, default: 0): The floating-point number for which you want to calculate the base-2 logarithm.
+
+## Outputs
+
+1. `result` (float): The base-2 logarithm of the input value.
+
+## Configuration
+
+This node does not have any configuration options.
+
+## Usage
+
+1. Connect a floating-point number to the `a` input of the LOG2 node.
+2. The node will calculate the base-2 logarithm of the input value and output the result through the `result` output.
+
+## Example
+
+Suppose you have a spell that needs to calculate the base-2 logarithm of a given number. You can use the LOG2 node to accomplish this task.
+
+1. Create a new spell and add a Constant node to provide the input value. Set the value to 8.
+2. Add a LOG2 node to the canvas and connect the output of the Constant node to the `a` input of the LOG2 node.
+3. Add a Debug node and connect the `result` output of the LOG2 node to the input of the Debug node.
+4. Run the spell. The Debug node will display the base-2 logarithm of 8, which is 3.
+
+In this example, the LOG2 node calculates that 2 raised to the power of 3 equals 8 (2^3 = 8).
+
+## Best Practices
+
+- Ensure that the input value is a valid floating-point number. Passing non-numeric values may result in unexpected behavior or errors.
+- Keep in mind that the LOG2 node calculates the base-2 logarithm. If you need to calculate logarithms with a different base, you can use the change of base formula or other logarithm nodes provided by Magick.
+
+## Common Issues
+
+- Passing a negative number to the LOG2 node will result in a NaN (Not a Number) output, as logarithms are not defined for negative values.
+- Passing 0 to the LOG2 node will result in negative infinity, as the logarithm of 0 is undefined.
+
+By using the LOG2 node, you can easily calculate base-2 logarithms within your Magick spells, enabling you to perform mathematical operations and transformations on your data.

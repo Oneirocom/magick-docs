@@ -1,0 +1,46 @@
+---
+title: "Float"
+---
+
+# ≥ (Greater Than or Equal)
+
+The ≥ node compares two floating-point numbers and outputs a boolean value indicating whether the first input is greater than or equal to the second input.
+
+## Inputs
+
+1. `a` (float, default: 0): The first number to compare.
+2. `b` (float, default: 0): The second number to compare.
+
+## Outputs
+
+1. `result` (boolean): True if `a` is greater than or equal to `b`, false otherwise.
+
+## Configuration
+
+This node has no configuration options.
+
+## Usage
+
+1. Connect the first number to compare to the `a` input.
+2. Connect the second number to compare to the `b` input.
+3. The `result` output will emit a boolean value indicating whether `a` is greater than or equal to `b`.
+
+## Example
+
+Suppose you have a spell that needs to check if a user's age is greater than or equal to 18 before allowing them to access certain content. You can use the ≥ node to perform this comparison.
+
+1. Connect the user's age (e.g., from a form input or database) to the `a` input of the ≥ node.
+2. Connect a constant value of 18 to the `b` input of the ≥ node.
+3. Connect the `result` output of the ≥ node to a branch node.
+4. If `result` is true, the user is 18 or older, so route them to the age-restricted content.
+5. If `result` is false, the user is under 18, so route them to an appropriate message or alternative content.
+
+## Best Practices
+
+- Ensure that the values connected to the `a` and `b` inputs are valid floating-point numbers. If either input is not a number, the node will output false.
+- Remember that the comparison is "greater than or equal to," so if `a` and `b` are equal, the `result` will be true.
+
+## Common Issues
+
+- If the `result` is always false even when you expect it to be true, double-check that you've connected the inputs in the correct order (`a` should be the value you expect to be greater than or equal to `b`).
+- Be cautious when comparing floating-point numbers for equality, as rounding errors can sometimes cause unexpected results. If you need to check for equality, consider using a small tolerance value rather than comparing directly.

@@ -1,0 +1,48 @@
+---
+title: "Float"
+---
+
+# ABS (math/abs/float)
+
+The ABS node in Magick calculates the absolute value of a floating-point number. It takes a single input value and returns the non-negative magnitude of that value, regardless of its original sign.
+
+## Inputs
+
+1. `a` (float, default: 0): The input floating-point number for which the absolute value will be calculated.
+
+## Outputs
+
+1. `result` (float): The absolute value of the input number.
+
+## Configuration
+
+This node has no additional configuration options.
+
+## Usage
+
+To use the ABS node:
+
+1. Add the ABS node to your spell.
+2. Connect the floating-point number for which you want to calculate the absolute value to the `a` input.
+3. The absolute value will be available at the `result` output.
+
+## Example
+
+Suppose you have a spell that calculates the difference between two numbers, but you always want the result to be positive. You can use the ABS node to ensure that the output is always non-negative.
+
+```
+Number1 (3.14) -> a |
+                     | Subtract -> difference | ABS -> result
+Number2 (-2.71) -> b|
+```
+
+In this example, the Subtract node calculates the difference between `Number1` (3.14) and `Number2` (-2.71), which equals 5.85. The ABS node then takes this value and returns its absolute value, which is also 5.85.
+
+## Best Practices
+
+- Use the ABS node when you need to ensure that a value is always non-negative, regardless of its original sign.
+- Keep in mind that the ABS node only works with floating-point numbers. If you need to calculate the absolute value of an integer, use the `math/abs/int` node instead.
+
+## Common Issues
+
+There are no common issues or gotchas associated with the ABS node, as it performs a straightforward mathematical operation on a single input value.

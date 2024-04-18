@@ -1,0 +1,49 @@
+---
+title: "2"
+---
+
+# Concat
+
+The Concat node allows you to concatenate two arrays together into a single output array. It is useful when you need to combine data from multiple sources or when you want to merge arrays in a specific order.
+
+## Inputs
+
+- `a` (array): The first input array to concatenate. Defaults to an empty array if not provided.
+- `b` (array): The second input array to concatenate. Defaults to an empty array if not provided.
+
+## Outputs
+
+- `result` (array): The concatenated output array containing all elements from the `a` and `b` input arrays, in that order.
+
+## Configuration
+
+This node does not have any additional configuration options.
+
+## Usage
+
+1. Connect the first array you want to concatenate to the `a` input of the Concat node.
+2. Connect the second array you want to concatenate to the `b` input of the Concat node.
+3. The concatenated array will be available at the `result` output of the node.
+
+## Example
+
+Suppose you have two arrays:
+- `["apple", "banana"]` connected to the `a` input
+- `["cherry", "date"]` connected to the `b` input
+
+The Concat node will output the following array at the `result` output:
+```json
+["apple", "banana", "cherry", "date"]
+```
+
+In the context of a spell, you might use the Concat node to combine data from different API responses or to merge user-provided options with default values.
+
+## Best Practices
+
+- Ensure that the data types of the elements in both input arrays are compatible and make sense to concatenate together.
+- Be mindful of the order in which you connect the input arrays, as the elements from the `a` input will come before the elements from the `b` input in the concatenated `result` array.
+
+## Common Issues
+
+- If either of the input arrays is not properly connected or contains unexpected data, the Concat node will still output an array, but it may be empty or contain only the elements from one of the input arrays.
+- Concatenating large arrays may impact performance, especially if done repeatedly in a loop. Consider alternative approaches or optimize your spell's logic if you encounter performance issues.

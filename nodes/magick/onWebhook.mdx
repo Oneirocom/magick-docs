@@ -1,0 +1,67 @@
+---
+title: "On Webhook"
+---
+
+# On Webhook
+
+The On Webhook node is an event node that triggers a spell when a webhook event is received. It allows you to create reactive spells that respond to external events from other systems or services.
+
+## Inputs
+
+This node has no inputs.
+
+## Outputs
+
+- `flow`: Triggers the next node in the spell when a webhook event is received.
+- `content`: The content of the webhook event, typically the payload data sent by the external system.
+- `callback`: A callback URL that can be used to send a response back to the external system.
+- `event`: The full webhook event object, which contains metadata about the event.
+
+## Configuration
+
+- `hiddenProperties`: An array of property names that should be hidden from the event object. Defaults to `["hiddenProperties", "eventState"]`.
+- `eventState`: An array representing the current state of the event. Defaults to an empty array.
+- `eventStateProperties`: An array of property names that should be included in the event state. Defaults to `["connector", "client", "channel", "agentId", "sender"]`.
+
+## Usage
+
+1. Add an On Webhook node to your spell.
+2. Configure any desired hidden properties, event state, or event state properties in the node's configuration.
+3. Connect the node's `flow` output to the next node in your spell that should be triggered when a webhook event is received.
+4. Use the `content`, `callback`, and `event` outputs to access the webhook payload data, callback URL, and full event object in your spell.
+5. Deploy your spell and configure the external system to send webhook events to the provided URL.
+
+## Example
+
+Here's an example of how to use the On Webhook node in a spell:
+
+```
+1. On Webhook
+   |
+2. Code
+   - Print the content of the webhook payload
+   - Print the full event object
+   |
+3. HTTP Request
+   - URL: (use the callback from On Webhook)
+   - Method: POST
+   - Body: "Webhook received successfully"
+```
+
+In this example:
+1. The On Webhook node triggers the spell when a webhook event is received.
+2. The Code node prints the content of the webhook payload and the full event object to the console for debugging.
+3. The HTTP Request node sends a response back to the external system using the callback URL from the On Webhook node.
+
+## Best Practices
+
+- Secure your webhook endpoints by using authentication tokens or signatures to verify that events are coming from trusted sources.
+- Validate and sanitize the incoming webhook data to ensure it matches the expected format and doesn't contain any malicious content.
+- Use the `hiddenProperties` configuration to exclude sensitive data from the event object if needed.
+- Keep your webhook handling logic concise and efficient to avoid blocking the event loop and causing delays for other events.
+
+## Gotchas
+
+- Make sure your spell is deployed and accessible from the internet so external systems can send webhook events to it.
+- Be aware of rate limits and potential high-traffic scenarios that could overwhelm your spell. Implement throttling or queuing mechanisms if needed.
+- If your spell modifies the `eventState`, ensure that you handle potential race conditions and conflicts if multiple events are processed concurrently.

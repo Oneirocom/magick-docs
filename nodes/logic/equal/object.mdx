@@ -1,0 +1,62 @@
+---
+title: "Object"
+---
+
+# Equal (Object)
+
+The Equal (Object) node in Magick compares two input objects and outputs a boolean value indicating whether they are equal or not. This node is useful when you need to check if two objects have the same properties and values.
+
+## Inputs
+
+1. `a` (object, default: `{}`): The first object to compare.
+2. `b` (object, default: `{}`): The second object to compare.
+
+## Outputs
+
+1. `result` (boolean): The result of the equality comparison. Returns `true` if the input objects are equal, and `false` otherwise.
+
+## Configuration
+
+This node does not have any configuration options.
+
+## Usage
+
+To use the Equal (Object) node, follow these steps:
+
+1. Add the Equal (Object) node to your spell.
+2. Connect the objects you want to compare to the `a` and `b` input ports.
+3. The `result` output port will emit a boolean value indicating whether the input objects are equal or not.
+
+## Example
+
+Suppose you have two objects representing user profiles, and you want to check if they are the same. You can use the Equal (Object) node to compare them:
+
+```json
+// User Profile 1
+{
+  "name": "John Doe",
+  "age": 30,
+  "email": "john@example.com"
+}
+
+// User Profile 2
+{
+  "name": "John Doe",
+  "age": 30,
+  "email": "john@example.com"
+}
+```
+
+Connect these objects to the `a` and `b` input ports of the Equal (Object) node. The `result` output will be `true` since the two user profiles have the same properties and values.
+
+## Best Practices
+
+- Ensure that the objects you are comparing have the same structure and data types for their properties. The Equal (Object) node performs a deep equality check, so the objects must be identical for the comparison to return `true`.
+- If you only need to compare specific properties of the objects, consider using a combination of the Extract Property and Equal (Primitive) nodes instead.
+
+## Common Issues
+
+- If the objects have different property names or data types, the Equal (Object) node will return `false` even if the values seem similar.
+- Be cautious when comparing large or complex objects, as the deep equality check can be computationally expensive.
+
+By using the Equal (Object) node, you can easily compare two objects in your Magick spells and make decisions based on their equality.

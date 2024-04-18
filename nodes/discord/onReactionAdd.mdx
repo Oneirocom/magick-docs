@@ -1,0 +1,68 @@
+---
+title: "On Reaction Add"
+---
+
+# On Discord Reaction Add
+
+The On Discord Reaction Add node is an event node that triggers when a reaction is added to a message in a Discord channel. It allows you to capture and respond to user reactions in real-time.
+
+## Inputs
+
+This node does not have any input ports.
+
+## Outputs
+
+- `flow`: Sends a flow signal to the next node in the spell when a reaction is added.
+- `reaction`: The emoji or custom emoji that was added as a reaction to the message.
+- `count`: The total number of reactions of this emoji on the message.
+- `messageId`: The unique ID of the message that the reaction was added to.
+- `event`: The raw event data from the Discord API, which contains additional details about the reaction event.
+
+## Configuration
+
+- `hiddenProperties` (advanced): An array of properties to hide from the node's configuration panel. Defaults to `["hiddenProperties", "eventState"]`.
+- `eventState` (advanced): An array used internally by the node to manage its state. Defaults to an empty array.
+- `eventStateProperties` (advanced): An array of properties to include in the node's event state. Defaults to `["connector", "client", "channel", "agentId", "sender"]`.
+
+## Usage
+
+1. Add an On Discord Reaction Add node to your spell.
+2. Connect the node's `flow` output to the input of the next node(s) you want to trigger when a reaction is added.
+3. Use the `reaction`, `count`, `messageId`, and `event` outputs to access data about the reaction event and perform additional actions or logic.
+
+## Example
+
+Here's an example of how you might use the On Discord Reaction Add node in a spell:
+
+```
+Discord Connector
+|
+On Discord Reaction Add
+|
+If Reaction Equals 👍
+|       |
+|       Send Discord Message ("Thanks for the thumbs up!")
+|
+If Reaction Equals 👎
+|       |
+|       Send Discord Message ("Sorry you didn't like it.")
+|
+If Reaction Equals 🚀
+        |
+        Increment Rocket Counter
+        |
+        Update Channel Topic
+```
+
+In this example, the spell listens for reactions added to messages in a Discord channel. When a 👍 reaction is added, it sends a "Thanks for the thumbs up!" message. When a 👎 reaction is added, it sends a "Sorry you didn't like it." message. When a 🚀 reaction is added, it increments a rocket counter and updates the channel topic to display the current count.
+
+## Best Practices
+
+- Use the `reaction` output to check for specific emojis and trigger different actions based on the reaction.
+- Combine the On Discord Reaction Add node with other Discord nodes like Send Discord Message or Update Discord Channel to create interactive experiences.
+- Be mindful of the rate limits and usage restrictions of the Discord API to avoid hitting limits or getting your bot flagged.
+
+## Common Issues
+
+- Make sure your Discord bot has the necessary permissions to read message reactions in the channels you want to monitor.
+- Note that the `event` output provides the raw event data, which may change if Discord updates their API. Use the `reaction`, `count`, and `messageId` outputs for more stable access to key event properties.

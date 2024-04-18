@@ -1,0 +1,76 @@
+---
+title: "Float"
+---
+
+# ACOS (math/acos/float)
+
+The ACOS node calculates the inverse cosine (arccos) of a given float input. It returns the angle in radians whose cosine is the input value.
+
+## Inputs
+
+1. `a` (float, default: 0): The input value for which to calculate the inverse cosine. The value should be between -1 and 1, inclusive.
+
+## Outputs
+
+1. `result` (float): The angle in radians whose cosine is the input value. The output range is between 0 and π (pi), inclusive.
+
+## Configuration
+
+This node has no configuration options.
+
+## Usage
+
+To use the ACOS node, follow these steps:
+
+1. Add the ACOS node to your spell.
+2. Connect a float value between -1 and 1 to the `a` input port.
+3. The node will output the inverse cosine of the input value in radians through the `result` output port.
+
+## Example
+
+Here's an example of how to use the ACOS node in a spell:
+
+```json
+{
+  "nodes": [
+    {
+      "type": "math/acos/float",
+      "id": "acos_1",
+      "inputs": {
+        "a": 0.5
+      }
+    },
+    {
+      "type": "math/radiansToDegrees/float",
+      "id": "radToDeg_1",
+      "inputs": {
+        "radians": "@acos_1.result"
+      }
+    },
+    {
+      "type": "io/print/float",
+      "id": "print_1",
+      "inputs": {
+        "value": "@radToDeg_1.degrees"
+      }
+    }
+  ]
+}
+```
+
+In this example:
+1. The ACOS node (`acos_1`) takes an input value of 0.5 and calculates its inverse cosine.
+2. The result is passed to the `radiansToDegrees` node (`radToDeg_1`), which converts the angle from radians to degrees.
+3. Finally, the `print` node (`print_1`) outputs the angle in degrees.
+
+The expected output would be approximately 60 degrees, as the inverse cosine of 0.5 is roughly 1.0472 radians or 60 degrees.
+
+## Best Practices and Tips
+
+- Ensure that the input value is within the valid range of -1 to 1. Inputting values outside this range will result in NaN (Not a Number) as the output.
+- Remember that the output is in radians. If you need the result in degrees, use a `radiansToDegrees` node to convert the output.
+
+## Common Issues
+
+- If the input value is outside the range of -1 to 1, the output will be NaN. Make sure to validate or clamp the input value before connecting it to the ACOS node.
+- Be mindful of the units (radians or degrees) when working with angles in your spell. Inconsistent units can lead to unexpected results.

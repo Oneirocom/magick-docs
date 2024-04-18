@@ -1,0 +1,87 @@
+---
+title: "String"
+---
+
+# To Array (String)
+
+The To Array (String) node in Magick converts a string into an array, with each character in the string becoming an element in the resulting array.
+
+## Inputs
+
+- `a` (string, default: ""): The input string to be converted into an array.
+
+## Outputs
+
+- `result` (array): The resulting array, where each element corresponds to a character from the input string.
+
+## Configuration
+
+This node does not have any additional configuration options.
+
+## Usage
+
+To use the To Array (String) node:
+
+1. Connect a node that outputs a string to the `a` input of the To Array (String) node.
+2. The resulting array will be available at the `result` output, which can be connected to other nodes for further processing.
+
+## Example
+
+Suppose you have a string "Hello" that you want to convert into an array. Here's how you can use the To Array (String) node to achieve this:
+
+1. Create a Constant node and set its value to "Hello".
+2. Connect the output of the Constant node to the `a` input of the To Array (String) node.
+3. The `result` output of the To Array (String) node will now contain the array `["H", "e", "l", "l", "o"]`.
+
+Here's an example spell that demonstrates this:
+
+```json
+{
+  "nodes": [
+    {
+      "type": "data/constant",
+      "id": "1",
+      "outputs": [
+        {
+          "name": "output",
+          "type": "string",
+          "value": "Hello"
+        }
+      ]
+    },
+    {
+      "type": "math/toArray/string",
+      "id": "2",
+      "inputs": [
+        {
+          "name": "a",
+          "type": "string",
+          "connected": true,
+          "connectedOutput": "output",
+          "connectedNode": "1"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "result",
+          "type": "array"
+        }
+      ]
+    }
+  ]
+}
+```
+
+In this spell, the Constant node (ID: 1) outputs the string "Hello", which is connected to the `a` input of the To Array (String) node (ID: 2). The resulting array `["H", "e", "l", "l", "o"]` is available at the `result` output of the To Array (String) node.
+
+## Best Practices
+
+- Ensure that the input to the To Array (String) node is a valid string. Connecting a non-string value may result in unexpected behavior or errors.
+- Keep in mind that the resulting array will have the same number of elements as the number of characters in the input string, including whitespace characters.
+
+## Common Issues
+
+- If the input string is empty, the resulting array will also be empty.
+- If the input is not a string, the node may produce an error or unexpected results. Always ensure that the connected input is of the correct type.
+
+By using the To Array (String) node, you can easily convert a string into an array of its individual characters, which can be useful for various string manipulation tasks in your Magick spells.

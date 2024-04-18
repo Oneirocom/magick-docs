@@ -1,0 +1,50 @@
+---
+title: "String"
+---
+
+# Split
+
+The Split node is used to divide a string into an array of substrings based on a specified separator. This is useful when you need to extract individual elements from a string that follows a consistent format, such as comma-separated values (CSV) or a sentence with words separated by spaces.
+
+## Inputs
+
+1. `string` (string, default: ""): The input string that you want to split into an array of substrings.
+2. `separator` (string, default: ""): The character or sequence of characters that separates the elements in the input string. If left empty, the input string will be split based on whitespace characters (spaces, tabs, or newlines).
+
+## Outputs
+
+1. `result` (array): The resulting array of substrings after splitting the input string based on the specified separator.
+
+## Configuration
+
+This node does not have any additional configuration options.
+
+## Usage
+
+1. Connect a string value to the `string` input of the Split node. This is the string that you want to split into an array of substrings.
+2. Specify the `separator` input, which is the character or sequence of characters that separates the elements in the input string. If you leave this input empty, the string will be split based on whitespace characters.
+3. The Split node will output an array of substrings in the `result` output. You can then use this array in other nodes or spells as needed.
+
+## Example
+
+Let's say you have a comma-separated string of names that you want to split into an array. Here's how you can use the Split node to achieve this:
+
+1. Create a String node with the value "Alice,Bob,Charlie,David".
+2. Create a Split node and connect the String node to its `string` input.
+3. Set the `separator` input of the Split node to ",".
+4. The `result` output of the Split node will contain an array with four elements: ["Alice", "Bob", "Charlie", "David"].
+
+You can then use this array in other parts of your spell, such as iterating over the names or displaying them in a list.
+
+## Best Practices
+
+- Make sure to provide a valid separator that accurately represents the structure of your input string. If the separator is not found in the string, the entire string will be returned as a single element in the output array.
+- If you want to split a string based on multiple separators, you can chain multiple Split nodes together, each with a different separator.
+- Be cautious when splitting strings with large amounts of data, as the resulting array may consume significant memory. Consider processing the substrings incrementally if memory usage is a concern.
+
+## Common Issues
+
+- If the `separator` input is left empty, the Split node will use whitespace characters as the default separators. This may lead to unexpected results if your string contains multiple consecutive whitespace characters.
+- If the `separator` input contains special characters or regex patterns, they will be treated as literal characters and not as special characters or patterns. To split a string using regex patterns, consider using the Regex Split node instead.
+
+By using the Split node, you can easily divide strings into arrays of substrings based on a specified separator, enabling you to work with individual elements of structured data within your Magick spells.

@@ -1,0 +1,77 @@
+---
+title: "Float"
+---
+
+# Equal (Float)
+
+The Equal (Float) node compares two floating-point numbers and outputs a boolean value indicating whether they are equal.
+
+## Inputs
+
+1. `a` (float, default: 0): The first floating-point number to compare.
+2. `b` (float, default: 0): The second floating-point number to compare.
+
+## Outputs
+
+1. `result` (boolean): The result of the equality comparison. Returns `true` if `a` is equal to `b`, and `false` otherwise.
+
+## Configuration
+
+This node has no configuration options.
+
+## Usage
+
+The Equal (Float) node is used to determine if two floating-point numbers are equal. It is particularly useful in conditional statements or for validating user input.
+
+To use the Equal (Float) node:
+
+1. Connect the first floating-point number to the `a` input.
+2. Connect the second floating-point number to the `b` input.
+3. The `result` output will emit `true` if the two input numbers are equal, and `false` otherwise.
+
+## Example
+
+Here's an example of how to use the Equal (Float) node in a spell:
+
+```json
+{
+  "nodes": [
+    {
+      "type": "input/number",
+      "id": "input1",
+      "data": { "value": 3.14 }
+    },
+    {
+      "type": "input/number", 
+      "id": "input2",
+      "data": { "value": 3.14 }
+    },
+    {
+      "type": "math/equal/float",
+      "id": "equalNode",
+      "inputs": {
+        "a": { "nodeId": "input1", "output": "value" },
+        "b": { "nodeId": "input2", "output": "value" }
+      }
+    },
+    {
+      "type": "output/boolean",
+      "id": "output",
+      "inputs": {
+        "value": { "nodeId": "equalNode", "output": "result" }
+      }
+    }
+  ]
+}
+```
+
+In this example, two `input/number` nodes provide the floating-point numbers to compare. The Equal (Float) node compares these numbers and passes the boolean result to an `output/boolean` node.
+
+## Best Practices
+
+- Ensure that the inputs to the Equal (Float) node are actually floating-point numbers. Connecting other data types may lead to unexpected behavior.
+- Keep in mind that floating-point comparisons can sometimes be imprecise due to the way computers represent decimal numbers. For more precise comparisons, consider using the Equal (String) node with string representations of the numbers.
+
+## Common Issues
+
+- If the Equal (Float) node always returns `false`, double-check that the input values are the expected floating-point numbers and that they are truly equal. Slight variations in the decimal places can cause the equality check to fail.

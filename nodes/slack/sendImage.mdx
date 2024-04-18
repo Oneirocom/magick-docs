@@ -1,0 +1,50 @@
+---
+title: "Send Image"
+---
+
+# Send Slack Image
+
+The Send Slack Image node allows you to send one or more images to a Slack channel within a Magick flow. This node is useful when you want to share visual content, such as charts, graphs, photos, or screenshots, with your Slack team as part of an automated workflow.
+
+## Inputs
+
+- `flow` (required): The incoming flow from the previous node.
+- `images` (required): An array of image URLs or base64-encoded image data to send to Slack.
+- `comment` (optional): A text comment to include with the images. Default is an empty string.
+
+## Outputs
+
+- `flow`: The outgoing flow to the next node, if any.
+
+## Configuration
+
+This node does not have any additional configuration options.
+
+## Usage
+
+1. Add the Send Slack Image node to your spell.
+2. Connect the `flow` input to the output of the previous node.
+3. Provide an array of image URLs or base64-encoded image data to the `images` input. You can use the Array node to construct this input.
+4. (Optional) Provide a text comment to include with the images using the `comment` input.
+5. Connect the `flow` output to the next node in your spell, if desired.
+
+## Example
+
+Here's an example of how to use the Send Slack Image node in a spell:
+
+1. Use an HTTP Request node to fetch data from an API.
+2. Process the API response using a Transform JSON node to extract relevant image URLs.
+3. Connect the extracted image URLs to the `images` input of the Send Slack Image node.
+4. Set the `comment` input to "Check out these latest charts!".
+5. The Send Slack Image node will send the specified images to your configured Slack channel, along with the comment.
+
+## Best Practices
+
+- Ensure that the image URLs are publicly accessible or that the base64-encoded image data is valid.
+- Be mindful of the size and number of images you send to avoid cluttering the Slack channel.
+- Provide a meaningful comment to give context to the images you're sharing.
+
+## Common Issues
+
+- If the images fail to send, double-check that the image URLs are correct and accessible, or that the base64-encoded image data is properly formatted.
+- Make sure you have correctly configured your Slack integration in the Magick platform settings.

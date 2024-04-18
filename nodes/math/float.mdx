@@ -1,0 +1,44 @@
+---
+title: "Float"
+---
+
+# Float
+
+The Float node is a simple utility node that allows you to input a floating-point number and pass it as an output to other nodes in your spell. It is useful when you need to provide a specific numeric value to a node that expects a float input.
+
+## Inputs
+
+- `a` (float, default: 0): The input floating-point number.
+
+## Outputs
+
+- `result` (float): The floating-point number passed through from the input.
+
+## Configuration
+
+This node has no configuration options.
+
+## Usage
+
+1. Add a Float node to your spell.
+2. Connect the `result` output to the input of the node that requires a floating-point number.
+3. Set the value of the `a` input to the desired floating-point number.
+
+## Example
+
+Suppose you have a spell that generates a random number between 0 and a maximum value. You can use the Float node to provide the maximum value:
+
+1. Add a Float node to your spell.
+2. Set the `a` input of the Float node to the desired maximum value, e.g., 100.
+3. Connect the `result` output of the Float node to the `max` input of a Random Float node.
+4. The Random Float node will now generate random numbers between 0 and the value provided by the Float node.
+
+## Tips
+
+- Use the Float node whenever you need to input a specific floating-point number into your spell.
+- You can change the value of the `a` input dynamically to adjust the behavior of your spell without modifying the node configuration.
+
+## Gotchas
+
+- Make sure to connect the `result` output to a node that expects a floating-point input. Connecting it to a node that expects a different data type may cause unexpected behavior.
+- Be aware of the numeric precision limitations of floating-point numbers when working with very large or very small values.

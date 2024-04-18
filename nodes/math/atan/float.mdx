@@ -1,0 +1,61 @@
+---
+title: "Float"
+---
+
+# ATAN (math/atan/float)
+
+The ATAN node calculates the arctangent (inverse tangent) of a given input value. It takes a single floating-point number as input and outputs the corresponding angle in radians.
+
+## Inputs
+
+1. `a` (float, default: 0): The input value for which to calculate the arctangent.
+
+## Outputs
+
+1. `result` (float): The arctangent of the input value, in radians.
+
+## Configuration
+
+This node has no additional configuration options.
+
+## Usage
+
+To use the ATAN node:
+
+1. Connect a floating-point value to the `a` input port. This represents the value for which you want to calculate the arctangent.
+2. The node will output the arctangent of the input value, in radians, through the `result` output port.
+3. Connect the `result` output to the desired destination node(s) in your spell.
+
+## Example
+
+Suppose you have a spell that needs to calculate the angle of a line given its slope. You can use the ATAN node to achieve this:
+
+1. Connect the slope value (rise over run) to the `a` input of the ATAN node.
+2. The node will calculate the arctangent of the slope and output the angle in radians.
+3. You can then use this angle value for further calculations or visualizations in your spell.
+
+Here's an example of how the ATAN node might be used in a Magick spell:
+
+```
+// Input node with slope value
+{"type":"input/float","id":"slope","data":{"name":"Slope","value":1}}
+
+// ATAN node to calculate angle from slope
+{"type":"math/atan/float","id":"atan","inputs":{"a":"slope"}}
+
+// Output node to display the calculated angle
+{"type":"output/float","id":"angle","data":{"name":"Angle (radians)"},"inputs":{"in":"atan"}}
+```
+
+In this example, the slope value is provided through an input node. The ATAN node takes this slope and calculates the corresponding angle in radians. Finally, the angle is displayed using an output node.
+
+## Best Practices
+
+- Ensure that the input value is a valid floating-point number. The ATAN node expects a numerical input.
+- Keep in mind that the output is in radians. If you need the angle in degrees, you can use the `math/rad2deg` node to convert from radians to degrees.
+
+## Common Issues
+
+- If the input is not a valid floating-point number, the node may output unexpected results or cause errors in the spell. Make sure to validate and sanitize input data before connecting it to the ATAN node.
+
+By using the ATAN node, you can easily calculate the arctangent of a given value in your Magick spells, enabling you to work with angles and perform trigonometric calculations as needed.

@@ -1,0 +1,53 @@
+---
+title: "Throttle"
+---
+
+# Throttle
+
+The Throttle node is used to control the rate at which data flows through a spell by introducing a delay between each input. It allows you to limit the frequency of data processing, which can be useful for rate limiting API calls, preventing overloading of downstream nodes, or simulating real-world timing.
+
+## Inputs
+
+- `flow` (required): The input flow that will be throttled.
+- `duration` (optional, default: 1): The amount of time in seconds to wait between each input. This value can be a float for sub-second precision.
+- `cancel` (optional): A flow that, when triggered, will cancel the current throttle delay and immediately pass through the next input.
+
+## Outputs
+
+- `flow`: The throttled output flow. Each input will be emitted on this output after the specified duration has elapsed.
+
+## Configuration
+
+This node has no additional configuration options.
+
+## Usage
+
+1. Connect the flow you want to throttle to the `flow` input of the Throttle node.
+2. Set the `duration` input to the desired delay between each input, in seconds. For example, to limit the flow to one input every 5 seconds, set `duration` to 5.
+3. Optionally, connect a flow to the `cancel` input. When this flow is triggered, it will cancel any current delay and immediately pass through the next input.
+4. Connect the `flow` output to the next node in your spell.
+
+## Example
+
+Suppose you have a spell that makes an API call for each input it receives, but the API has a rate limit of 1 call per second. You can use the Throttle node to ensure your spell respects this limit:
+
+```markdown
+1. HTTP Request
+   URL: https://api.example.com/data
+   -> Throttle
+      duration: 1
+   -> Data Processing Node
+```
+
+In this example, the HTTP Request node fetches data from an API. The Throttle node is then used to limit the rate to 1 request per second, ensuring the API's rate limit is not exceeded. Finally, the throttled flow is passed to a data processing node.
+
+## Best Practices
+
+- Use the Throttle node anytime you need to control the rate of data flow, whether to respect API limits, prevent overload, or simulate timing.
+- Be mindful of setting the `duration` appropriately. Too short a duration may still overload downstream nodes or APIs, while too long could unnecessarily slow your spell.
+- Use the `cancel` input when you have a separate flow that needs the ability to preempt the throttle delay, such as a high priority request.
+
+## Common Issues
+
+- Forgetting to set the `duration` input will result in the default 1 second delay, which may not be what you intended. Always double check this setting.
+- Connecting a high frequency flow to the `cancel` input can effectively bypass the throttle entirely, as each delay will be canceled immediately. Ensure your cancel flow is used judiciously.

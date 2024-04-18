@@ -1,0 +1,47 @@
+---
+title: "Integer"
+---
+
+# ABS (math/abs/integer)
+
+The ABS (Absolute Value) node in Magick calculates the absolute value of an integer input. It returns the magnitude of the input number without regard to its sign.
+
+## Inputs
+
+- `a` (integer, default: 0): The input integer for which to calculate the absolute value.
+
+## Outputs
+
+- `result` (integer): The absolute value of the input integer.
+
+## Configuration
+
+This node has no additional configuration options.
+
+## Usage
+
+1. Connect an integer value to the `a` input of the ABS node.
+2. The node will output the absolute value of the input integer through its `result` output.
+
+## Example
+
+Suppose you have a spell that calculates the difference between two numbers, but you always want the result to be a positive value. You can use the ABS node to ensure that the output is always positive, regardless of the order of the input numbers.
+
+Here's an example of how you might use the ABS node in a spell:
+
+```
+Number (5) -> a |
+                 Subtract -> difference | 
+Number (7) -> b |                         ABS -> absolute_difference
+```
+
+In this example, the Subtract node calculates `5 - 7`, which results in `-2`. However, the ABS node then takes the absolute value of `-2`, resulting in a final output of `2`.
+
+## Best Practices
+
+- Use the ABS node whenever you need to ensure that a value is always positive, such as when calculating distances or magnitudes.
+- Keep in mind that the ABS node only works with integers. If you need to calculate the absolute value of a floating-point number, you'll need to use a different node or first convert the input to an integer.
+
+## Common Issues
+
+- If the input to the ABS node is not an integer, the node will not function properly. Make sure to only connect integer values to the `a` input.

@@ -1,0 +1,52 @@
+---
+title: "On Triggered"
+---
+
+# On Triggered
+
+The On Triggered node is an event node that starts a spell when a specific custom event is triggered in your application. It allows you to define custom events and use them to initiate flows in Magick.
+
+## Inputs
+
+This node has no inputs.
+
+## Outputs
+
+- `flow` (flow): The node's single output that triggers the next node in the spell when the specified custom event is triggered.
+
+## Configuration
+
+- `customEventId` (string, default: "-1"): The unique identifier of the custom event that should trigger this node. You define this ID when sending the custom event from your application code.
+
+## Usage
+
+1. Add an On Triggered node to your spell.
+2. In the node's configuration, set the `customEventId` to a unique string that identifies the specific event you want to listen for. 
+3. Connect the node's `flow` output to the next node(s) in your spell that should execute when the event is triggered.
+4. In your application code, when the relevant event occurs (e.g. a button click, a webhook received, etc.), send a custom event to Magick with the matching `customEventId`.
+5. When Magick receives a custom event with an ID matching the one configured on the node, the node will be triggered and the spell will continue executing from that point.
+
+## Example 
+
+Let's say you have a spell that should send a notification to a user when they achieve a high score in your game. 
+
+1. Add an On Triggered node and set its `customEventId` to "high_score_achieved".
+2. Connect the On Triggered node's `flow` output to a Send Notification node configured with the notification details.
+3. In your game code, when a user achieves a high score, send a custom event:
+
+```javascript
+magick.sendCustomEvent("high_score_achieved", { userId: 123, score: 10000 });
+```
+
+4. When Magick receives this event, the On Triggered node will fire and the notification will be sent.
+
+## Best Practices
+
+- Use clear, descriptive event IDs that reflect the specific event that should trigger the node.
+- Make sure the custom event ID set on the node exactly matches the ID sent from your application code.
+- Use custom event payloads to include additional data about the event that triggered the node. This data can be used by subsequent nodes in the spell.
+
+## Common Issues
+
+- Ensure you are sending the custom event from your application with the correct event ID. Mismatched IDs are a common reason why On Triggered nodes may not fire as expected.
+- If you have multiple On Triggered nodes listening for the same event ID, all of them will trigger when an event with that ID is received. Ensure your event IDs are unique if you want to trigger specific nodes.

@@ -1,0 +1,47 @@
+---
+title: "Float"
+---
+
+# ÷ (Divide Float)
+
+The ÷ (Divide Float) node performs division of two floating-point numbers. It takes two input values, divides the first by the second, and outputs the result as a floating-point number.
+
+## Inputs
+
+1. `a` (float, default: 0): The dividend, or the number to be divided.
+2. `b` (float, default: 0): The divisor, or the number to divide by.
+
+## Outputs
+
+1. `result` (float): The result of dividing `a` by `b`.
+
+## Configuration
+
+This node has no additional configuration options.
+
+## Usage
+
+1. Connect the first input value (the dividend) to the `a` input port.
+2. Connect the second input value (the divisor) to the `b` input port.
+3. The node will output the result of the division through the `result` output port.
+
+## Example
+
+Suppose you have a spell that calculates the average of two numbers. You can use the ÷ (Divide Float) node to divide the sum of the two numbers by 2.
+
+1. Use an + (Add) node to calculate the sum of the two numbers.
+2. Connect the output of the + (Add) node to the `a` input port of the ÷ (Divide Float) node.
+3. Connect a constant value of 2 to the `b` input port of the ÷ (Divide Float) node.
+4. The ÷ (Divide Float) node will output the average of the two numbers through its `result` output port.
+
+## Best Practices
+
+- Ensure that the input values are of the correct type (float). Connecting inputs of a different type may lead to unexpected behavior or errors.
+- Be cautious when dividing by zero or very small numbers, as this can result in infinity or NaN (Not a Number) values. Handle these cases appropriately in your spell's logic.
+
+## Common Issues
+
+- **Division by zero**: Dividing by zero will result in an infinity or NaN value. Make sure to handle this case gracefully in your spell's logic to avoid unexpected behavior or errors.
+- **Type mismatch**: Ensure that both input values are of the float type. Connecting inputs of a different type may cause the node to output incorrect results or generate an error.
+
+By understanding the functionality and usage of the ÷ (Divide Float) node, you can effectively incorporate division operations into your Magick spells, enabling you to perform calculations and manipulate floating-point values as needed.

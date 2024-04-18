@@ -1,0 +1,50 @@
+---
+title: "Integer"
+---
+
+# CLAMP
+
+The CLAMP node constrains an input integer value to a specified range defined by a minimum and maximum value. If the input value falls within the range, it is passed through unchanged. If the input value is less than the minimum or greater than the maximum, it is "clamped" to the nearest boundary value.
+
+## Inputs
+
+1. `value` (integer): The input value to be clamped. Default is 0.
+2. `min` (integer): The minimum allowed value. Default is 0.
+3. `max` (integer): The maximum allowed value. Default is 0.
+
+## Outputs
+
+1. `result` (integer): The clamped output value.
+
+## Configuration
+
+This node has no configuration options.
+
+## Usage
+
+1. Connect an integer value to the `value` input. This is the value you want to constrain to the specified range.
+2. Set the `min` input to the minimum allowed value for the output.
+3. Set the `max` input to the maximum allowed value for the output.
+4. The `result` output will emit the input value if it's within the [min, max] range. If the input is less than `min`, `result` will be `min`. If the input is greater than `max`, `result` will be `max`.
+
+## Example
+
+Let's say you have a spell that generates a random integer between -100 and 100, but you need to ensure the value is always between 0 and 50 before using it. You can use the CLAMP node like this:
+
+1. Connect the random integer generator to the `value` input of CLAMP.
+2. Set the CLAMP `min` input to 0. 
+3. Set the CLAMP `max` input to 50.
+4. Connect the `result` output to the rest of your spell.
+
+Now, any values less than 0 will be raised to 0, and any values greater than 50 will be reduced to 50. Values already in the [0, 50] range will pass through unchanged.
+
+## Tips
+
+- CLAMP is useful any time you need to constrain a value to a known range. This is common when working with parameters that have legal bounds, like percentages (0-100), RGB color values (0-255), etc.
+- Remember that CLAMP is inclusive of the `min` and `max` values. If you need an exclusive range, adjust your bounds accordingly.
+- If `min` is greater than `max`, CLAMP will swap their values internally so that `min` is always less than or equal to `max`.
+
+## Cautions
+
+- Both the input value and the `min`/`max` bounds must be integers. For floating-point clamping, use the CLAMP (Float) node instead.
+- Be aware that clamping discards out-of-bounds values rather than scaling or normalizing them. If you need to fit a range of values proportionally into a different range, consider using a map or lerp node instead.

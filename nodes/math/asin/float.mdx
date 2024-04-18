@@ -1,0 +1,45 @@
+---
+title: "Float"
+---
+
+# ASIN (Arcsine)
+
+The ASIN node calculates the arcsine (inverse sine) of a given input value. It takes a single floating-point number as input and returns the arcsine of that value, also as a floating-point number.
+
+## Inputs
+
+1. `a` (float, default: 0): The input value for which to calculate the arcsine. The value should be in the range [-1, 1].
+
+## Outputs
+
+1. `result` (float): The arcsine of the input value, in radians. The output will be in the range [-π/2, π/2].
+
+## Configuration
+
+This node has no additional configuration options.
+
+## Usage
+
+To use the ASIN node, simply connect a floating-point value to the `a` input. The node will calculate the arcsine of this value and output the result.
+
+For example, if the input value is 0.5, the node will output approximately 0.523598776 (or π/6 radians).
+
+## Example
+
+Here's an example of how to use the ASIN node in a Magick spell:
+
+1. Create a Float node and set its value to 0.7071067812.
+2. Connect the output of the Float node to the `a` input of the ASIN node.
+3. The ASIN node will output approximately 0.785398163 (or π/4 radians).
+
+In this example, we calculate the arcsine of 0.7071067812, which is the sine of π/4 (45 degrees). As expected, the ASIN node returns π/4.
+
+## Best Practices
+
+- Ensure that the input value is within the valid range of [-1, 1]. Inputting values outside this range will produce NaN (Not a Number) as the output.
+- Keep in mind that the output is in radians. If you need the result in degrees, you can use the Radians to Degrees node to convert the output.
+
+## Common Issues
+
+- If the input value is outside the range [-1, 1], the node will output NaN. This is because the arcsine function is only defined for values within this range.
+- The arcsine function is the inverse of the sine function, but it is not the same as the cosecant (csc) function. Make sure to use the appropriate node for your use case.

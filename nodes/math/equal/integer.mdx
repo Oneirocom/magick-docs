@@ -1,0 +1,75 @@
+---
+title: "Integer"
+---
+
+# Equal (Integer)
+
+The Equal (Integer) node compares two integer inputs and outputs a boolean value indicating whether they are equal.
+
+## Inputs
+
+- `a` (integer): The first integer value to compare. Default value is 0.
+- `b` (integer): The second integer value to compare. Default value is 0.
+
+## Outputs
+
+- `result` (boolean): The result of the equality comparison. Returns `true` if the two input integers are equal, and `false` otherwise.
+
+## Configuration
+
+This node has no additional configuration options.
+
+## Usage
+
+1. Connect the first integer value to compare to the `a` input.
+2. Connect the second integer value to compare to the `b` input.
+3. The `result` output will emit `true` if the two input integers are equal, and `false` otherwise.
+
+## Example
+
+Here's an example of how to use the Equal (Integer) node in a Magick spell:
+
+```json
+{
+  "nodes": [
+    {
+      "type": "input/integer",
+      "id": "1",
+      "data": { "value": 42 },
+      "position": [0, 0]
+    },
+    {
+      "type": "input/integer",
+      "id": "2", 
+      "data": { "value": 42 },
+      "position": [0, 100]
+    },
+    {
+      "type": "math/equal/integer",
+      "id": "3",
+      "position": [200, 50]
+    },
+    {
+      "type": "output/boolean",
+      "id": "4",
+      "position": [400, 50]
+    }
+  ],
+  "edges": [
+    { "source": "1", "target": "3", "sourceHandle": "out", "targetHandle": "a" },
+    { "source": "2", "target": "3", "sourceHandle": "out", "targetHandle": "b" },
+    { "source": "3", "target": "4", "sourceHandle": "result", "targetHandle": "in" }
+  ]
+}
+```
+
+In this example, two Integer Input nodes are providing the values 42 and 42 to the `a` and `b` inputs of the Equal (Integer) node. The `result` output is then connected to a Boolean Output node. Since both input values are 42, the `result` will be `true`.
+
+## Best Practices
+
+- Ensure that the values connected to the `a` and `b` inputs are of type integer. Connecting other data types may lead to unexpected behavior.
+- Remember that this node performs an exact equality check. For checking if one integer is greater than or less than another, use the Greater Than (Integer) or Less Than (Integer) nodes instead.
+
+## Common Issues
+
+- If either of the `a` or `b` inputs are left disconnected, the node will use the default value of 0 for that input. This may lead to unintended results. Always ensure both inputs are properly connected.

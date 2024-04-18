@@ -1,0 +1,99 @@
+---
+title: "Object"
+---
+
+# Merge Deep (Object)
+
+The Merge Deep (Object) node deeply merges two objects, recursively combining their properties. If both objects have a property with the same key, the values will be merged if they are both objects, otherwise the value from object `b` will overwrite the value from object `a`.
+
+## Inputs
+
+1. `a` (object, default: `{}`): The first object to merge.
+2. `b` (object, default: `{}`): The second object to merge.
+
+## Outputs
+
+1. `result` (object): The merged object.
+
+## Configuration
+
+This node has no configuration options.
+
+## Usage
+
+To use the Merge Deep (Object) node:
+
+1. Connect two objects to the `a` and `b` input ports. If no objects are connected, the node will use the default empty object `{}`.
+2. The node will output the deeply merged object on the `result` port.
+
+## Example
+
+Suppose you have two objects:
+
+```json
+// Object A
+{
+  "user": {
+    "name": "Alice",
+    "age": 30,
+    "address": {
+      "city": "New York",
+      "country": "USA"
+    }
+  },
+  "settings": {
+    "theme": "dark"
+  }
+}
+
+// Object B
+{
+  "user": {
+    "age": 31,
+    "email": "alice@example.com",
+    "address": {
+      "city": "Los Angeles"
+    }
+  },
+  "settings": {
+    "language": "en"
+  }
+}
+```
+
+When you pass these objects through the Merge Deep (Object) node, the output will be:
+
+```json
+{
+  "user": {
+    "name": "Alice",
+    "age": 31,
+    "email": "alice@example.com",
+    "address": {
+      "city": "Los Angeles",
+      "country": "USA"
+    }
+  },
+  "settings": {
+    "theme": "dark",
+    "language": "en"
+  }
+}
+```
+
+Notice how:
+- The `user` object is merged recursively
+- `age` from object B overwrites the value from object A
+- `email` is added from object B
+- The `address` object is merged, with `city` from object B overwriting the value from object A
+- The `settings` object is merged, with `language` added from object B
+
+## Best Practices
+
+- Use Merge Deep (Object) when you need to combine two objects while preserving the structure of nested objects.
+- Be aware that properties from object `b` will overwrite properties with the same key in object `a`, unless both values are objects, in which case they will be merged recursively.
+
+## Common Issues
+
+- If either input is not an object, the node will throw an error. Ensure that you are connecting objects to the `a` and `b` inputs.
+- If you want a shallow merge instead of a deep merge, use the Merge (Object) node instead.

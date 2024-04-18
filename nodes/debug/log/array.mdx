@@ -1,0 +1,74 @@
+---
+title: "Array"
+---
+
+# Log Array
+
+The Log Array node allows you to log an array of data to the console for debugging purposes. It's a useful tool for inspecting the contents of an array at any point in your spell's execution.
+
+## Inputs
+
+- `flow` (required): The input flow that triggers the node to execute.
+- `text` (optional): A custom message to include in the log output. Defaults to an empty string.
+- `severity` (optional): The severity level of the log message. Can be "info", "warning", or "error". Defaults to "info".
+- `payload` (required): The array of data to log to the console.
+
+## Outputs
+
+- `flow`: The output flow after the array has been logged.
+
+## Configuration
+
+This node has no additional configuration options.
+
+## Usage
+
+1. Connect the input flow to the `flow` input port. This determines when the node will execute.
+2. (Optional) Provide a custom message to the `text` input to add context to the log output.
+3. (Optional) Set the `severity` input to "info", "warning", or "error" to indicate the importance of the log message. 
+4. Connect the array you want to log to the `payload` input port.
+5. Connect the `flow` output port to the next node in your spell.
+
+When the spell is run, the Log Array node will output the contents of the specified array to the console, along with the custom message and severity level.
+
+## Example
+
+Here's an example of how you might use the Log Array node in a spell:
+
+```
+1. HTTP Request
+   URL: https://api.example.com/data
+   
+2. JSON Parse
+   JSON String: [Data from HTTP Request]
+
+3. Log Array
+   Text: "Received data from API"
+   Severity: info
+   Payload: [Parsed JSON array]
+   
+4. Filter Array
+   Array: [Logged array]
+   Condition: item.value > 10
+   
+5. Log Array  
+   Text: "Filtered data"
+   Payload: [Filtered array]
+```
+
+In this example, we make an HTTP request to an API endpoint, parse the JSON response into an array, and log that array with the message "Received data from API". 
+
+We then filter the array to only include items where the `value` property is greater than 10, and log the filtered array with the message "Filtered data".
+
+By strategically placing Log Array nodes, we can inspect the data at different stages of processing and ensure the spell is working as expected.
+
+## Best Practices
+
+- Use clear, descriptive messages in the `text` input to make it easier to understand the purpose of each log statement.
+- Set the `severity` input to "warning" or "error" for logs that indicate potential problems.
+- Remove or disable Log Array nodes before deploying your spell to production to avoid cluttering the console.
+
+## Common Issues
+
+- Forgetting to connect the `payload` input will result in an empty array being logged.
+- Logging very large arrays can make the console output difficult to read. Consider filtering or limiting the data before logging if needed.

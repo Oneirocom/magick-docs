@@ -1,0 +1,65 @@
+---
+title: "String"
+---
+
+# To Float
+
+The To Float node converts a string representation of a number into a floating-point value. It is useful when you have a number stored as a string that needs to be used in mathematical operations or other contexts requiring a numeric type.
+
+## Inputs
+
+- `a` (string, default: ""): The string representation of the number to be converted to a float.
+
+## Outputs
+
+- `result` (float): The floating-point value converted from the input string.
+
+## Configuration
+
+This node does not have any configuration options.
+
+## Usage
+
+1. Connect a node that provides a string representation of a number to the `a` input of the To Float node.
+2. The To Float node will convert the input string to a floating-point value.
+3. The converted float value will be available at the `result` output, which can be connected to other nodes for further processing.
+
+## Example
+
+Suppose you have a spell that retrieves a numeric value as a string from an API response and needs to perform mathematical operations on it. You can use the To Float node to convert the string to a float before using it in the calculations.
+
+```markdown
+1. HTTP Request
+   URL: "https://api.example.com/data"
+   
+2. Get Value
+   Object: (HTTP Request → Response Body)
+   Property: "price"
+   
+3. To Float
+   a: (Get Value → Value)
+   
+4. Multiply
+   a: (To Float → result)
+   b: 1.1
+   
+5. To String
+   a: (Multiply → result)
+   
+6. HTTP Response
+   Body: (To String → result)
+```
+
+In this example, the HTTP Request node retrieves data from an API. The Get Value node extracts the "price" property from the response body, which is assumed to be a string. The To Float node converts the "price" string to a float. The Multiply node multiplies the float value by 1.1, and the To String node converts the result back to a string. Finally, the HTTP Response node sends the modified price as the response body.
+
+## Best Practices
+
+- Ensure that the input string represents a valid number that can be converted to a float. If the input string is not a valid number, the To Float node will output `NaN` (Not a Number).
+- Be cautious when working with floating-point values, as they may introduce precision issues due to the limitations of binary representation. If precise decimal calculations are required, consider using a dedicated decimal library or rounding the results as needed.
+
+## Common Issues
+
+- If the input string is empty or contains non-numeric characters, the To Float node will output `NaN`. Make sure to handle such cases appropriately in your spell's logic.
+- Floating-point arithmetic can sometimes produce unexpected results due to precision limitations. Be aware of these limitations and round the results if necessary.
+
+By using the To Float node, you can easily convert string representations of numbers to floating-point values, enabling mathematical operations and other numeric manipulations in your Magick spells.

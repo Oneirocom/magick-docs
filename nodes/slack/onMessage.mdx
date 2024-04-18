@@ -1,0 +1,56 @@
+---
+title: "On Message"
+---
+
+# On Slack Message
+
+The On Slack Message node is an event node that triggers when a new message is received in a connected Slack channel. It allows you to build automations that respond to specific Slack messages.
+
+## Inputs
+
+This node has no inputs.
+
+## Outputs
+
+- `flow` (Flow): The flow output that can be connected to other nodes to continue the spell execution.
+- `content` (String): The text content of the received Slack message.
+- `sender` (String): The ID of the user who sent the Slack message.
+- `channel` (String): The ID of the Slack channel where the message was received.
+- `context` (Object): Additional context information about the Slack message event.
+- `event` (Object): The raw event data received from the Slack API.
+
+## Configuration
+
+- `hiddenProperties` (Array, Default: `["hiddenProperties", "eventState"]`): An array of property names that should be hidden in the node's settings view.
+- `eventState` (Array, Default: `[]`): An array used to store the internal state of the event node.
+- `eventStateProperties` (Array, Default: `["connector", "client", "channel", "agentId", "sender"]`): An array of property names that should be stored in the event state.
+
+## Usage
+
+1. Add the On Slack Message node to your spell.
+2. Connect your Slack account to Magick and configure the node to listen to the desired Slack channel.
+3. Connect the node's `flow` output to other nodes to define the actions to be performed when a Slack message is received.
+4. Use the `content`, `sender`, `channel`, `context`, and `event` outputs to access information about the received message and perform conditional logic or customizations based on the message data.
+5. Deploy the spell and it will automatically trigger whenever a new message is posted in the configured Slack channel.
+
+## Example
+
+Here's an example of how to use the On Slack Message node to respond to specific messages in a Slack channel:
+
+1. Add an On Slack Message node to your spell and configure it to listen to a specific channel.
+2. Connect the `flow` output to a Filter node to check if the `content` matches a specific pattern, e.g., "hello".
+3. If the message content matches, connect the Filter node's "true" output to a Respond to Slack Message node.
+4. Configure the Respond to Slack Message node to send a response back to the same channel, e.g., "Hi there! How can I assist you today?".
+5. Deploy the spell, and it will automatically respond to any "hello" messages in the configured Slack channel.
+
+## Best Practices
+
+- Be mindful of the Slack API rate limits when building automations that respond to messages frequently.
+- Use the Filter node or other conditional logic to narrow down the messages that trigger actions to avoid unintended or excessive responses.
+- Ensure your Slack app has the necessary permissions to read and respond to messages in the configured channels.
+
+## Common Issues
+
+- Make sure the Slack account is properly connected and the node is configured to listen to the correct channel.
+- Check that your Slack app has the required scopes and permissions to access and respond to messages in the desired channels.
+- If the node doesn't seem to be triggering, verify that messages are being sent in the configured channel and that the spell is deployed and running.

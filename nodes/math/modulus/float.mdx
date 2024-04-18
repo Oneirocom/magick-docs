@@ -1,0 +1,122 @@
+---
+title: "Float"
+---
+
+# MOD (math/modulus/float)
+
+The MOD node calculates the modulus (remainder) of dividing the first input by the second input. It operates on floating-point numbers.
+
+## Inputs
+
+1. `a` (float, default: 0): The dividend, or the number to be divided.
+2. `b` (float, default: 0): The divisor, or the number to divide by.
+
+## Outputs
+
+1. `result` (float): The remainder after dividing `a` by `b`.
+
+## Configuration
+
+This node has no configuration options.
+
+## Usage
+
+1. Connect a node providing the dividend (number to be divided) to the `a` input.
+2. Connect a node providing the divisor (number to divide by) to the `b` input.
+3. The `result` output will emit the remainder after dividing `a` by `b`.
+
+## Example
+
+Consider a spell where you want to create a repeating color pattern based on the index of each item in a list. You can use the MOD node to get the remainder when dividing the index by the number of colors, ensuring the color index always stays within the valid range.
+
+```json
+{
+  "nodes": [
+    {
+      "type": "list/generate",
+      "id": "1",
+      "configuration": {
+        "count": 10
+      },
+      "outputs": {
+        "list": "2.list"
+      }
+    },
+    {
+      "type": "list/map",
+      "id": "2",
+      "inputs": {
+        "list": "1.list"
+      },
+      "outputs": {
+        "list": "OUT"
+      },
+      "spells": {
+        "spell": {
+          "nodes": [
+            {
+              "type": "list/index",
+              "id": "2.1",
+              "outputs": {
+                "index": "2.2.a"
+              }
+            },
+            {
+              "type": "math/modulus/float",
+              "id": "2.2",
+              "inputs": {
+                "a": "2.1.index",
+                "b": 3
+              },
+              "outputs": {
+                "result": "2.3.index"
+              }
+            },
+            {
+              "type": "list/get",
+              "id": "2.3",
+              "inputs": {
+                "list": [
+                  "red",
+                  "green", 
+                  "blue"
+                ],
+                "index": "2.2.result"
+              },
+              "outputs": {
+                "item": "2.OUT"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "outputs": {
+    "colors": "2.list"
+  }
+}
+```
+
+In this example:
+1. The `list/generate` node creates a list of 10 items. 
+2. The `list/map` spell runs for each item.
+3. Inside the map spell, the `list/index` node provides the current item index.
+4. The MOD node calculates the remainder of dividing the index by 3 (the number of colors).
+5. The `list/get` node uses the remainder as the index to select the color from the `["red", "green", "blue"]` list.
+6. The map spell outputs the selected color for each item.
+
+The final output will be a list of 10 colors, repeating the red, green, blue pattern:
+```json
+["red", "green", "blue", "red", "green", "blue", "red", "green", "blue", "red"]
+```
+
+## Best Practices
+
+- Ensure the divisor (`b` input) is not zero, as division by zero is undefined. You may want to add a `is/null` check or a `default/float` node to handle this case gracefully.
+- Keep in mind the MOD node works with floats. If you need integer modulus, round the inputs first or use the `math/modulus/integer` node instead.
+
+## Common Issues
+
+- If the MOD node receives a null or non-numeric input, it will output null. Handle these cases with type checking, default values, or error handling as needed.
+- Remember

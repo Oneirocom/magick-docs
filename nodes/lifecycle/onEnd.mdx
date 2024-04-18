@@ -1,0 +1,51 @@
+---
+title: "On End"
+---
+
+# On End
+
+The On End node is a lifecycle event node that triggers when a spell has finished executing. It is useful for performing cleanup tasks, logging final results, or triggering other actions that should occur after a spell has completed.
+
+## Inputs
+
+The On End node does not have any inputs.
+
+## Outputs
+
+- `flow` (flow): The output flow that is triggered when the spell ends. Connect this to other nodes to perform actions after the spell finishes.
+
+## Configuration
+
+The On End node does not have any configuration options.
+
+## Usage
+
+1. Add an On End node to your spell.
+2. Connect the `flow` output to other nodes that should be executed when the spell finishes.
+3. The connected nodes will be triggered automatically when the spell execution reaches its end.
+
+## Example
+
+Here's an example of how to use the On End node in a spell:
+
+```
+1. Start Spell
+2. (Your main spell logic goes here)
+3. On End
+4. Log Message ("Spell execution completed.")
+```
+
+In this example, the On End node is placed after the main spell logic. When the spell finishes executing, the On End node triggers and sends a flow to the connected Log Message node, which logs "Spell execution completed."
+
+## Best Practices
+
+- Use the On End node to perform any necessary cleanup tasks, such as closing database connections, releasing resources, or resetting variables.
+- Log important information or final results using the On End node for easier debugging and monitoring.
+- Keep the actions triggered by the On End node lightweight and quick to execute, as they will delay the final completion of the spell.
+
+## Common Issues
+
+- Ensure that the nodes connected to the On End node do not have any long-running or blocking operations, as this can prevent the spell from finishing promptly.
+- Be cautious when using the On End node to trigger other spells or external services, as it may lead to unexpected behavior or infinite loops if not designed properly.
+
+By using the On End node, you can easily add actions that should be performed when a spell finishes executing, making your spells more organized, maintainable, and efficient.

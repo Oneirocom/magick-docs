@@ -1,0 +1,82 @@
+---
+title: "Float"
+---
+
+# Math Negate Float
+
+The Math Negate Float node performs a simple negation operation on a floating-point number. It takes a single float input and outputs the negated value.
+
+## Inputs
+
+1. `a` (float, default: 0): The input floating-point number to be negated.
+
+## Outputs
+
+1. `result` (float): The negated value of the input.
+
+## Configuration
+
+This node has no additional configuration options.
+
+## Usage
+
+To use the Math Negate Float node:
+
+1. Add the Math Negate Float node to your spell.
+2. Connect a node that outputs a floating-point number to the `a` input of the Math Negate Float node.
+3. The negated value will be available at the `result` output.
+
+## Example
+
+Here's a simple example spell that demonstrates the usage of the Math Negate Float node:
+
+```json
+{
+  "nodes": [
+    {
+      "type": "input/float",
+      "id": "1",
+      "configuration": {
+        "value": 42.5
+      },
+      "outputs": {
+        "output": "2.a"
+      }
+    },
+    {
+      "type": "math/negate/float",
+      "id": "2",
+      "inputs": {
+        "a": "1.output"
+      },
+      "outputs": {
+        "result": "3.input"
+      }
+    },
+    {
+      "type": "output/float",
+      "id": "3",
+      "inputs": {
+        "input": "2.result"
+      }
+    }
+  ]
+}
+```
+
+In this example:
+1. The `input/float` node (ID: 1) provides a floating-point value of 42.5.
+2. The `math/negate/float` node (ID: 2) takes the value from node 1 and negates it.
+3. The `output/float` node (ID: 3) receives the negated value from node 2 and outputs it.
+
+The final output of this spell will be -42.5.
+
+## Best Practices
+
+- Ensure that the input to the Math Negate Float node is a valid floating-point number. Connecting nodes with incompatible types may lead to errors.
+
+## Common Issues
+
+- No known common issues for this node. It performs a straightforward negation operation on floating-point numbers.
+
+The Math Negate Float node is a simple utility node for negating floating-point values. It can be useful in various mathematical and data processing spells where negation is required.

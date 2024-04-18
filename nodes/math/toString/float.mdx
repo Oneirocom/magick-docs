@@ -1,0 +1,45 @@
+---
+title: "Float"
+---
+
+# To String (Float)
+
+The To String (Float) node in Magick converts a floating-point number to its string representation. This node is useful when you need to display or log a float value as text, or when working with nodes that expect string inputs.
+
+## Inputs
+
+1. `a` (float, default: 0): The floating-point number to be converted to a string.
+
+## Outputs
+
+1. `result` (string): The string representation of the input floating-point number.
+
+## Configuration
+
+This node has no additional configuration options.
+
+## Usage
+
+To use the To String (Float) node:
+
+1. Add the To String (Float) node to your spell.
+2. Connect the floating-point number you want to convert to the `a` input of the node.
+3. The `result` output will provide the string representation of the input number, which you can then connect to other nodes as needed.
+
+## Example
+
+Here's a simple example demonstrating how to use the To String (Float) node in a Magick spell:
+
+1. Create a new spell and add a Constant node. Set its value to a floating-point number, e.g., 3.14159.
+2. Add a To String (Float) node to the spell and connect the output of the Constant node to the `a` input of the To String (Float) node.
+3. Add a Debug Print node and connect the `result` output of the To String (Float) node to the input of the Debug Print node.
+4. Run the spell. The Debug Print node will output the string representation of the floating-point number, in this case, "3.14159".
+
+## Best Practices and Tips
+
+- Use the To String (Float) node whenever you need to convert a floating-point number to a string for display, logging, or compatibility with other nodes that expect string inputs.
+- Keep in mind that the string representation of a float may vary depending on the number of decimal places and the specific floating-point value.
+
+## Common Issues
+
+There are no common issues or gotchas specific to the To String (Float) node. As long as you provide a valid floating-point number as input, the node will function as expected.

@@ -1,0 +1,64 @@
+---
+title: "Object"
+---
+
+# Path
+
+The Path node in Magick allows you to search for and extract values from a nested object using a dot-notation path string. It's a powerful utility for working with complex data structures in your spells.
+
+## Inputs
+
+1. `pathToSearch` (string, required): The path to search for in the object, using dot-notation (e.g., "user.address.city"). 
+2. `obj` (object, required): The object to search.
+
+## Outputs
+
+1. `result` (object): The value found at the specified path in the object. If the path is not found, the output will be undefined.
+
+## Configuration
+
+This node has no additional configuration options.
+
+## Usage
+
+1. Connect an object to the `obj` input. This is the object you want to search.
+2. Specify the path you want to search for in the `pathToSearch` input, using dot-notation. For example, if you want to find the city in `{ user: { address: { city: "New York" } } }`, you would use the path "user.address.city".
+3. The value found at the specified path will be output from the `result` output. If the path is not found, the output will be undefined.
+
+## Example
+
+Let's say you have a spell that fetches user data from an API, and you want to extract the user's city. You could use the Path node like this:
+
+1. Use an HTTP Request node to fetch the user data and connect its output to the `obj` input of the Path node.
+2. Set the `pathToSearch` input to "user.address.city".
+3. Connect the `result` output to a Text node to display the city.
+
+Here's what the spell might look like:
+
+```
+HTTP Request
+URL: https://api.example.com/user/123
+Method: GET
+Output: {{user}}
+
+Path
+pathToSearch: user.address.city
+obj: {{user}}
+Output: {{city}}
+
+Text
+text: The user lives in {{city}}
+```
+
+In this example, the HTTP Request node fetches the user data, which is then passed to the Path node. The Path node extracts the city from the user object using the path "user.address.city". Finally, the Text node displays a message with the user's city.
+
+## Best Practices
+
+- Always double-check your path string to ensure it matches the structure of your object exactly.
+- If you're not sure about the structure of your object, use a Debug node to log it to the console so you can inspect it.
+- Remember that the path is case-sensitive.
+
+## Common Issues
+
+- If the path is not found in the object, the `result` output will be undefined. Make sure to handle this case in your spell if necessary.
+- Be careful not to confuse the dot-notation used in the `pathToSearch` input with the Magick templating syntax, which also uses double curly braces `{{ }}`.

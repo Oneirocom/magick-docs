@@ -1,0 +1,50 @@
+---
+title: "Float"
+---
+
+# Random Float
+
+The Random Float node generates a random floating-point number between 0 and 1. It is useful when you need an unpredictable value in your spell, such as for adding variability, making decisions, or creating unique outputs.
+
+## Inputs
+
+This node has no inputs.
+
+## Outputs
+
+1. `result` (float): The randomly generated floating-point number between 0 and 1.
+
+## Configuration
+
+This node has no configuration options.
+
+## Usage
+
+To use the Random Float node:
+
+1. Add the Random Float node to your spell.
+2. Connect the `result` output to the input of another node that expects a floating-point value.
+3. Run the spell. Each time the Random Float node is triggered, it will generate a new random number.
+
+## Example
+
+Here's an example of how you might use the Random Float node in a spell:
+
+```
+1. Add a Random Float node.
+2. Add a Math/Multiply node and set its configuration value to 100.
+3. Connect the `result` output of the Random Float node to the `a` input of the Math/Multiply node.
+4. Connect the `result` output of the Math/Multiply node to the input of a Debug Print node.
+5. Run the spell.
+```
+
+In this example, the Random Float node generates a random number between 0 and 1. This is then multiplied by 100 using the Math/Multiply node, resulting in a random number between 0 and 100. The Debug Print node will output this random number each time the spell is run.
+
+## Best Practices
+
+- Use the Random Float node when you need a random floating-point value in the range [0, 1). If you need a random integer or a number in a different range, consider using the Random Integer node or combining the Random Float node with math nodes.
+- Keep in mind that the Random Float node generates a new value every time it is triggered. If you want to use the same random value multiple times, store it in a variable.
+
+## Common Issues
+
+There are no common issues specific to the Random Float node. However, remember that because it generates random values, the output of your spell may be different each time it runs, which could lead to unexpected behavior if not accounted for.

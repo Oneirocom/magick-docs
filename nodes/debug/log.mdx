@@ -1,0 +1,70 @@
+---
+title: "Log"
+---
+
+# Debug Log
+
+The Debug Log node allows you to log messages to the console for debugging and troubleshooting purposes within your Magick spell. It provides an easy way to inspect the flow of data and monitor the execution of your spell at specific points.
+
+## Inputs
+
+- `flow` (required): The input flow that triggers the Debug Log node to execute.
+- `text` (optional): The message or value to be logged. This can be a static string or a dynamic value from a previous node. Default is an empty string.
+- `severity` (optional): The severity level of the log message. Choices include:
+  - `verbose`: Detailed information for in-depth debugging.
+  - `info` (default): General information about the spell's execution.
+  - `warning`: Non-critical issues or unexpected behavior.
+  - `error`: Critical errors or failures in the spell's execution.
+
+## Outputs
+
+- `flow`: The output flow that allows the spell to continue executing after the Debug Log node.
+
+## Configuration
+
+The Debug Log node does not have any additional configuration options.
+
+## Usage
+
+1. Add the Debug Log node to your spell at the desired location.
+2. Connect the input `flow` to the output of the previous node that you want to log after.
+3. (Optional) Set the `text` input to the message or value you want to log. This can be a static string or a dynamic value from a previous node.
+4. (Optional) Choose the desired `severity` level for the log message.
+5. Connect the output `flow` to the next node in your spell.
+
+When the spell is executed, the Debug Log node will log the specified message or value to the console, along with the chosen severity level.
+
+## Example
+
+Here's an example of how to use the Debug Log node in a spell:
+
+```markdown
+1. Start
+2. HTTP Request
+   - URL: "https://api.example.com/data"
+3. Debug Log
+   - text: "Response received:"
+   - severity: "info"
+4. JSON Parse
+   - json: (output from HTTP Request)
+5. Debug Log
+   - text: (output from JSON Parse)
+   - severity: "verbose"
+6. End
+```
+
+In this example, the Debug Log node is used twice:
+1. After the HTTP Request node to log a message indicating that a response has been received, with a severity of "info".
+2. After the JSON Parse node to log the parsed JSON data, with a severity of "verbose" for detailed debugging.
+
+## Best Practices
+
+- Use meaningful and descriptive messages for the `text` input to make your logs easier to understand.
+- Choose the appropriate `severity` level based on the importance and context of the log message.
+- Remove or disable Debug Log nodes when they are no longer needed to avoid cluttering the console output.
+- Be mindful of logging sensitive or confidential information, as log messages may be visible to others.
+
+## Common Issues
+
+- Forgetting to connect the `flow` output of the Debug Log node to the next node in the spell can cause the spell execution to stop at that point.
+- Logging large or complex data structures may make the console output difficult to read. Consider using the `verbose` severity level for detailed logging.

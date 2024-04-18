@@ -1,0 +1,65 @@
+---
+title: "Create"
+---
+
+# Object Create
+
+The Object Create node allows you to create a new JavaScript object in your Magick spell. It's a fundamental node for working with data in a structured format.
+
+## Inputs
+
+- `flow` (required): The input flow that triggers the creation of the new object.
+
+## Outputs
+
+- `flow`: The output flow after the object has been created, allowing you to chain further actions.
+- `object`: The newly created JavaScript object.
+
+## Configuration
+
+- `hiddenProperties`: An array of property names that should be hidden from the node's configuration interface. By default, this includes `["hiddenProperties", "valueTypes", "valueTypeOptions"]`.
+- `socketValues`: An array specifying the types of values that can be added as properties to the object. The default value is `["string", "array", "boolean", "integer"]`.
+- `socketInputs`: An array where you can define the names and types of the object's properties. Each array element should be an object with `name` and `valueType` properties.
+
+## Usage
+
+1. Add the Object Create node to your spell.
+2. Connect the input `flow` to the desired trigger or previous node's output.
+3. In the node's configuration panel, click the "+" button to add properties to the object.
+4. For each property, enter a name and select a type from the dropdown (string, array, boolean, or integer).
+5. Enter the desired values for each property.
+6. Connect the `object` output to other nodes that need to use the created object.
+7. Connect the `flow` output to the next action you want to perform after the object is created.
+
+## Example
+
+Here's an example of how to use the Object Create node to create a user object:
+
+1. Add an Object Create node to your spell.
+2. Configure the node with the following properties:
+   - `name` (string): "John Doe"
+   - `age` (integer): 30
+   - `email` (string): "john@example.com"
+   - `subscribed` (boolean): true
+3. Connect the `object` output to a Debug node to log the created user object.
+4. Run the spell and check the debug output to see the created object:
+   ```json
+   {
+     "name": "John Doe",
+     "age": 30,
+     "email": "john@example.com",
+     "subscribed": true
+   }
+   ```
+
+## Best Practices
+
+- Use meaningful names for your object properties to keep your spell easy to understand.
+- Be mindful of the property types you choose. Make sure they match the expected data format.
+- If you have many properties, consider breaking them down into smaller, more focused objects to improve readability and maintainability.
+
+## Common Issues
+
+- Forgetting to connect the `flow` input can prevent the object from being created.
+- Incorrect property types can lead to unexpected behavior when using the object in other nodes.
+- If you don't see your desired property type in the dropdown, make sure it's included in the `socketValues` configuration array.

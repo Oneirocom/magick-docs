@@ -1,0 +1,49 @@
+---
+title: "For Loop"
+---
+
+# For Loop
+
+The For Loop node allows you to iterate over a range of integers, executing a set of nodes for each value in the range. It's useful when you need to repeat a series of actions a specific number of times.
+
+## Inputs
+
+- `flow` (required): The entry point for the loop. Connect this to the node that should run before the loop begins.
+- `startIndex` (optional): The integer value at which the loop should begin. Default is 0.
+- `endIndex` (optional): The integer value at which the loop should end (inclusive). Default is 0.
+
+## Outputs
+
+- `loopBody`: Connect this to the first node inside the loop. These nodes will execute once for each value in the range.
+- `index`: Outputs the current integer value in the range on each iteration.
+- `completed`: The exit point for the loop. Connect this to the node that should run after the loop finishes.
+
+## Configuration
+
+This node has no additional configuration options.
+
+## Example Usage
+
+Here's an example of how to use the For Loop node to sum the numbers from 1 to 10:
+
+1. Add a For Loop node to your spell.
+2. Connect a Trigger or other entry point node to the `flow` input.
+3. Set the `startIndex` to 1 and the `endIndex` to 10.
+4. Add an Add node inside the loop and connect the For Loop's `loopBody` output to it. 
+5. Connect the For Loop's `index` output to one of the Add node's inputs.
+6. Connect the Add node's output to a variable to accumulate the sum.
+7. Connect the Add node's output back to its own second input. This will cause each iteration to add the current index to the running total.
+8. Connect the For Loop's `completed` output to any nodes that should run after the loop finishes.
+
+When the spell runs, it will loop through the numbers 1 to 10, adding each to the running total. After the loop, the variable node will contain the sum 55.
+
+## Best Practices
+
+- Be mindful of off-by-one errors. The loop is inclusive of both `startIndex` and `endIndex`. 
+- Avoid infinite loops. Make sure your `endIndex` is reachable from your `startIndex` based on the logic inside your loop.
+- If you need to loop through an array rather than a range of numbers, consider using the For Each node instead.
+
+## Common Issues
+
+- Forgetting to connect the `completed` output can cause your spell to hang after the loop finishes. Always make sure your loop has an exit path.
+- Connecting a node's output directly to its own input without an accumulator variable will overwrite the value on each iteration instead of accumulating. Use a variable node to store running totals or other accumulated state.

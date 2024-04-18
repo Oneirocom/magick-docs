@@ -1,0 +1,66 @@
+---
+title: "3"
+---
+
+# Concat
+
+The Concat node combines three input arrays into a single output array in the order the inputs are provided.
+
+## Inputs
+
+1. `a` (array): The first array to concatenate. Default value is an empty array.
+2. `b` (array): The second array to concatenate. Default value is an empty array. 
+3. `c` (array): The third array to concatenate. Default value is an empty array.
+
+## Outputs
+
+1. `result` (array): The array resulting from concatenating the `a`, `b`, and `c` input arrays in order.
+
+## Configuration
+
+This node has no configuration options.
+
+## Usage
+
+To use the Concat node:
+
+1. Add the Concat node to your spell.
+2. Connect arrays to the `a`, `b`, and `c` input ports as desired. Any or all of the inputs can be left empty.
+3. The concatenated array will be output from the `result` port.
+
+## Example
+
+Let's say you have three separate arrays with names, job titles, and departments in your company directory:
+
+```json
+names = ["Alice", "Bob", "Carol"]
+titles = ["Software Engineer", "Product Manager", "UX Designer"] 
+departments = ["Engineering", "Product", "Design"]
+```
+
+Connecting these to the `a`, `b`, and `c` inputs of the Concat node will output:
+
+```json
+result = [
+  "Alice",
+  "Bob", 
+  "Carol",
+  "Software Engineer",
+  "Product Manager",
+  "UX Designer",
+  "Engineering",
+  "Product",
+  "Design"
+]
+```
+
+## Best Practices
+
+- The order of the concatenated arrays will match the order of the inputs. Put the arrays in the desired sequence.
+- It's not required to connect arrays to all three inputs. Any empty inputs will simply be ignored.
+- The input arrays don't need to be the same length. The output will contain all elements from each.
+
+## Common Pitfalls
+
+- Be cautious of accidentally duplicating data if the same array is connected to multiple inputs.
+- Note that this node does not do any sort of merging of the arrays. The output is a simple concatenation.

@@ -1,0 +1,69 @@
+---
+title: "On Message"
+---
+
+# On Message
+
+The On Message node is an event node that triggers when a new message is received in a connected chat or messaging system. It allows you to capture and process incoming messages, enabling the creation of interactive conversational experiences.
+
+## Inputs
+
+This node has no inputs.
+
+## Outputs
+
+- `flow` (flow): The flow output allows you to chain additional nodes to handle the message event.
+- `content` (string): The content of the received message as a string value.
+- `event` (object): The complete event object containing metadata about the received message.
+
+## Configuration
+
+- `hiddenProperties` (array, default: `["hiddenProperties", "eventState"]`): Specifies the properties to be hidden from the event object in the node's UI.
+- `eventState` (array, default: `[]`): Defines the event state properties to be stored and passed to subsequent nodes.
+- `eventStateProperties` (array, default: `["connector", "client", "channel", "agentId", "sender"]`): Specifies the properties to be included in the event state.
+
+## Usage
+
+1. Add an On Message node to your spell.
+2. Connect the node to a chat or messaging system using the appropriate connector node (e.g., Slack Connector, Discord Connector).
+3. Configure the node by specifying the desired event state properties and any properties you want to hide from the UI.
+4. Connect the `flow` output to other nodes to process the received message and perform desired actions.
+5. Deploy your spell and start receiving and handling incoming messages.
+
+## Example
+
+Here's an example of how to use the On Message node in a spell:
+
+```markdown
+1. Slack Connector
+2. On Message
+   - eventStateProperties: ["channel", "sender"]
+3. If
+   - condition: `{{content}} == "hello"`
+4. Send Message
+   - channel: `{{event.channel}}`
+   - message: "Hello, {{event.sender}}! How can I assist you today?"
+5. End If
+```
+
+In this example:
+1. The Slack Connector node establishes a connection to a Slack workspace.
+2. The On Message node is triggered whenever a new message is received in the connected Slack channel.
+3. The If node checks if the received message content is equal to "hello".
+4. If the condition is true, the Send Message node sends a personalized response back to the same Slack channel, addressing the sender by name.
+5. The End If node marks the end of the conditional block.
+
+## Best Practices
+
+- Use the On Message node to create interactive conversational experiences by responding to user messages.
+- Customize the event state properties to include only the necessary information for your use case.
+- Chain additional nodes after the On Message node to process the message content and perform desired actions.
+- Handle different message patterns or commands using conditional nodes (e.g., If, Switch) to create branching conversation flows.
+
+## Common Issues
+
+- Ensure that the connected chat or messaging system is properly authenticated and has the necessary permissions to receive messages.
+- Be mindful of the rate limits and usage restrictions imposed by the messaging platform to avoid exceeding them.
+- Handle potential errors gracefully and provide appropriate fallback responses to maintain a smooth user experience.
+
+By leveraging the On Message node, you can create engaging conversational experiences and build interactive chatbots or messaging applications with Magick.

@@ -1,0 +1,69 @@
+---
+title: "Multi Gate"
+---
+
+# MultiGate
+
+The MultiGate node is a powerful flow control node that allows you to direct the flow of execution in your spell to multiple outputs based on certain conditions. It's particularly useful when you need to perform different actions or computations in parallel or conditionally.
+
+## Inputs
+
+1. `flow` (flow): The main input flow that triggers the MultiGate node.
+2. `reset` (flow): An optional reset flow that, when triggered, resets the MultiGate to its initial state.
+3. `loop` (boolean, default: false): When set to true, the MultiGate will continuously loop through its outputs.
+4. `startIndex` (integer, default: 0): Specifies the initial output index when the node is first triggered.
+
+## Outputs
+
+1. `1` (flow): The first output flow.
+2. `2` (flow): The second output flow.
+3. `3` (flow): The third output flow.
+
+## Configuration
+
+The MultiGate node does not have any additional configuration options.
+
+## Usage
+
+1. Connect the main flow that you want to control to the `flow` input of the MultiGate node.
+2. Optionally, connect a reset flow to the `reset` input if you want to be able to reset the MultiGate to its initial state.
+3. Set the `loop` input to true if you want the MultiGate to continuously loop through its outputs.
+4. Specify the `startIndex` input to control which output the MultiGate should activate first (0-indexed).
+5. Connect the desired actions or nodes to the corresponding outputs of the MultiGate.
+
+When the `flow` input is triggered, the MultiGate will activate one of its outputs based on the current internal state. If `loop` is true, it will keep cycling through the outputs on each subsequent trigger. The `reset` input allows you to reset the internal state back to the `startIndex`.
+
+## Example
+
+Here's an example of how you might use the MultiGate node in a spell:
+
+```
+1. HTTP Request
+   URL: https://api.example.com/data
+   
+   |
+   | flow
+   v
+   
+2. MultiGate
+   loop: true
+   
+   1 |              2 |             3 |
+     v                v               v 
+     
+3. Process Data   4. Log Result   5. Update Dashboard
+```
+
+In this example, the MultiGate node is used to control the flow after an HTTP request. The first output is connected to a node that processes the returned data. The second output logs the result somewhere. The third output sends the data to update a dashboard. With `loop` set to true, the MultiGate will alternate between these three actions on each subsequent request.
+
+## Best Practices
+
+- Use the MultiGate judiciously to keep your spell organized and maintainable. Too many branching paths can become confusing.
+- Provide clear labels or comments for each output to indicate its purpose.
+- Consider using variables or the `reset` input to control the MultiGate's behavior dynamically during the spell's execution.
+
+## Common Pitfalls
+
+- Remember that the MultiGate's outputs are 0-indexed when setting the `startIndex`. An index out of bounds will cause an error.
+- If `loop` is false and the MultiGate reaches the end of its outputs, subsequent triggers to the `flow` input will have no effect until it is reset.
+- Be cautious when using the MultiGate inside a loop to avoid infinite execution cycles.

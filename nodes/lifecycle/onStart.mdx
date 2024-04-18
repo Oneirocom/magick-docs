@@ -1,0 +1,52 @@
+---
+title: "On Start"
+---
+
+# On Start
+
+The On Start node is a special event node that triggers automatically when a spell starts running. It is commonly used to initialize variables, set up initial state, or perform any other setup tasks that need to happen before the main logic of the spell begins.
+
+## Inputs
+
+The On Start node does not have any inputs.
+
+## Outputs
+
+- `flow` (flow): The output flow that is triggered when the spell starts. Connect this to the next node in your spell to begin the main logic.
+
+## Configuration
+
+The On Start node does not have any configuration options.
+
+## Usage
+
+To use the On Start node:
+
+1. Drag an On Start node onto your spell canvas.
+2. Connect the `flow` output to the input of the first node in your spell's main logic.
+3. If needed, add any additional nodes between On Start and your main logic to perform initialization or setup tasks.
+
+## Example
+
+Here's a simple example spell that uses an On Start node to log a message when the spell begins:
+
+```
+On Start
+|
+Debug Log ("Spell is starting!")
+|
+// Rest of spell logic...
+```
+
+In this example, when the spell starts running, the On Start node will trigger, passing flow to the Debug Log node which will log the message "Spell is starting!" to the console. The flow then continues to the rest of the spell's logic.
+
+## Best Practices
+
+- Use the On Start node for any setup or initialization tasks that need to happen before your spell's main logic runs.
+- Keep your On Start logic concise. If you have complex setup requirements, consider moving that logic into a separate subspell and invoking it from On Start.
+- Remember that On Start will run every time the spell is started, so ensure any setup tasks are idempotent (can be run multiple times without changing the result).
+
+## Common Issues
+
+- Forgetting to connect the On Start node's `flow` output can cause your spell to never start running. Always ensure On Start is connected to your spell's logic.
+- If your spell seems to start but never makes progress, double check that your On Start logic is completing successfully and passing flow to the next node.

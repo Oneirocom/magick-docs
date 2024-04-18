@@ -1,0 +1,67 @@
+---
+title: "Destructure"
+---
+
+# Destructure
+
+The Destructure node in Magick allows you to break down a complex object into its individual properties, making them accessible as separate outputs. This is useful when you need to extract specific values from an object to use in other parts of your spell.
+
+## Inputs
+
+- `object` (object, default: `{}`): The object to destructure.
+
+## Outputs
+
+The Destructure node dynamically generates outputs based on the properties of the input object. Each property will have its own output socket, named after the property key.
+
+## Configuration
+
+- `hiddenProperties` (array, default: `["hiddenProperties", "textEditorOptions", "textEditorData", "socketValues"]`): An array of property names to exclude from the destructuring process. These properties will not generate output sockets.
+- `socketValues` (array, default: `["string", "array", "boolean", "integer", "object"]`): An array of value types that should generate output sockets. Properties with types not included in this array will be ignored.
+- `socketOutputs` (array, default: `[]`): An array of property names that should always generate output sockets, regardless of their type.
+
+## Usage
+
+1. Connect an object to the `object` input of the Destructure node.
+2. Configure the `hiddenProperties`, `socketValues`, and `socketOutputs` options as needed.
+3. The node will generate output sockets for each property of the input object, excluding those specified in `hiddenProperties`.
+4. Connect the output sockets to other nodes in your spell to use the individual property values.
+
+## Example
+
+Suppose you have an object representing a user:
+
+```json
+{
+  "name": "John Doe",
+  "age": 30,
+  "email": "john@example.com",
+  "active": true,
+  "preferences": {
+    "theme": "dark",
+    "notifications": false
+  }
+}
+```
+
+By connecting this object to the Destructure node, you can access the individual properties:
+
+- `name` (string): "John Doe"
+- `age` (integer): 30
+- `email` (string): "john@example.com"
+- `active` (boolean): true
+- `preferences` (object): `{ "theme": "dark", "notifications": false }`
+
+You can then use these values in other nodes, for example, displaying the user's name in a text component or using the email to send a message.
+
+## Best Practices
+
+- Use the Destructure node when you need to access individual properties of an object in your spell.
+- Configure the `hiddenProperties` option to exclude any properties that you don't need to avoid cluttering your workspace.
+- Adjust the `socketValues` option to control which types of properties generate output sockets.
+- Use the `socketOutputs` option to ensure that specific properties always have output sockets, even if their type is not included in `socketValues`.
+
+## Gotchas
+
+- Be aware that the Destructure node creates output sockets dynamically based on the input object. If the object structure changes, the output sockets will change accordingly.
+- Nested objects will generate a single output socket of type "object". To access nested properties, you may need to use multiple Destructure nodes in sequence.

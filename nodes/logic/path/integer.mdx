@@ -1,0 +1,67 @@
+---
+title: "Integer"
+---
+
+# Path (Integer)
+
+The Path (Integer) node in Magick allows you to extract an integer value from a nested object using a dot-notated path string. This is useful when you need to retrieve a specific numeric property from a complex data structure.
+
+## Inputs
+
+1. `pathToSearch` (string, required): The dot-notated path string specifying the location of the integer value to extract from the input object. For example, `"person.age"` would retrieve the `age` property from the `person` object.
+
+2. `obj` (object, required): The input object from which to extract the integer value.
+
+## Outputs
+
+1. `result` (integer): The extracted integer value from the specified path in the input object. If the path is not found or the value is not an integer, the output will be `undefined`.
+
+## Configuration
+
+This node has no additional configuration options.
+
+## Usage
+
+1. Connect an object to the `obj` input of the Path (Integer) node. This is the object from which you want to extract an integer value.
+
+2. Set the `pathToSearch` input to a dot-notated string representing the path to the desired integer value within the input object.
+
+3. The extracted integer value will be available at the `result` output. You can then connect this output to other nodes in your spell as needed.
+
+## Example
+
+Suppose you have an object representing a person with the following structure:
+
+```json
+{
+  "name": "John Doe",
+  "age": 30,
+  "address": {
+    "street": "123 Main St",
+    "city": "Anytown",
+    "zip": 12345
+  }
+}
+```
+
+To extract the `age` value from this object, you would:
+
+1. Connect the person object to the `obj` input of the Path (Integer) node.
+2. Set the `pathToSearch` input to `"age"`.
+3. The `result` output will contain the integer value `30`.
+
+To extract the `zip` value from the nested `address` object, you would:
+
+1. Connect the person object to the `obj` input of the Path (Integer) node.
+2. Set the `pathToSearch` input to `"address.zip"`.
+3. The `result` output will contain the integer value `12345`.
+
+## Best Practices
+
+- Make sure the `pathToSearch` string correctly matches the structure of your input object. Double-check the property names and nesting.
+- If the specified path doesn't exist in the input object, the `result` output will be `undefined`. Handle this case appropriately in your spell's logic.
+
+## Common Issues
+
+- If the value at the specified path is not an integer, the `result` output will be `undefined`. Ensure that the path points to an integer value.
+- Be careful with the casing and spelling of property names in the `pathToSearch` string. JavaScript is case-sensitive, so `"age"` and `"Age"` are considered different properties.

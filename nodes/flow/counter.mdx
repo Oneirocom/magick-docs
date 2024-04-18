@@ -1,0 +1,59 @@
+---
+title: "Counter"
+---
+
+# Counter
+
+The Counter node is a utility node that keeps track of the number of times it has been triggered and outputs the current count. It's useful for scenarios where you need to count the occurrences of a specific event or condition within your spell.
+
+## Inputs
+
+1. `flow` (flow): The main input that triggers the counter. Each time a signal is received on this input, the counter increments by 1.
+2. `reset` (flow): An optional input to reset the counter back to 0. When a signal is received on this input, the count is reset.
+
+## Outputs
+
+1. `flow` (flow): The main output that forwards the incoming flow signal. This allows you to chain the Counter node with other nodes in your spell.
+2. `count` (integer): Outputs the current count value each time the node is triggered.
+
+## Configuration
+
+The Counter node does not have any configuration options.
+
+## Usage
+
+1. Add a Counter node to your spell.
+2. Connect the `flow` input to the node or event that you want to count.
+3. Optionally, connect the `reset` input to a node or event that should reset the counter when triggered.
+4. Connect the `count` output to any node that needs to receive the current count value, such as a Number or Debug node.
+5. The `flow` output can be connected to subsequent nodes in your spell to continue the flow execution.
+
+## Example
+
+Here's a simple example of how you can use the Counter node in a spell:
+
+```markdown
+1. Trigger [Button] 
+2. Counter
+3. Debug [Number]
+```
+
+In this example:
+1. The Button node sends a flow signal each time the button is clicked.
+2. The Counter node receives the flow signal from the Button, increments its internal count, and outputs the updated count value.
+3. The Debug node receives the count value and displays it for monitoring or debugging purposes.
+
+You can extend this example by adding a second Button node connected to the `reset` input of the Counter node. When clicked, this button will reset the counter back to 0.
+
+## Best Practices
+
+- Use the Counter node when you need to keep track of the number of times a specific event or condition occurs in your spell.
+- Connect the `reset` input if you need a way to manually reset the count back to 0 at any point in your spell's execution.
+- Remember that the Counter node only increments when it receives a flow signal on its `flow` input. Make sure to connect it appropriately based on your counting requirements.
+
+## Common Issues
+
+- If the count value is not updating as expected, double-check that the `flow` input is properly connected to the node or event you want to count.
+- If the count is not resetting when expected, ensure that the `reset` input is correctly connected to the desired reset trigger.
+
+By using the Counter node, you can easily keep track of the number of occurrences of specific events or conditions within your Magick spells, enabling you to build more dynamic and interactive experiences.

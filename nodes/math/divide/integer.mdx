@@ -1,0 +1,47 @@
+---
+title: "Integer"
+---
+
+# Integer Divide
+
+The Integer Divide node performs integer division on two input integers, `a` and `b`, and outputs the result as an integer.
+
+## Inputs
+
+- `a` (integer): The dividend, or the number being divided. Default value is 0.
+- `b` (integer): The divisor, or the number to divide by. Default value is 0.
+
+## Outputs
+
+- `result` (integer): The result of the integer division operation.
+
+## Configuration
+
+This node has no additional configuration options.
+
+## Usage
+
+1. Add the Integer Divide node to your spell.
+2. Connect integer values to the `a` and `b` input ports. These can be hardcoded values or outputs from other nodes.
+3. The node will output the result of `a` divided by `b`, rounded down to the nearest integer, on the `result` output port.
+4. Connect the `result` output to the input of another node or use it as the final output of your spell.
+
+## Example
+
+Suppose you have a spell that calculates the number of boxes needed to pack a certain number of items, given the number of items per box. You can use the Integer Divide node to perform this calculation.
+
+1. Create an Integer input node to represent the total number of items, for example, 50.
+2. Create another Integer input node to represent the number of items per box, for example, 6.
+3. Add the Integer Divide node to your spell.
+4. Connect the total items node to the `a` input and the items per box node to the `b` input of the Integer Divide node.
+5. The Integer Divide node will output the number of boxes needed, in this case, 8 (since 50 ÷ 6 = 8 with a remainder of 2, which is discarded in integer division).
+
+## Best Practices
+
+- Ensure that the `b` input is not zero, as division by zero is undefined and will result in an error. You can use a Conditional node to check for this case and handle it appropriately.
+- Keep in mind that integer division discards any remainder. If you need the remainder, consider using the Modulo node in conjunction with Integer Divide.
+
+## Common Issues
+
+- If the result of the division is unexpectedly zero, double-check that the `b` input is not zero, as this will cause the node to output zero regardless of the value of `a`.
+- Remember that integer division always rounds down, even if the remainder is greater than 0.5. If you need to round to the nearest integer, consider adding 0.5 to the result and then using the Round node.

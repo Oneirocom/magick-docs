@@ -1,0 +1,61 @@
+---
+title: "Array"
+---
+
+# Array
+
+The Array node in Magick is a fundamental logic node that allows you to work with arrays of data. It provides a way to store, manipulate, and pass collections of values between nodes in your spell.
+
+## Inputs
+
+1. `a` (array, default: empty array): The input array to be processed or passed through the node.
+
+## Outputs
+
+1. `result` (array): The output array, which is the same as the input array.
+
+## Configuration
+
+This node does not have any configuration options.
+
+## Usage
+
+To use the Array node, simply connect an array of data to its `a` input. The node will output the same array on its `result` output, which can then be connected to other nodes in your spell.
+
+This node is particularly useful when you need to:
+
+- Store a collection of values to be processed later in your spell
+- Pass an array of data between different parts of your spell
+- Manipulate arrays using other array-specific nodes, such as Filter or Map
+
+## Example
+
+Here's a simple example of how you might use the Array node in a spell:
+
+1. Create an Array node and connect a Set Variable node to its `a` input. Configure the Set Variable node to create an array with the values `[1, 2, 3, 4, 5]`.
+
+2. Connect the `result` output of the Array node to a Map node. Configure the Map node to multiply each value in the array by 2.
+
+3. Connect the output of the Map node to a Debug node to log the resulting array.
+
+When you run this spell, you should see the following output in the debug console:
+
+```
+[2, 4, 6, 8, 10]
+```
+
+This demonstrates how the Array node can be used to store and pass arrays of data between different operations in your spell.
+
+## Best Practices
+
+- Use descriptive variable names for your arrays to make your spell more readable and maintainable.
+- Be mindful of the data types stored in your arrays. While Magick is flexible, some nodes may expect specific data types, so ensure consistency to avoid errors.
+
+## Common Issues
+
+There are no common issues specific to the Array node, as it simply passes the input array to its output without any additional processing. However, be aware of the following when working with arrays in your spells:
+
+- Ensure that the data you're passing into an Array node is actually an array. Passing other data types may lead to unexpected behavior.
+- Pay attention to the order of elements in your arrays, as this can impact how other nodes process the data.
+
+By understanding and utilizing the Array node effectively, you can create powerful and flexible spells that manipulate collections of data with ease.

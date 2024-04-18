@@ -1,0 +1,91 @@
+---
+title: "Array"
+---
+
+# Logic Equal Array
+
+Compares two arrays and returns true if they are equal, false otherwise.
+
+## Inputs
+
+1. `a` (Array): The first array to compare.
+   - Type: Array
+   - Default value: Empty array `[]`
+
+2. `b` (Array): The second array to compare.
+   - Type: Array
+   - Default value: Empty array `[]`
+
+## Outputs
+
+1. `result` (Boolean): True if the input arrays are equal, false otherwise.
+
+## Configuration
+
+This node has no configuration options.
+
+## Usage
+
+The Logic Equal Array node is used to compare two arrays and determine if they are equal. It returns true if the arrays have the same length and all elements at corresponding indices are equal. Otherwise, it returns false.
+
+To use this node:
+
+1. Connect the first array to the `a` input.
+2. Connect the second array to the `b` input.
+3. The `result` output will emit true if the arrays are equal, false otherwise.
+
+## Example
+
+Here's an example of how to use the Logic Equal Array node in a spell:
+
+```json
+{
+  "nodes": [
+    {
+      "type": "data/constant/array",
+      "id": "array1",
+      "configuration": {
+        "value": [1, 2, 3]
+      }
+    },
+    {
+      "type": "data/constant/array", 
+      "id": "array2",
+      "configuration": {
+        "value": [1, 2, 3]
+      }
+    },
+    {
+      "type": "logic/equal/array",
+      "id": "equalArrays",
+      "inputs": {
+        "a": "array1.value",
+        "b": "array2.value"
+      }
+    },
+    {
+      "type": "io/log",
+      "id": "log",
+      "inputs": {
+        "message": "equalArrays.result"
+      }
+    }
+  ]
+}
+```
+
+In this example:
+1. Two constant arrays `[1, 2, 3]` are defined using Data Constant Array nodes.
+2. The arrays are connected to the `a` and `b` inputs of the Logic Equal Array node.
+3. The `result` output of the Logic Equal Array node is connected to an IO Log node.
+4. When the spell is run, it will log `true` to the console since the input arrays are equal.
+
+## Best Practices
+
+- Ensure that the arrays you are comparing are of the same data type. Comparing arrays of different types may lead to unexpected results.
+- Keep in mind that the order of elements matters. `[1, 2, 3]` is not equal to `[3, 2, 1]`.
+
+## Common Issues
+
+- Comparing large arrays can be computationally expensive. If performance is a concern, consider alternative approaches like hashing the arrays first.
+- Be cautious when comparing arrays that contain floating-point numbers, as minor precision differences can cause equality checks to fail.

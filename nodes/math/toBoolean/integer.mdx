@@ -1,0 +1,95 @@
+---
+title: "Integer"
+---
+
+# To Boolean (Integer)
+
+The To Boolean (Integer) node converts an integer value to a boolean value. It returns `true` if the input is non-zero, and `false` if the input is zero.
+
+## Inputs
+
+- `a` (integer, default: 0): The integer value to convert to a boolean.
+
+## Outputs
+
+- `result` (boolean): The boolean result of the conversion.
+
+## Configuration
+
+This node has no configuration options.
+
+## Usage
+
+1. Connect an integer value to the `a` input of the To Boolean (Integer) node.
+2. The node will output `true` if the input value is non-zero, and `false` if the input value is zero.
+3. Connect the `result` output to the desired destination node.
+
+## Example
+
+Here's an example of how to use the To Boolean (Integer) node in a spell:
+
+```json
+{
+  "nodes": [
+    {
+      "type": "data/constant/integer",
+      "id": "1",
+      "configuration": {
+        "value": 42
+      },
+      "outputs": {
+        "output": "2.a"
+      }
+    },
+    {
+      "type": "math/toBoolean/integer",
+      "id": "2",
+      "inputs": {
+        "a": "1.output"
+      },
+      "outputs": {
+        "result": "3.condition"
+      }
+    },
+    {
+      "type": "logic/branch",
+      "id": "3",
+      "inputs": {
+        "condition": "2.result"
+      },
+      "outputs": {
+        "true": "4.input",
+        "false": "5.input"
+      }
+    },
+    {
+      "type": "data/log",
+      "id": "4",
+      "inputs": {
+        "input": "3.true"
+      }
+    },
+    {
+      "type": "data/log",
+      "id": "5",
+      "inputs": {
+        "input": "3.false"
+      }
+    }
+  ]
+}
+```
+
+In this example:
+1. The constant integer node (1) outputs the value 42.
+2. The To Boolean (Integer) node (2) converts the integer value to a boolean, which will be `true` since 42 is non-zero.
+3. The branch node (3) uses the boolean result to conditionally route the flow to either the "true" log node (4) or the "false" log node (5).
+
+## Best Practices
+
+- Use the To Boolean (Integer) node when you need to convert an integer value to a boolean for use in conditional logic or other boolean operations.
+- Keep in mind that any non-zero integer will result in `true`, while only zero will result in `false`.
+
+## Common Issues
+
+- Ensure that the input to the To Boolean (Integer) node is actually an integer. Connecting a non-integer value may lead to unexpected behavior or errors.

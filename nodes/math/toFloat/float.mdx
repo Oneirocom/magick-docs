@@ -1,0 +1,60 @@
+---
+title: "Float"
+---
+
+# To Float
+
+The To Float node converts a value to a floating-point number.
+
+## Inputs
+
+- `a` (float): The value to convert to a float. Default value is 0.
+
+## Outputs
+
+- `result` (float): The input value converted to a floating-point number.
+
+## Configuration
+
+This node has no configuration options.
+
+## Usage
+
+1. Connect the value you want to convert to the `a` input of the To Float node.
+2. The converted floating-point value will be available at the `result` output.
+
+## Example
+
+Let's say you have a spell that retrieves a number as a string from an API response, but you need to perform mathematical operations on this value. You can use the To Float node to convert the string to a float before using it in your calculations.
+
+```
+1. API Request
+   URL: https://example.com/data
+   
+2. Get 'price' from response
+   Input: API Request output
+   Property: price
+   
+3. To Float
+   a: Get 'price' output
+   
+4. Multiply
+   a: To Float output
+   b: 1.1
+   
+5. Format Number
+   number: Multiply output
+   decimals: 2
+```
+
+In this example, the 'price' value from the API response is extracted as a string using the Get node. The To Float node then converts this string value to a floating-point number. The converted value is multiplied by 1.1 and finally formatted with 2 decimal places for display.
+
+## Best Practices
+
+- Make sure the input value can be parsed as a floating-point number. Non-numeric strings will result in a NaN (Not a Number) output.
+- Be aware of the precision limitations of floating-point numbers when performing calculations.
+
+## Common Issues
+
+- Passing a non-numeric string to the To Float node will result in a NaN output. Make sure to validate or sanitize input data if necessary.
+- Floating-point arithmetic can sometimes produce unexpected results due to precision limitations. If you need exact decimal calculations, consider using a decimal library or rounding results as needed.

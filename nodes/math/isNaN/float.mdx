@@ -1,0 +1,94 @@
+---
+title: "Float"
+---
+
+# isNaN (float)
+
+The `isNaN` node checks if the input value is not a number (NaN). It returns `true` if the input is NaN, and `false` otherwise.
+
+## Inputs
+
+1. `a` (float, default: 0): The value to check for NaN.
+
+## Outputs
+
+1. `result` (boolean): `true` if the input is NaN, `false` otherwise.
+
+## Configuration
+
+This node has no configuration options.
+
+## Usage
+
+The `isNaN` node is useful when you need to determine if a value is not a valid number. This can be helpful in data validation, error handling, or conditional logic based on the presence of NaN values.
+
+To use the `isNaN` node:
+
+1. Connect the value you want to check for NaN to the `a` input port.
+2. The `result` output port will emit `true` if the input is NaN, and `false` otherwise.
+3. Use the `result` output in your spell logic as needed, such as in a branch node or as a condition for further processing.
+
+## Example
+
+Here's an example of how to use the `isNaN` node in a spell:
+
+```json
+{
+  "nodes": [
+    {
+      "type": "input/number",
+      "id": "1",
+      "data": {
+        "name": "input",
+        "label": "Input Number"
+      },
+      "outputs": {
+        "output": { "connections": [{ "node": "2", "input": "a" }] }
+      }
+    },
+    {
+      "type": "math/isNaN/float",
+      "id": "2",
+      "outputs": {
+        "result": { "connections": [{ "node": "3", "input": "condition" }] }
+      }
+    },
+    {
+      "type": "logic/branch",
+      "id": "3",
+      "inputs": {
+        "true": { "connections": [{ "node": "4", "input": "message" }] },
+        "false": { "connections": [{ "node": "5", "input": "message" }] }
+      }
+    },
+    {
+      "type": "output/text",
+      "id": "4",
+      "data": { "text": "The input is NaN" }
+    },
+    {
+      "type": "output/text", 
+      "id": "5",
+      "data": { "text": "The input is a valid number" }
+    }
+  ]
+}
+```
+
+In this example:
+
+1. The `input/number` node allows the user to enter a number.
+2. The `isNaN` node checks if the input number is NaN.
+3. The `logic/branch` node uses the `result` from `isNaN` to conditionally route the flow.
+4. If the input is NaN, the "The input is NaN" message is displayed.
+5. If the input is a valid number, the "The input is a valid number" message is displayed.
+
+## Best Practices
+
+- Use the `isNaN` node when you need to explicitly check for NaN values, such as in data validation or error handling scenarios.
+- Remember that `isNaN` only checks for NaN values, not other types of invalid numbers like infinity or undefined.
+
+## Common Issues
+
+- Ensure that the input to the `isNaN` node is of type `float`. Connecting a non-float value may lead to unexpected behavior.
+- Keep in mind that `isNaN` will return `false` for non-numeric values like strings or booleans. If you need to check for these cases, consider using additional type-checking nodes.

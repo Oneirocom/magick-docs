@@ -1,0 +1,49 @@
+---
+title: "Now"
+---
+
+# Now
+
+The Now node retrieves the current Unix timestamp, which is the number of seconds that have elapsed since January 1, 1970 (midnight UTC/GMT). This node is useful when you need to work with the current time in your spells.
+
+## Inputs
+
+This node does not have any inputs.
+
+## Outputs
+
+1. `result` (float): The current Unix timestamp as a floating-point number.
+
+## Configuration
+
+This node does not have any configuration options.
+
+## Usage
+
+To use the Now node, simply add it to your spell. It will output the current Unix timestamp whenever the spell is run.
+
+### Example
+
+Here's an example of how you might use the Now node in a spell:
+
+1. Add a Now node to your spell.
+2. Connect the `result` output of the Now node to the input of another node that requires a timestamp, such as a node that formats the timestamp into a human-readable date and time.
+
+```mermaid
+graph LR
+A[Now] --> B[Format Timestamp]
+B --> C[Display Text]
+```
+
+In this example, the Now node provides the current timestamp to a Format Timestamp node, which converts it into a readable date and time string. The formatted string is then displayed using a Display Text node.
+
+## Best Practices
+
+- Use the Now node whenever you need the current time in your spell, such as for logging, data analysis, or creating time-based triggers.
+- Keep in mind that the Unix timestamp is always in UTC/GMT. If you need to display the time in a different time zone, you'll need to use additional nodes to handle the time zone conversion.
+
+## Common Issues
+
+There are no common issues or gotchas to watch out for with the Now node, as it simply retrieves the current timestamp without any additional configuration or dependencies.
+
+By using the Now node, you can easily incorporate the current time into your Magick spells, enabling a wide range of time-based functionality and analysis.

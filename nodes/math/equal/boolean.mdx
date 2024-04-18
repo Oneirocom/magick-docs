@@ -1,0 +1,84 @@
+---
+title: "Boolean"
+---
+
+# Equal (Boolean)
+
+The Equal (Boolean) node compares two boolean values and outputs `true` if they are equal, or `false` if they are not equal.
+
+## Inputs
+
+- `a` (boolean): The first boolean value to compare. Defaults to `false`.
+- `b` (boolean): The second boolean value to compare. Defaults to `false`.
+
+## Outputs
+
+- `result` (boolean): The result of the equality comparison. Will be `true` if `a` and `b` are equal, or `false` if they are not equal.
+
+## Configuration
+
+This node has no configuration options.
+
+## Usage
+
+1. Connect the first boolean value to compare to the `a` input.
+2. Connect the second boolean value to compare to the `b` input.
+3. The `result` output will emit `true` if `a` and `b` are equal, or `false` if they are not equal.
+
+## Example
+
+Here's an example of how to use the Equal (Boolean) node in a spell:
+
+```json
+{
+  "nodes": [
+    {
+      "type": "boolean/constant",
+      "id": "1",
+      "configuration": {
+        "value": true
+      },
+      "outputs": {
+        "output": "2.a"
+      }
+    },
+    {
+      "type": "boolean/constant", 
+      "id": "3",
+      "configuration": {
+        "value": false
+      },
+      "outputs": {
+        "output": "2.b"
+      }
+    },
+    {
+      "type": "math/equal/boolean",
+      "id": "2",
+      "outputs": {
+        "result": "4.input"
+      }
+    },
+    {
+      "type": "io/output/boolean",
+      "id": "4"
+    }
+  ]
+}
+```
+
+In this example:
+1. Node 1 is a Boolean Constant node that outputs `true`. 
+2. Node 3 is another Boolean Constant node that outputs `false`.
+3. The outputs of nodes 1 and 3 are connected to the `a` and `b` inputs of the Equal (Boolean) node (node 2).
+4. The Equal (Boolean) node compares the two input values. Since `true` is not equal to `false`, it outputs `false`.
+5. The output of the Equal (Boolean) node is sent to an Output (Boolean) node (node 4), which would make the result available outside the spell.
+
+## Best Practices
+
+- Make sure to connect both the `a` and `b` inputs. If either is left disconnected, it will default to `false`.
+- The Equal (Boolean) node is useful whenever you need to test if two boolean values are the same. This is often used in conditional logic or data validation.
+
+## Common Issues
+
+There are no common issues specific to this node. As long as both inputs are properly connected to boolean values, it will function as expected.

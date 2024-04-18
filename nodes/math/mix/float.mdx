@@ -1,0 +1,65 @@
+---
+title: "Float"
+---
+
+# MIX (math/mix/float)
+
+The MIX node performs a linear interpolation between two float values based on a third float value. It allows you to smoothly blend between two numbers by specifying a mix factor.
+
+## Inputs
+
+1. `a` (float, default: 0): The first value to interpolate between.
+2. `b` (float, default: 0): The second value to interpolate between.
+3. `c` (float, default: 0): The mix factor that determines the interpolation amount. A value of 0 returns `a`, a value of 1 returns `b`, and values in between return a linear blend of `a` and `b`.
+
+## Outputs
+
+1. `result` (float): The interpolated value between `a` and `b` based on the mix factor `c`.
+
+## Configuration
+
+This node has no additional configuration options.
+
+## Usage
+
+To use the MIX node:
+
+1. Connect the first value you want to interpolate between to the `a` input.
+2. Connect the second value you want to interpolate between to the `b` input.
+3. Connect a value between 0 and 1 to the `c` input to control the interpolation amount.
+4. The interpolated result will be available at the `result` output.
+
+## Example
+
+Here's an example of how you might use the MIX node in a spell:
+
+```
+input1 [Slider] (min: 0, max: 100, default: 25)
+input2 [Slider] (min: 0, max: 100, default: 75) 
+mixFactor [Slider] (min: 0, max: 1, step: 0.01, default: 0.5)
+
+mix [MIX]
+  a = input1
+  b = input2
+  c = mixFactor
+
+output [Debug]
+  value = mix.result
+```
+
+In this example:
+- `input1` and `input2` are two sliders that provide the values to interpolate between. 
+- `mixFactor` is a slider that controls the interpolation amount.
+- The MIX node interpolates between `input1` and `input2` based on `mixFactor`.
+- The interpolated result is displayed using a Debug node.
+
+## Best Practices
+
+- Ensure the `c` input is always between 0 and 1. Values outside this range will be clamped.
+- MIX is useful for creating smooth transitions, fades, and blends between two values.
+- You can chain multiple MIX nodes together to interpolate between more than two values.
+
+## Common Issues
+
+- If the interpolated result is not what you expect, double check that the `c` input is between 0 and 1.
+- Be aware that the MIX node does a simple linear interpolation. For other types of interpolation, like easing functions, you'll need to use different math nodes.

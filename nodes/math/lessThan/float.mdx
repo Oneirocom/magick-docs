@@ -1,0 +1,53 @@
+---
+title: "Float"
+---
+
+# Math Less Than (Float)
+
+The Math Less Than (Float) node compares two floating-point numbers and outputs a boolean value indicating whether the first input is less than the second.
+
+## Inputs
+
+1. `a` (float, default: 0): The first number to compare.
+2. `b` (float, default: 0): The second number to compare.
+
+## Outputs
+
+1. `result` (boolean): True if `a` is less than `b`, false otherwise.
+
+## Configuration
+
+This node has no additional configuration options.
+
+## Usage
+
+To use the Math Less Than (Float) node:
+
+1. Add the node to your spell.
+2. Connect the `a` input to the first floating-point number you want to compare.
+3. Connect the `b` input to the second floating-point number you want to compare.
+4. The `result` output will emit a boolean value indicating whether `a` is less than `b`.
+
+## Example
+
+Suppose you have a spell that needs to check if a user's age is less than 18. You can use the Math Less Than (Float) node to perform this comparison:
+
+```
+1. Create an Input Node for the user's age and connect it to the `a` input of the Math Less Than (Float) node.
+2. Create a Constant Node with the value 18 and connect it to the `b` input.
+3. Connect the `result` output to a Decision Node to handle the case when the user is under 18.
+```
+
+In this example, if the user's age is less than 18, the `result` output will be true, and the spell can take appropriate action based on the Decision Node's configuration.
+
+## Best Practices
+
+- Ensure that both inputs are valid floating-point numbers to avoid unexpected behavior.
+- Remember that the comparison is strictly "less than". If you need to check for "less than or equal to", consider using a combination of the Math Less Than (Float) and Math Equal (Float) nodes.
+
+## Common Issues
+
+- If either input is not a valid floating-point number, the node may produce unexpected results or errors. Always ensure that the inputs are of the correct type.
+- Be cautious when comparing floating-point numbers for equality, as rounding errors may cause slight differences in values. Consider using a small tolerance value when checking for equality.
+
+By using the Math Less Than (Float) node, you can easily compare two floating-point numbers and make decisions based on the result, enabling you to create more dynamic and responsive spells in Magick.

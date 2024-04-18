@@ -1,0 +1,53 @@
+---
+title: "Integer"
+---
+
+# Add Integers
+
+The Add Integers node performs addition on two input integers and outputs the result. It's a fundamental math operation useful in a wide variety of spells that require arithmetic.
+
+## Inputs
+
+- `a` (integer): The first integer to add. Default value is 0.
+- `b` (integer): The second integer to add. Default value is 0.
+
+## Outputs
+
+- `result` (integer): The sum of the two input integers.
+
+## Configuration
+
+This node has no configuration options.
+
+## Usage
+
+1. Add the Add Integers node to your spell.
+2. Connect integer values to the `a` and `b` input ports. These can be hard-coded constants or outputs from other nodes.
+3. The node will output the sum of `a` and `b` from its `result` port. 
+4. Connect the `result` to the input of another node or use it as the spell's final output.
+
+## Example
+
+Here's a simple spell that adds two hard-coded integers and prints the result:
+
+```
+1. Add Integers node:
+   - a: 10
+   - b: 25
+   - result -> connected to Print's value input
+2. Print node:
+   - value: connected from Add Integers' result 
+```
+
+When this spell is run, it will add 10 and 25 using the Add Integers node, and print the result (35) using the Print node.
+
+## Tips
+
+- If you leave an input disconnected, it will use its default value of 0.
+- You can chain multiple Add Integers nodes together to sum more than two numbers.
+- Remember that this node works only with integers. For floating-point math, use the Add Floats node instead.
+
+## Troubleshooting
+
+- Ensure that the values connected to `a` and `b` are actually integers. Connecting a string or other data type will cause an error.
+- If the result is larger than the maximum integer value your system supports, it will overflow. Use the Add Bigints node for arbitrarily large numbers.

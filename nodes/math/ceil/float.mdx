@@ -1,0 +1,54 @@
+---
+title: "Float"
+---
+
+# CEIL
+
+The CEIL node rounds a floating-point number up to the nearest integer. It takes a single float input and outputs the smallest integer greater than or equal to the input value.
+
+## Inputs
+
+1. `a` (float, default: 0): The floating-point number to be rounded up.
+
+## Outputs
+
+1. `result` (float): The smallest integer greater than or equal to the input value.
+
+## Configuration
+
+This node has no configuration options.
+
+## Usage
+
+To use the CEIL node:
+
+1. Add the CEIL node to your spell.
+2. Connect a node that outputs a floating-point number to the `a` input of the CEIL node.
+3. The `result` output will contain the input value rounded up to the nearest integer.
+
+## Example
+
+Suppose you have a spell that calculates the average price of a list of products. You want to display the average price rounded up to the nearest whole number. Here's how you can use the CEIL node to achieve this:
+
+1. Use a node to calculate the average price of the products, outputting a floating-point number (e.g., 14.3).
+2. Connect the output of the average price node to the `a` input of the CEIL node.
+3. The `result` output of the CEIL node will contain the average price rounded up to the nearest integer (e.g., 15).
+
+Here's an example of how the CEIL node might be used in a spell:
+
+```mermaid
+graph LR
+A[Get Product Prices] --> B[Calculate Average Price]
+B --> C{CEIL}
+C --> D[Display Average Price]
+```
+
+## Best Practices
+
+- Use the CEIL node when you need to round a floating-point number up to the nearest integer, such as when displaying prices or quantities that must be whole numbers.
+- Keep in mind that the CEIL node always rounds up, even if the decimal part is less than 0.5. If you want to round to the nearest integer, consider using the ROUND node instead.
+
+## Common Issues
+
+- Make sure the input to the CEIL node is a floating-point number. If you provide an integer input, the output will be the same as the input, since integers are already rounded.
+- Be aware that rounding up can sometimes result in unexpected behavior, especially when dealing with negative numbers. For example, `ceil(-1.5)` will output `-1`, not `-2`.

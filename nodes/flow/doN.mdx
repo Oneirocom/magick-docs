@@ -1,0 +1,56 @@
+---
+title: "Do N"
+---
+
+# DoN
+
+The DoN node is a flow control node that allows you to execute a portion of your spell a specified number of times. It's useful when you need to repeat a series of actions or process data in a loop.
+
+## Inputs
+
+- `flow` (required): The input flow that triggers the node to start executing.
+- `n` (optional, default: 1): An integer specifying the number of times the node should execute its output flow. 
+- `reset` (optional): A flow input that, when triggered, resets the internal count back to zero.
+
+## Outputs
+
+- `flow`: The output flow that is triggered `n` times when the node is executed.
+- `count`: An integer output providing the current iteration count, starting from 0 and going up to `n-1`.
+
+## Configuration
+
+This node has no additional configuration options.
+
+## Usage
+
+1. Connect the `flow` input to the node that should trigger the DoN node to start.
+2. Set the `n` input to the desired number of iterations. If left unconnected, it will default to 1.
+3. Optionally, connect a flow to the `reset` input if you want to be able to reset the count back to zero mid-execution.
+4. Connect the `flow` output to the first node you want to execute in the loop.
+5. Continue your spell from the `flow` output, connecting as many nodes as you need.
+6. If needed, you can use the `count` output to access the current iteration number.
+
+## Example 
+
+Here's an example spell that uses the DoN node to send a "Hello" message to a Slack channel 5 times:
+
+```
+Trigger -> DoN (n=5) -> HTTP Request (POST https://slack.com/api/chat.postMessage, payload={"text":"Hello"}) -> Debug
+```
+
+In this example:
+1. The spell is triggered by some external event 
+2. The DoN node is configured to execute 5 times
+3. Each iteration, it triggers the HTTP Request node which sends a POST to Slack's chat.postMessage API with the payload `{"text":"Hello"}`
+4. The Debug node at the end could be used to log the `count` output from DoN if desired
+
+## Best Practices
+
+- Be mindful of how many iterations you specify, especially if making API calls or database writes in the loop. Too many iterations could lead to rate limiting or excess resource usage.
+- Make use of the `reset` input in conjunction with error handling to re-run the loop if a failure occurs partway through.
+- You can nest DoN nodes to create more complex looping behavior, but be careful not to create infinite loops!
+
+## Common Issues
+
+- Forgetting to connect the `n` input will cause DoN to only execute once by default. Double check your input if your loop isn't running as many times as expected.
+- If your spell seems stuck, double check that you aren't creating an infinite loop by having the `flow` output eventually cycle back to the `flow` input with no exit condition.

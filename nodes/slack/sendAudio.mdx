@@ -1,0 +1,50 @@
+---
+title: "Send Audio"
+---
+
+# Send Slack Audio
+
+The Send Slack Audio node allows you to send an audio file to a Slack channel or direct message within a Magick spell. This node is useful when you want to share audio content, such as voice messages, music clips, or sound effects, with your Slack workspace.
+
+## Inputs
+
+- `flow` (required): The input flow from the previous node in the spell.
+- `audioFile` (required): The audio file to be sent to Slack, provided as a buffer.
+
+## Outputs
+
+- `flow`: The output flow to be passed to the next node in the spell.
+
+## Configuration
+
+This node does not have any additional configuration options.
+
+## Usage
+
+1. Connect the `flow` output from the previous node to the `flow` input of the Send Slack Audio node.
+2. Connect the `audioFile` output from a node that provides an audio buffer (e.g., a Load Audio File node) to the `audioFile` input of the Send Slack Audio node.
+3. Configure your Slack API token and channel/user ID in the Magick app settings.
+4. Run the spell, and the audio file will be sent to the specified Slack channel or direct message.
+
+## Example
+
+Here's an example of how to use the Send Slack Audio node in a Magick spell:
+
+1. Use a Load Audio File node to load an audio file from your local machine or a URL.
+2. Connect the `buffer` output of the Load Audio File node to the `audioFile` input of the Send Slack Audio node.
+3. Connect the `flow` output of the previous node (e.g., a trigger node) to the `flow` input of the Send Slack Audio node.
+4. Configure your Slack API token and target channel/user ID in the Magick app settings.
+5. Run the spell, and the audio file will be sent to the specified Slack channel or direct message.
+
+## Best Practices
+
+- Ensure that the audio file is in a format supported by Slack (e.g., MP3, WAV, M4A, or OGG).
+- Be mindful of the audio file size, as Slack has a size limit for file uploads. If the file is too large, consider compressing it or using a different file format.
+- Double-check your Slack API token and target channel/user ID to avoid sending the audio file to the wrong place.
+
+## Common Issues
+
+- If the audio file fails to send, verify that your Slack API token is valid and has the necessary permissions to send files.
+- Make sure the `audioFile` input is properly connected to a node that provides an audio buffer. The Send Slack Audio node will not work with file paths or URLs directly.
+
+By using the Send Slack Audio node, you can easily incorporate audio content into your Slack communications, enhancing collaboration and engagement within your Magick spells.

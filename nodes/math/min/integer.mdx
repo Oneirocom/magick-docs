@@ -1,0 +1,48 @@
+---
+title: "Integer"
+---
+
+# MIN
+
+The MIN node is a utility node that takes two integer inputs and outputs the smaller of the two values. It's a simple yet powerful node that can be used in a variety of scenarios where you need to determine the minimum value between two integers.
+
+## Inputs
+
+1. `a` (integer, default: 0): The first integer value to compare.
+2. `b` (integer, default: 0): The second integer value to compare.
+
+## Outputs
+
+1. `result` (integer): The smaller of the two input values.
+
+## Configuration
+
+This node does not have any configuration options.
+
+## Usage
+
+To use the MIN node, simply connect two integer values to the `a` and `b` inputs. The node will output the smaller of the two values through the `result` output.
+
+This node is particularly useful when you need to make decisions based on the minimum value between two integers or when you want to limit a value to a certain range.
+
+## Example
+
+Let's say you have a spell that generates a random number between 1 and 100, but you want to ensure that the final output is never greater than 50. You can use the MIN node to achieve this:
+
+1. Connect the random number generator's output to the `a` input of the MIN node.
+2. Set the `b` input of the MIN node to the constant value 50.
+3. Connect the `result` output of the MIN node to the next node in your spell.
+
+Now, regardless of the random number generated, the output of the MIN node will never exceed 50.
+
+## Best Practices
+
+- Make sure to connect integer values to the `a` and `b` inputs. Connecting other data types may lead to unexpected behavior.
+- If you only need to compare one value against a constant, consider using the `b` input for the constant value to make your spell more readable.
+
+## Common Issues
+
+- If the MIN node is not outputting the expected result, double-check that the connected inputs are integers and not other data types.
+- Keep in mind that the MIN node only works with integers. If you need to find the minimum value between floating-point numbers or other data types, you'll need to use a different node or convert the values to integers first.
+
+By using the MIN node in your spells, you can easily determine the minimum value between two integers, helping you create more dynamic and responsive visual programs in Magick.

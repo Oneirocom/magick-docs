@@ -1,0 +1,52 @@
+---
+title: "Float"
+---
+
+# LN (Natural Logarithm)
+
+The LN node calculates the natural logarithm (base e) of a given float input. It is commonly used in mathematical and scientific calculations, especially when working with exponential growth or decay.
+
+## Inputs
+
+1. `a` (float, default: 0): The input value for which to calculate the natural logarithm.
+
+## Outputs
+
+1. `result` (float): The natural logarithm of the input value.
+
+## Configuration
+
+This node has no additional configuration options.
+
+## Usage
+
+To use the LN node:
+
+1. Connect a float value to the `a` input port. This represents the value for which you want to calculate the natural logarithm.
+2. The node will output the natural logarithm of the input value through the `result` output port.
+3. Connect the `result` output to the desired destination node(s) in your spell.
+
+## Example
+
+Suppose you have a spell that calculates the growth of a population over time using an exponential growth model. To determine the time required for the population to double, you can use the LN node in combination with other math nodes.
+
+Here's a simple example:
+
+1. Create a `Constant` node with a value of 2 to represent the doubling factor.
+2. Connect the `Constant` node to the `a` input of the LN node.
+3. Create a `Divide` node and connect the LN node's `result` output to the `a` input of the `Divide` node.
+4. Create another `Constant` node with the exponential growth rate and connect it to the `b` input of the `Divide` node.
+5. The output of the `Divide` node will give you the time required for the population to double, based on the exponential growth rate.
+
+## Best Practices
+
+- Ensure that the input value is positive, as the natural logarithm is only defined for positive real numbers.
+- Be aware that the LN node will return `-Infinity` for an input value of 0.
+- Consider using the LN node in combination with other math nodes to perform more complex calculations, such as those involving exponential growth or decay.
+
+## Common Issues
+
+- Attempting to calculate the natural logarithm of a negative number will result in a `NaN` (Not a Number) output. Make sure to validate or constrain input values to avoid this issue.
+- If the input value is extremely close to 0, the output may be a very large negative number. Handle such cases appropriately in your spell's logic.
+
+By understanding and utilizing the LN node effectively, you can perform natural logarithm calculations seamlessly within your Magick spells, enabling you to tackle a wide range of mathematical and scientific problems.

@@ -1,0 +1,51 @@
+---
+title: "Boolean"
+---
+
+# ∧ (Boolean AND)
+
+The ∧ (Boolean AND) node performs a logical AND operation on two boolean inputs and outputs the result. It returns `true` only if both input values are `true`, and `false` otherwise.
+
+## Inputs
+
+1. `a` (boolean): The first boolean value. Defaults to `false`.
+2. `b` (boolean): The second boolean value. Defaults to `false`.
+
+## Outputs
+
+1. `result` (boolean): The result of the logical AND operation on the two input values.
+
+## Configuration
+
+This node has no configuration options.
+
+## Usage
+
+To use the ∧ (Boolean AND) node:
+
+1. Add the node to your spell.
+2. Connect the desired boolean values to the `a` and `b` input ports.
+3. The `result` output port will emit `true` if both `a` and `b` are `true`, and `false` otherwise.
+
+## Example
+
+Suppose you have a spell that needs to check if a user is logged in and has admin privileges before granting access to a restricted area. You can use the ∧ (Boolean AND) node to combine the results of these two conditions.
+
+```
+[Is User Logged In?] --> a[∧]
+[Is User Admin?] ------> b[∧]result ---> [Grant Access?]
+```
+
+In this example, the ∧ node takes the boolean outputs from the "Is User Logged In?" and "Is User Admin?" nodes. If both conditions are `true`, the `result` will be `true`, and the "Grant Access?" node will receive this value to determine whether to allow the user into the restricted area.
+
+## Best Practices
+
+- Make sure to connect both input ports to boolean values before running the spell to avoid unexpected behavior.
+- Use the ∧ node when you need to check multiple conditions and only proceed if all of them are true.
+
+## Common Issues
+
+- If either of the input ports is not connected, the node will use the default value of `false`, which may lead to unintended results. Always double-check your connections.
+- Be aware that the ∧ node only outputs `true` when both inputs are `true`. If you need more complex logic, consider using a combination of other boolean nodes like ∨ (Boolean OR) or ¬ (Boolean NOT).
+
+By using the ∧ (Boolean AND) node, you can easily combine multiple boolean conditions in your spells and create more sophisticated decision-making logic.

@@ -1,0 +1,50 @@
+---
+title: "Branch"
+---
+
+# Branch
+
+The Branch node allows you to conditionally route the flow of your spell based on a boolean condition. It's a fundamental control flow node that enables you to create decision points and execute different paths depending on whether the condition evaluates to true or false.
+
+## Inputs
+
+- `flow` (required): The incoming flow that will be routed based on the condition.
+- `condition` (required): A boolean value that determines which output the flow will be routed to. Default value is `false`.
+
+## Outputs
+
+- `true`: The flow will be routed to this output if the `condition` input is `true`.
+- `false`: The flow will be routed to this output if the `condition` input is `false`.
+
+## Configuration
+
+This node has no additional configuration options.
+
+## Usage
+
+1. Connect the incoming flow to the `flow` input of the Branch node.
+2. Connect a boolean value representing your desired condition to the `condition` input. This can come from a variable, an expression, or the output of another node.
+3. Connect the `true` output to the node(s) you want to execute when the condition is true.
+4. Connect the `false` output to the node(s) you want to execute when the condition is false.
+5. The flow will be routed based on the value of the `condition` input at runtime.
+
+## Example
+
+Suppose you have a spell that processes a list of numbers and you want to perform different actions based on whether the list is empty or not. Here's how you could use the Branch node:
+
+1. Use a List node to define your list of numbers.
+2. Connect the List node to a "Is Empty" node to check if the list is empty.
+3. Connect the "Is Empty" node's boolean output to the `condition` input of a Branch node.
+4. If the list is empty (condition is true), connect the `true` output to a Log node with the message "The list is empty".
+5. If the list is not empty (condition is false), connect the `false` output to a "For Each" node to iterate over the list and perform some processing.
+
+## Best Practices
+
+- Keep your conditions simple and focused. If you find yourself needing complex nested conditions, consider breaking your spell into smaller, more manageable sub-spells.
+- Use descriptive labels for the `true` and `false` outputs to make your spell graph easier to read and understand.
+- Remember that the Branch node does not modify the flow itself, it only routes it. If you need to transform the data in the flow, use other nodes before or after the Branch.
+
+## Common Mistakes
+
+- Forgetting to connect both the `true` and `false` outputs. If you leave one unconnected, that branch will terminate and may lead to unexpected behavior.
+- Connecting non-boolean values to the `condition` input. Make sure the `condition` is always a boolean to avoid type mismatch errors.

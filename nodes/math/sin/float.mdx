@@ -1,0 +1,67 @@
+---
+title: "Float"
+---
+
+# SIN (math/sin/float)
+
+The SIN node calculates the sine of an input angle in radians and outputs the result as a float value between -1 and 1.
+
+## Inputs
+
+1. `a` (float, default: 0): The input angle in radians.
+
+## Outputs
+
+1. `result` (float): The sine of the input angle.
+
+## Configuration
+
+This node has no additional configuration options.
+
+## Usage
+
+To use the SIN node:
+
+1. Connect a float value representing an angle in radians to the `a` input port.
+2. The node will calculate the sine of the input angle and output the result via the `result` output port.
+
+## Example
+
+Here's an example of how to use the SIN node in a spell:
+
+```json
+{
+  "nodes": [
+    {
+      "type": "math/sin/float",
+      "id": "sinNode",
+      "inputs": {
+        "a": 1.5707963267948966
+      }
+    },
+    {
+      "type": "io/output/float",
+      "id": "outputNode",
+      "inputs": {
+        "value": "@sinNode.result"
+      }
+    }
+  ]
+}
+```
+
+In this example:
+1. The `sinNode` is a SIN node with its `a` input set to `1.5707963267948966` (π/2 radians, or 90 degrees).
+2. The `outputNode` is connected to the `result` output of the `sinNode`.
+
+When the spell is run, the SIN node will calculate the sine of π/2, which is approximately 1, and this value will be output by the `outputNode`.
+
+## Best Practices
+
+- Ensure that the input angle is in radians. If your angle is in degrees, convert it to radians before connecting it to the SIN node.
+- Keep in mind that the output of the SIN node will always be between -1 and 1, inclusive.
+
+## Common Issues
+
+- If the input angle is not in radians, the output will not be the expected value. Double-check that your input is in radians and convert from degrees if necessary.
+- No output or unexpected output may indicate that the input port is not properly connected. Verify that the `a` input port is connected to a valid float value.

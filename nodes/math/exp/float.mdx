@@ -1,0 +1,50 @@
+---
+title: "Float"
+---
+
+# EXP (Exponential)
+
+The EXP node in Magick calculates the exponential function (e^x) for a given input value. It is a fundamental mathematical operation used in various scenarios, such as modeling growth, decay, or scaling values exponentially.
+
+## Inputs
+
+- `a` (float, default: 0): The input value for which to calculate the exponential function.
+
+## Outputs
+
+- `result` (float): The exponential function value (e^a) for the given input.
+
+## Configuration
+
+This node does not have any additional configuration options.
+
+## Usage
+
+1. Connect a node that provides a float value to the `a` input of the EXP node.
+2. The EXP node will calculate the exponential function value (e^a) for the given input.
+3. The result will be available at the `result` output, which can be connected to other nodes for further processing.
+
+## Example
+
+Here's an example of how to use the EXP node in a Magick spell:
+
+```
+1. Create a Float node and set its value to 2.
+2. Connect the Float node to the `a` input of the EXP node.
+3. Connect the `result` output of the EXP node to a Display node.
+4. Run the spell.
+```
+
+The Display node will show the result of e^2, which is approximately 7.3891.
+
+## Best Practices
+
+- Be aware of the input range, as the exponential function can quickly produce very large values for relatively small inputs.
+- If you need to calculate the natural logarithm (the inverse of the exponential function), use the LOG node instead.
+
+## Common Issues
+
+- Make sure the input value is of the correct type (float). Connecting a non-float value may lead to unexpected results or errors.
+- Keep in mind that the exponential function grows rapidly, so be cautious when using large input values, as they may cause overflow or exceed the desired range.
+
+By using the EXP node in Magick, you can easily incorporate exponential scaling or growth into your spells, enabling you to create more complex and dynamic visual programming workflows.

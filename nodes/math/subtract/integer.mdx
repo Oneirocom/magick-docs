@@ -1,0 +1,50 @@
+---
+title: "Integer"
+---
+
+# Math Subtract Integer
+
+The Math Subtract Integer node performs subtraction on two input integers and outputs the result.
+
+## Inputs
+
+- `a` (integer): The first input integer. Default value is 0.
+- `b` (integer): The second input integer to subtract from `a`. Default value is 0.
+
+## Outputs
+
+- `result` (integer): The result of subtracting `b` from `a`.
+
+## Configuration
+
+This node has no additional configuration options.
+
+## Usage
+
+To use the Math Subtract Integer node:
+
+1. Add the Math Subtract Integer node to your spell.
+2. Connect integer values to the `a` and `b` input ports. If no values are provided, the default values of 0 will be used.
+3. The node will output the result of `a - b` on the `result` output port.
+4. Connect the `result` output to the input of another node or use it as the final output of your spell.
+
+## Example
+
+Here's an example of how to use the Math Subtract Integer node in a spell:
+
+```
+1. Add a Math Subtract Integer node.
+2. Connect the integer value 10 to the `a` input port.
+3. Connect the integer value 7 to the `b` input port.
+4. The node will output the value 3 (10 - 7) on the `result` output port.
+5. Connect the `result` output to a Display Value node to see the result.
+```
+
+## Best Practices
+
+- Ensure that the values connected to the `a` and `b` inputs are of type integer. Connecting other data types may cause unexpected behavior.
+- Remember that the order of subtraction matters. The node subtracts `b` from `a`, not the other way around.
+
+## Common Issues
+
+- If the result of the subtraction is outside the range of valid integer values, the output may be unexpected or cause an error. Be mindful of potential integer overflow when working with large values.

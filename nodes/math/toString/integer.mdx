@@ -1,0 +1,52 @@
+---
+title: "Integer"
+---
+
+# To String (Integer)
+
+The To String (Integer) node in Magick converts an integer input value to its string representation. This node is useful when you need to display or manipulate integer values as strings within your spell.
+
+## Inputs
+
+- `a` (integer, default: 0): The integer value to be converted to a string.
+
+## Outputs
+
+- `result` (string): The string representation of the input integer value.
+
+## Configuration
+
+This node does not have any configuration options.
+
+## Usage
+
+1. Connect the integer value you want to convert to the `a` input of the To String (Integer) node.
+2. The node will output the string representation of the input integer through its `result` output.
+3. Connect the `result` output to other nodes that expect a string input, such as a Text node for displaying the value or a Join node for concatenating with other strings.
+
+## Example
+
+Here's an example of how to use the To String (Integer) node in a Magick spell:
+
+1. Create an Integer node and set its value to 42.
+2. Connect the output of the Integer node to the `a` input of a To String (Integer) node.
+3. Create a Text node and connect the `result` output of the To String (Integer) node to the `text` input of the Text node.
+4. The Text node will now display the string "42".
+
+```mermaid
+graph LR
+A[Integer] -- 42 --> B[To String (Integer)]
+B -- "42" --> C[Text]
+```
+
+## Best Practices
+
+- Use the To String (Integer) node whenever you need to convert an integer value to a string for display or further manipulation.
+- Be aware that the resulting string will not include any formatting, such as comma separators for large numbers. If you need formatted output, consider using a Format String node instead.
+
+## Common Issues
+
+- Make sure the input to the To String (Integer) node is actually an integer value. Connecting a non-integer value may result in unexpected behavior or errors.
+- Keep in mind that the resulting string will not maintain any information about the original data type. If you need to convert the string back to an integer later, you'll need to use a Parse Integer node or similar.
+
+By using the To String (Integer) node, you can easily convert integer values to their string representations, enabling you to display or manipulate them as needed within your Magick spells.

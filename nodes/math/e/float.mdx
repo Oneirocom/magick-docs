@@ -1,0 +1,44 @@
+---
+title: "Float"
+---
+
+# Math E Float
+
+The Math E Float node is a simple utility node that outputs the mathematical constant e (Euler's number) as a floating point value. It requires no inputs and has no configuration options.
+
+## Outputs
+
+1. `result` (float): The mathematical constant e, which is approximately equal to 2.71828.
+
+## When to Use the Math E Float Node
+
+Use the Math E Float node whenever you need to access the value of e in your spell. This is commonly used in mathematical and scientific computations, such as:
+
+- Exponential functions and natural logarithms
+- Calculating compound interest or population growth
+- Modeling certain probability distributions
+
+## Example Usage
+
+Here's a simple example that demonstrates how to use the Math E Float node in a spell:
+
+1. Add a Math E Float node to your spell.
+2. Connect the `result` output to the input of another node that requires the value of e, such as a Math Power node.
+
+For instance, you could use the Math E Float node to calculate e raised to the power of 2:
+
+1. Add a Math E Float node and a Math Power node to your spell.
+2. Connect the `result` output of the Math E Float node to the `base` input of the Math Power node.
+3. Set the `exponent` input of the Math Power node to 2.
+4. The `result` output of the Math Power node will now contain the value of e^2, which is approximately 7.3891.
+
+## Best Practices and Tips
+
+- Remember that the Math E Float node always outputs the same constant value. There's no need to add multiple instances of this node to your spell.
+- If you need to use a rounded or truncated version of e, consider connecting the `result` output to a Math Round or Math Truncate node.
+
+## Common Issues
+
+There are no common issues or gotchas associated with the Math E Float node, as it simply outputs a constant value and has no configurable options. However, ensure that you're connecting the `result` output to the appropriate input of the downstream node in your spell.
+
+By providing quick access to the value of e, the Math E Float node helps streamline the creation of spells involving exponential functions, logarithms, and other mathematical operations. Its simplicity and reliability make it a handy addition to any spell creator's toolkit.

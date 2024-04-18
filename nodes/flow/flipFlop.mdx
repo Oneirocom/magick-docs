@@ -1,0 +1,49 @@
+---
+title: "Flip Flop"
+---
+
+# Flip Flop
+
+The Flip Flop node is a flow control node that alternates between two states - "on" and "off" - each time it receives a flow signal. It's useful for creating toggle switches, alternating between two actions, or tracking binary state in your spells.
+
+## Inputs
+
+- `flow` (flow): The incoming flow signal that triggers the state change.
+
+## Outputs
+
+- `on` (flow): Emits a flow signal when the node switches to the "on" state.
+- `off` (flow): Emits a flow signal when the node switches to the "off" state.
+- `isOn` (boolean): Outputs the current state of the node. `true` when in the "on" state, `false` when in the "off" state.
+
+## Configuration
+
+This node has no configuration options.
+
+## Usage
+
+1. Add a Flip Flop node to your spell.
+2. Connect a flow signal to the `flow` input. This could come from a button press, a trigger node, or any other node that emits a flow signal.
+3. Connect the `on` and `off` outputs to the nodes you want to trigger alternately with each incoming flow signal.
+4. If needed, connect the `isOn` output to a node that needs to know the current state, like a Boolean Filter or a Condition node.
+
+## Example
+
+Imagine you want to create a spell that toggles a light on and off with a button press. Here's how you could use the Flip Flop node:
+
+1. Add a Button Press node to detect the button press.
+2. Connect the Button Press node's `pressed` output to the Flip Flop node's `flow` input.
+3. Connect the Flip Flop node's `on` output to a Turn On Light node.
+4. Connect the Flip Flop node's `off` output to a Turn Off Light node.
+
+Now, each time the button is pressed, the Flip Flop node will alternate between its "on" and "off" states, turning the light on and off accordingly.
+
+## Best Practices
+
+- Use the Flip Flop node when you need to alternate between two actions or states with each incoming signal.
+- The Flip Flop node remembers its state even if the spell is stopped and restarted. Keep this in mind if your spell needs to always start in a particular state.
+
+## Common Issues
+
+- Make sure the incoming flow signal is properly connected to the `flow` input. The Flip Flop node won't change state without an incoming signal.
+- Remember that the Flip Flop node starts in the "off" state by default when the spell is first run. If you need it to start in the "on" state, you can use a Set Variable node to set `isOn` to `true` at the start of your spell.
