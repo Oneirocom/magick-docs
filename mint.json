@@ -50,12 +50,43 @@
   ],
   "navigation": [
     {
-      "group": "Get Started",
-      "pages": ["introduction", "quickstart"]
+      "group": "Introduction",
+      "pages": [
+        "introduction",
+        "features",
+        "key-components"
+      ]
+    },
+    {
+      "group": "Getting Started",
+      "pages": [
+        "getting-started/making-an-account",
+        "getting-started/creating-an-agent",
+        "getting-started/making-your-first-spell"
+      ]
+    },
+    {
+      "group": "Working with Magick",
+      "pages": [
+        "working-with-magick/overview-of-the-interface",
+        "working-with-magick/working-with-nodes",
+        "working-with-magick/what-is-a-spell"
+      ]
+    },
+    {
+      "group": "Plugins",
+      "pages": [
+        "plugins",
+        "plugins/discord",
+        "plugins/slack"
+      ]
     },
     {
       "group": "Nodes",
-      "pages": ["nodes/magick/generateText"]
+      "pages": [
+        "nodes",
+        "nodes/magick/generateText"
+      ]
     }
   ],
   "footerSocials": {
