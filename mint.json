@@ -2,28 +2,28 @@
   "$schema": "https://mintlify.com/schema.json",
   "name": "Magick Docs",
   "logo": {
-    "dark": "/logo/dark.svg",
-    "light": "/logo/light.svg"
+    "dark": "/logo/blue-wm.png",
+    "light": "/logo/blue-wm.png"
   },
   "favicon": "/favicon.svg",
   "colors": {
     "primary": "#1bc5eb",
-    "light": "#07C983",
-    "dark": "#0D9373",
+    "light": "#f2f2f2",
+    "dark": "#3b3b3b",
     "anchors": {
-      "from": "#0D9373",
-      "to": "#07C983"
+      "from": "#1bc5eb",
+      "to": "#1bc5eb"
     }
   },
   "topbarLinks": [
     {
       "name": "Support",
-      "url": "mailto:hello@magickml.com"
+      "url": "mailto:tech@magickml.com"
     }
   ],
   "topbarCtaButton": {
-    "name": "Dashboard",
-    "url": "https://dashboard.mintlify.com"
+    "name": "Try Now",
+    "url": "https://beta.magickml.com/"
   },
   "tabs": [
     {
@@ -41,20 +41,23 @@
       "name": "Community",
       "icon": "discord",
       "url": "https://bit.ly/magickdiscordx"
-    },
-    {
-      "name": "Blog",
-      "icon": "newspaper",
-      "url": "https://mintlify.com/blog"
     }
   ],
   "navigation": [
     {
       "group": "Introduction",
       "pages": [
-        "introduction",
-        "features",
-        "key-components"
+        "intro/what-is-magick",
+        "intro/features",
+        "intro/agents",
+        "intro/spells",
+        "intro/deployment",
+        "intro/engine",
+        "intro/ide",
+        "intro/plugins",
+        "intro/portal",
+        "intro/visual-programming",
+        "intro/key-components"
       ]
     },
     {
@@ -85,7 +88,587 @@
       "group": "Nodes",
       "pages": [
         "nodes",
-        "nodes/magick/generateText"
+        {
+          "group": "Actions",
+          "pages": [
+            {
+              "group": "Array",
+              "pages": [
+                "nodes/action/array/clear",
+                "nodes/action/array/create"
+              ]
+            },
+            {
+              "group": "Json",
+              "pages": [
+                "nodes/action/json/stringify"
+              ]
+            },
+            {
+              "group": "Knowledge",
+              "pages": [
+                "nodes/action/knowledge/add",
+                "nodes/action/knowledge/query",
+                "nodes/action/knowledge/search",
+                "nodes/action/knowledge/searchMany"
+              ]
+            },
+            {
+              "group": "Object",
+              "pages": [
+                "nodes/action/object/create"
+              ]
+            },
+            {
+              "group": "Http",
+              "pages": [
+                "nodes/actions/http/fetch"
+              ]
+            },
+            {
+              "group": "Agent Secrets",
+              "pages": [
+                "nodes/agent/getSecret",
+                "nodes/agent/getState"
+              ]
+            },
+            {
+              "group": "CustomEvent",
+              "pages": [
+                "nodes/customEvent/trigger"
+              ]
+            },
+            {
+              "group": "Debug",
+              "pages": [
+                "nodes/debug/expectTrue",
+                {
+                  "group": "Log",
+                  "pages": [
+                    "nodes/debug/log",
+                    "nodes/debug/log/array",
+                    "nodes/debug/log/object"
+                  ]
+                }
+              ]
+            },
+            {
+              "group": "Discord",
+              "pages": [
+                "nodes/discord/sendMessage"
+              ]
+            },
+            {
+              "group": "Logic",
+              "pages": [
+                {
+                  "group": "Array",
+                  "pages": [
+                    "nodes/logic/array/push",
+                    "nodes/logic/array/removeFirst",
+                    "nodes/logic/array/removeLast"
+                  ]
+                }
+              ]
+            },
+            {
+              "group": "Magick",
+              "pages": [
+                "nodes/magick/generateText",
+                "nodes/magick/sendMessage",
+                "nodes/magick/streamMessage"
+              ]
+            },
+            {
+              "group": "Slack",
+              "pages": [
+                "nodes/slack/sendAudio",
+                "nodes/slack/sendImage",
+                "nodes/slack/sendMessage"
+              ]
+            }
+          ]
+        },
+        {
+          "group": "Logic",
+          "pages": [
+            "nodes/logic/array",
+            {
+              "group": "Array",
+              "pages": [
+                "nodes/logic/array/length",
+                "nodes/logic/array/merge"
+              ]
+            },
+            {
+              "group": "AssocPath",
+              "pages": [
+                "nodes/logic/assocPath/object"
+              ]
+            },
+            {
+              "group": "Concat",
+              "pages": [
+                "nodes/logic/concat/array/2",
+                "nodes/logic/concat/array/3",
+                "nodes/logic/concat/string"
+              ]
+            },
+            {
+              "group": "Equal",
+              "pages": [
+                "nodes/logic/equal/array",
+                "nodes/logic/equal/object"
+              ]
+            },
+            {
+              "group": "Includes",
+              "pages": [
+                "nodes/logic/includes/string"
+              ]
+            },
+            {
+              "group": "Length",
+              "pages": [
+                "nodes/logic/length/string"
+              ]
+            },
+            {
+              "group": "MergeDeep",
+              "pages": [
+                "nodes/logic/mergeDeep/object"
+              ]
+            },
+            "nodes/logic/object",
+            {
+              "group": "Object",
+              "pages": [
+                "nodes/logic/object/destructure"
+              ]
+            },
+            {
+              "group": "Path",
+              "pages": [
+                "nodes/logic/path/integer",
+                "nodes/logic/path/object",
+                "nodes/logic/path/string"
+              ]
+            },
+            {
+              "group": "Split",
+              "pages": [
+                "nodes/logic/split/string"
+              ]
+            },
+            "nodes/logic/string",
+            {
+              "group": "String",
+              "pages": [
+                "nodes/logic/string/match",
+                "nodes/logic/string/template"
+              ]
+            },
+            {
+              "group": "Validate",
+              "pages": [
+                "nodes/logic/validate/object"
+              ]
+            },
+            {
+              "group": "Math",
+              "pages": [
+                {
+                  "group": "Abs",
+                  "pages": [
+                    "nodes/math/abs/float",
+                    "nodes/math/abs/integer"
+                  ]
+                },
+                {
+                  "group": "Acos",
+                  "pages": [
+                    "nodes/math/acos/float"
+                  ]
+                },
+                {
+                  "group": "Add",
+                  "pages": [
+                    "nodes/math/add/float",
+                    "nodes/math/add/integer"
+                  ]
+                },
+                {
+                  "group": "And",
+                  "pages": [
+                    "nodes/math/and/boolean"
+                  ]
+                },
+                {
+                  "group": "Asin",
+                  "pages": [
+                    "nodes/math/asin/float"
+                  ]
+                },
+                {
+                  "group": "Atan",
+                  "pages": [
+                    "nodes/math/atan/float"
+                  ]
+                },
+                "nodes/math/boolean",
+                {
+                  "group": "Ceil",
+                  "pages": [
+                    "nodes/math/ceil/float"
+                  ]
+                },
+                {
+                  "group": "Clamp",
+                  "pages": [
+                    "nodes/math/clamp/float",
+                    "nodes/math/clamp/integer"
+                  ]
+                },
+                {
+                  "group": "Cos",
+                  "pages": [
+                    "nodes/math/cos/float"
+                  ]
+                },
+                {
+                  "group": "DegreesToRadians",
+                  "pages": [
+                    "nodes/math/degreesToRadians/float"
+                  ]
+                },
+                {
+                  "group": "Divide",
+                  "pages": [
+                    "nodes/math/divide/float",
+                    "nodes/math/divide/integer"
+                  ]
+                },
+                {
+                  "group": "E",
+                  "pages": [
+                    "nodes/math/e/float"
+                  ]
+                },
+                "nodes/math/easing",
+                {
+                  "group": "Equal",
+                  "pages": [
+                    "nodes/math/equal/boolean",
+                    "nodes/math/equal/float",
+                    "nodes/math/equal/integer",
+                    "nodes/math/equal/string"
+                  ]
+                },
+                {
+                  "group": "EqualTolerance",
+                  "pages": [
+                    "nodes/math/equalTolerance/float"
+                  ]
+                },
+                {
+                  "group": "Exp",
+                  "pages": [
+                    "nodes/math/exp/float"
+                  ]
+                },
+                "nodes/math/float",
+                {
+                  "group": "Floor",
+                  "pages": [
+                    "nodes/math/floor/float"
+                  ]
+                },
+                {
+                  "group": "GreaterThan",
+                  "pages": [
+                    "nodes/math/greaterThan/float",
+                    "nodes/math/greaterThan/integer"
+                  ]
+                },
+                {
+                  "group": "GreaterThanOrEqual",
+                  "pages": [
+                    "nodes/math/greaterThanOrEqual/float",
+                    "nodes/math/greaterThanOrEqual/integer"
+                  ]
+                },
+                "nodes/math/integer",
+                {
+                  "group": "IsInf",
+                  "pages": [
+                    "nodes/math/isInf/float"
+                  ]
+                },
+                {
+                  "group": "IsNaN",
+                  "pages": [
+                    "nodes/math/isNaN/float"
+                  ]
+                },
+                {
+                  "group": "LessThan",
+                  "pages": [
+                    "nodes/math/lessThan/float",
+                    "nodes/math/lessThan/integer"
+                  ]
+                },
+                {
+                  "group": "LessThanOrEqual",
+                  "pages": [
+                    "nodes/math/lessThanOrEqual/float",
+                    "nodes/math/lessThanOrEqual/integer"
+                  ]
+                },
+                {
+                  "group": "Ln",
+                  "pages": [
+                    "nodes/math/ln/float"
+                  ]
+                },
+                {
+                  "group": "Log10",
+                  "pages": [
+                    "nodes/math/log10/float"
+                  ]
+                },
+                {
+                  "group": "Log2",
+                  "pages": [
+                    "nodes/math/log2/float"
+                  ]
+                },
+                {
+                  "group": "Max",
+                  "pages": [
+                    "nodes/math/max/float",
+                    "nodes/math/max/integer"
+                  ]
+                },
+                {
+                  "group": "Min",
+                  "pages": [
+                    "nodes/math/min/float",
+                    "nodes/math/min/integer"
+                  ]
+                },
+                {
+                  "group": "Mix",
+                  "pages": [
+                    "nodes/math/mix/float"
+                  ]
+                },
+                {
+                  "group": "Modulus",
+                  "pages": [
+                    "nodes/math/modulus/float",
+                    "nodes/math/modulus/integer"
+                  ]
+                },
+                {
+                  "group": "Multiply",
+                  "pages": [
+                    "nodes/math/multiply/float",
+                    "nodes/math/multiply/integer"
+                  ]
+                },
+                {
+                  "group": "Negate",
+                  "pages": [
+                    "nodes/math/negate/boolean",
+                    "nodes/math/negate/float",
+                    "nodes/math/negate/integer"
+                  ]
+                },
+                {
+                  "group": "Or",
+                  "pages": [
+                    "nodes/math/or/boolean"
+                  ]
+                },
+                {
+                  "group": "Pi",
+                  "pages": [
+                    "nodes/math/pi/float"
+                  ]
+                },
+                {
+                  "group": "Pow",
+                  "pages": [
+                    "nodes/math/pow/float"
+                  ]
+                },
+                {
+                  "group": "RadiansToDegrees",
+                  "pages": [
+                    "nodes/math/radiansToDegrees/float"
+                  ]
+                },
+                {
+                  "group": "Random",
+                  "pages": [
+                    "nodes/math/random/float"
+                  ]
+                },
+                {
+                  "group": "Round",
+                  "pages": [
+                    "nodes/math/round/float"
+                  ]
+                },
+                {
+                  "group": "Sign",
+                  "pages": [
+                    "nodes/math/sign/float",
+                    "nodes/math/sign/integer"
+                  ]
+                },
+                {
+                  "group": "Sin",
+                  "pages": [
+                    "nodes/math/sin/float"
+                  ]
+                },
+                {
+                  "group": "Sqrt",
+                  "pages": [
+                    "nodes/math/sqrt/float"
+                  ]
+                },
+                {
+                  "group": "Subtract",
+                  "pages": [
+                    "nodes/math/subtract/float",
+                    "nodes/math/subtract/integer"
+                  ]
+                },
+                {
+                  "group": "Tan",
+                  "pages": [
+                    "nodes/math/tan/float"
+                  ]
+                },
+                {
+                  "group": "ToArray",
+                  "pages": [
+                    "nodes/math/toArray/string"
+                  ]
+                },
+                {
+                  "group": "ToBoolean",
+                  "pages": [
+                    "nodes/math/toBoolean/integer",
+                    "nodes/math/toBoolean/string"
+                  ]
+                },
+                {
+                  "group": "ToFloat",
+                  "pages": [
+                    "nodes/math/toFloat/boolean",
+                    "nodes/math/toFloat/float",
+                    "nodes/math/toFloat/integer",
+                    "nodes/math/toFloat/string"
+                  ]
+                },
+                {
+                  "group": "ToInteger",
+                  "pages": [
+                    "nodes/math/toInteger/boolean",
+                    "nodes/math/toInteger/string"
+                  ]
+                },
+                {
+                  "group": "ToObject",
+                  "pages": [
+                    "nodes/math/toObject/string"
+                  ]
+                },
+                {
+                  "group": "ToString",
+                  "pages": [
+                    "nodes/math/toString/array",
+                    "nodes/math/toString/boolean",
+                    "nodes/math/toString/float",
+                    "nodes/math/toString/integer",
+                    "nodes/math/toString/object"
+                  ]
+                },
+                {
+                  "group": "Trunc",
+                  "pages": [
+                    "nodes/math/trunc/float"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "group": "Flow",
+          "pages": [
+            "nodes/flow/array/forEach",
+            "nodes/flow/branch",
+            "nodes/flow/counter",
+            "nodes/flow/debounce",
+            "nodes/flow/doN",
+            "nodes/flow/doOnce",
+            "nodes/flow/flipFlop",
+            "nodes/flow/forLoop",
+            "nodes/flow/gate",
+            "nodes/flow/multiGate",
+            "nodes/flow/sequence",
+            {
+              "group": "Switch",
+              "pages": [
+                "nodes/flow/switch/integer",
+                "nodes/flow/switch/string"
+              ]
+            },
+            "nodes/flow/throttle",
+            "nodes/flow/waitAll",
+            "nodes/flow/whileLoop",
+            {
+              "group": "Queries",
+              "pages": [
+                {
+                  "group": "Events",
+                  "pages": [
+                    "nodes/queries/events/eventHistory"
+                  ]
+                },
+                {
+                  "group": "Messages",
+                  "pages": [
+                    "nodes/queries/messages/getMessageHistory"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "group": "Time",
+          "pages": [
+            "nodes/flow/delay",
+            "nodes/time/now"
+          ]
+        },
+        {
+          "group": "Query",
+          "pages": [
+            {
+              "group": "Variables",
+              "pages": [
+                "nodes/variables/get",
+                "nodes/variables/set"
+              ]
+            }
+          ]
+        }
       ]
     }
   ],
