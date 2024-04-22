@@ -63,15 +63,15 @@
     {
       "group": "Getting Started",
       "pages": [
-        "getting-started/making-an-account",
-        "getting-started/creating-an-agent",
-        "getting-started/making-your-first-spell"
+        "getting-started/create-an-account",
+        "getting-started/create-an-agent",
+        "getting-started/create-a-spell"
       ]
     },
     {
       "group": "Working with Magick",
       "pages": [
-        "working-with-magick/overview-of-the-interface",
+        "working-with-magick/ide-overview",
         "working-with-magick/working-with-nodes",
         "working-with-magick/what-is-a-spell"
       ]
@@ -79,7 +79,7 @@
     {
       "group": "Plugins",
       "pages": [
-        "plugins",
+        "plugins/plugins",
         "plugins/discord",
         "plugins/slack"
       ]
