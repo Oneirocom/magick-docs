@@ -48,16 +48,8 @@
       "group": "Introduction",
       "pages": [
         "intro/what-is-magick",
-        "intro/features",
-        "intro/agents",
-        "intro/spells",
-        "intro/deployment",
-        "intro/engine",
-        "intro/ide",
-        "intro/plugins",
-        "intro/portal",
-        "intro/visual-programming",
-        "intro/key-components"
+        "intro/AIDE",
+        "intro/features"
       ]
     },
     {
@@ -83,6 +75,10 @@
         "plugins/discord",
         "plugins/slack"
       ]
+    },
+    {
+      "group": "Events",
+      "pages": ["events"]
     },
     {
       "group": "Nodes",
