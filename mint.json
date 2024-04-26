@@ -38,8 +38,7 @@
       "group": "Introduction",
       "pages": [
         "Intro/what-is-magick",
-        "Intro/the-Magick-AIDE",
-        "Intro/features"
+        "Intro/AIDE-Interface-overview"
       ]
     },
     {
@@ -53,22 +52,31 @@
     {
       "group": "Working with Magick",
       "pages": [
-        "working-with-magick/ide-overview",
+        "working-with-magick/magick-interface",
         "working-with-magick/working-with-nodes",
-        "working-with-magick/what-is-a-spell"
+        "working-with-magick/what-is-a-spell",
+        "working-with-magick/real-time-collaboration",
+        "working-with-magick/event-driven-architecture"
       ]
     },
     {
-      "group": "Plugins",
+      "group": "Features",
       "pages": [
-        "plugins/plugins",
-        "plugins/discord",
-        "plugins/slack"
+        {
+          "group": "Plugins",
+          "pages": [
+            "features/plugins/plugins",
+            "features/plugins/discord",
+            "features/plugins/slack"
+          ]
+        },
+        {
+          "group": "Events",
+          "pages": [
+            "features/events/events"
+          ]
+        }
       ]
-    },
-    {
-      "group": "Events",
-      "pages": ["events"]
     },
     {
       "group": "Nodes",
@@ -570,96 +578,96 @@
                   "group": "ToObject",
                   "pages": [
                     "nodes/math/toObject/string"
-                  ]
-                },
-                {
-                  "group": "ToString",
-                  "pages": [
+                    ]
+                    },
+                    {
+                    "group": "ToString",
+                    "pages": [
                     "nodes/math/toString/array",
                     "nodes/math/toString/boolean",
                     "nodes/math/toString/float",
                     "nodes/math/toString/integer",
                     "nodes/math/toString/object"
-                  ]
-                },
-                {
-                  "group": "Trunc",
-                  "pages": [
+                    ]
+                    },
+                    {
+                    "group": "Trunc",
+                    "pages": [
                     "nodes/math/trunc/float"
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "group": "Flow",
-          "pages": [
-            "nodes/flow/array/forEach",
-            "nodes/flow/branch",
-            "nodes/flow/counter",
-            "nodes/flow/debounce",
-            "nodes/flow/doN",
-            "nodes/flow/doOnce",
-            "nodes/flow/flipFlop",
-            "nodes/flow/forLoop",
-            "nodes/flow/gate",
-            "nodes/flow/multiGate",
-            "nodes/flow/sequence",
-            {
-              "group": "Switch",
-              "pages": [
-                "nodes/flow/switch/integer",
-                "nodes/flow/switch/string"
-              ]
-            },
-            "nodes/flow/throttle",
-            "nodes/flow/waitAll",
-            "nodes/flow/whileLoop",
-            {
-              "group": "Queries",
-              "pages": [
-                {
-                  "group": "Events",
-                  "pages": [
+                    ]
+                    }
+                    ]
+                    }
+                    ]
+                    },
+                    {
+                    "group": "Flow",
+                    "pages": [
+                    "nodes/flow/array/forEach",
+                    "nodes/flow/branch",
+                    "nodes/flow/counter",
+                    "nodes/flow/debounce",
+                    "nodes/flow/doN",
+                    "nodes/flow/doOnce",
+                    "nodes/flow/flipFlop",
+                    "nodes/flow/forLoop",
+                    "nodes/flow/gate",
+                    "nodes/flow/multiGate",
+                    "nodes/flow/sequence",
+                    {
+                    "group": "Switch",
+                    "pages": [
+                    "nodes/flow/switch/integer",
+                    "nodes/flow/switch/string"
+                    ]
+                    },
+                    "nodes/flow/throttle",
+                    "nodes/flow/waitAll",
+                    "nodes/flow/whileLoop",
+                    {
+                    "group": "Queries",
+                    "pages": [
+                    {
+                    "group": "Events",
+                    "pages": [
                     "nodes/queries/events/eventHistory"
-                  ]
-                },
-                {
-                  "group": "Messages",
-                  "pages": [
+                    ]
+                    },
+                    {
+                    "group": "Messages",
+                    "pages": [
                     "nodes/queries/messages/getMessageHistory"
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "group": "Time",
-          "pages": [
-            "nodes/flow/delay",
-            "nodes/time/now"
-          ]
-        },
-        {
-          "group": "Query",
-          "pages": [
-            {
-              "group": "Variables",
-              "pages": [
-                "nodes/variables/get",
-                "nodes/variables/set"
-              ]
-            }
-          ]
-        }
-      ]
-    }
-  ],
-  "footerSocials": {
-    "twitter": "https://twitter.com/mintlify",
-    "github": "https://github.com/mintlify",
-    "linkedin": "https://www.linkedin.com/company/mintsearch"
-  }
-}
+                    ]
+                    }
+                    ]
+                    }
+                    ]
+                    },
+                    {
+                    "group": "Time",
+                    "pages": [
+                    "nodes/flow/delay",
+                    "nodes/time/now"
+                    ]
+                    },
+                    {
+                    "group": "Query",
+                    "pages": [
+                    {
+                    "group": "Variables",
+                    "pages": [
+                    "nodes/variables/get",
+                    "nodes/variables/set"
+                    ]
+                    }
+                    ]
+                    }
+                    ]
+                    }
+                    ],
+                    "footerSocials": {
+                    "twitter": "https://twitter.com/mintlify",
+                    "github": "https://github.com/mintlify",
+                    "linkedin": "https://www.linkedin.com/company/mintsearch"
+                    }
+                    }
