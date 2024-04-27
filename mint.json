@@ -37,8 +37,12 @@
     {
       "group": "Introduction",
       "pages": [
-        "Intro/what-is-magick",
-        "Intro/AIDE-interface-overview"
+        "intro/what-is-magick",
+        "intro/features",
+        "intro/what-is-an-agent",
+        "intro/what-is-a-spell",
+        "intro/nodes",
+        "intro/AIDE-interface-overview"
       ]
     },
     {
@@ -52,11 +56,9 @@
     {
       "group": "Working with Magick",
       "pages": [
-        "working-with-magick/magick-interface",
-        "working-with-magick/working-with-nodes",
-        "working-with-magick/what-is-a-spell",
-        "working-with-magick/real-time-collaboration",
-        "working-with-magick/event-driven-architecture"
+        "working-with-magick/features",
+        "working-with-magick/working-with-nodes"
+        
       ]
     },
     {
@@ -65,9 +67,9 @@
         {
           "group": "Plugins",
           "pages": [
-            "features/plugins/plugins",
-            "features/plugins/discord",
-            "features/plugins/slack"
+            "plugins/plugins",
+            "plugins/discord",
+            "plugins/slack"
           ]
         },
         {
