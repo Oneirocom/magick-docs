@@ -1,4 +1,69 @@
 ---
-title: Your first Spell
-description: "How to make your first Spell"
+title: Creating Your First Spell
+description: Learn how to create a simple spell in Magick
 ---
+
+Building your first spell in Magick is a straightforward process. In this guide, we'll walk through creating a simple spell that responds to incoming messages with generated text.
+
+![Creating Your First Spell](/images/first-spell.png)
+## Step 1: Add the "On Message" Node
+The first step is to add the "Magick/OnMessage" node from the "Event" category. This node will trigger the spell when a new message is received from the Test Panel.
+You do this by right clicking on the editor to open the Node Picker. You can either find it nested under the "Event" category or search for it using the search bar.
+
+![On Message Node Picker](/images/onmessage-picker.png)
+![On Message Node](/images/onmessage-node.png)
+## Step 2: Connect a "Generate Text" Node
+
+Next, connect a "Generate Text" node from the "Action" category to the "On Message" node. This node will generate text based on the provided prompt and configuration. Connect the content to the prompt input of the "Generate Text" node and then connect the flow output of the "On Message" node to the flow input of the "Generate Text" node.
+
+![Generate Text Node Picker](/images/generatetext-picker.png)
+![Generate Text Node Connected](/images/generatetext-noconnect.png)
+![Generate Text Node Connected](/images/onmessage-generatetext.png)
+
+## Step 3: Configure the "Generate Text" Node
+## Inputs
+
+When you click on the generateText node you will see the Properties Panel activate where you can change the model you want to use.
+
+![Generate Text Node Properties](/images/generatetext-properties.png)
+The "Generate Text" node has the following inputs:
+
+- `content`: The input text content to generate text from
+- `system`: Specifies the system prompt or context for the text generation model for exampe "Always output your response in JSON format with the keys "myProperty1", "myProperty2", "myProperty3".
+- `prompt`: The main prompt or instruction for generating the desired text. In our example this will be what ever we type into the Test Panel.
+
+It also includes additional configuration options:
+
+- `temperature`: Controls the randomness of generated text (set to 0.5)
+- `maxRetries`: Maximum number of retries for generation (set to 3)
+- `top_p`: Nucleus sampling probability threshold (set to 1)
+- `seed`: Sets the random seed for reproducibility (set to 42)
+- `maxTokens`: Maximum number of tokens to generate (set to 256)
+
+## Outputs
+
+The "Generate Text" node has two outputs:
+
+1. `response`: The generated text output
+2. `completionResponse`: The full response object from the text generation model, which can be used for debugging and more complex processing
+3. `stream`: The generated text output as a stream message. 
+4. `done`: The flow output socket used to connect to other Nodes once the process has finished.
+5. `onStream` Another flow output that fires events per streamed token.
+
+
+In the "Generate Text" node, you can specify the prompt or instructions for the text generation model. You can also adjust settings like the temperature, maximum tokens, and model override if needed.
+
+## Step 4: Add a "Stream Message" Node
+
+To display the generated text as a streamed response in the Test Panel, add a "Stream Message" node from the "Action" category and connect it to the "Generate Text" node.
+![Stream Message Node Picker](/images/streammessage-picker.png)
+![Stream Message Node](/images/streammessage-noconnect.png)
+![Stream Message Node](/images/streammessage-connected.png)
+
+## Step 5: Test Your Spell
+
+Now that you've set up the basic structure of your spell, it's time to test it out. Type something into the Test Panel and hit "Send" to see the generated text response stream into the Panel. When the Spell starts you will see a green glow around the nodes performing their work.
+![Test Output](/images/test-output.png)
+
+Congratulations! You've created your first spell in Magick. You can continue to build on this foundation by adding more nodes, logic, and interactions to create more complex and powerful spells.
+
