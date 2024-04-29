@@ -37,12 +37,12 @@
     {
       "group": "Introduction",
       "pages": [
-        "intro/what-is-magick",
-        "intro/features",
-        "intro/what-is-an-agent",
-        "intro/what-is-a-spell",
-        "intro/nodes",
-        "intro/AIDE-interface-overview"
+        "Intro/what-is-magick",
+        "Intro/features",
+        "Intro/what-is-an-agent",
+        "Intro/what-is-a-spell",
+        "Intro/nodes",
+        "Intro/AIDE-interface-overview"
       ]
     },
     {
