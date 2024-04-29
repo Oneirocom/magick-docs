@@ -56,7 +56,7 @@
     {
       "group": "Working with Magick",
       "pages": [
-        "working-with-magick/create-a-spell",
+        
         "working-with-magick/event-driven-architecture",
         "working-with-magick/working-with-nodes"
         
