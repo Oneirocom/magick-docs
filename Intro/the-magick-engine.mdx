@@ -1,0 +1,78 @@
+---
+title: The Magick Engine
+description: An overview of how the Magick Engine works.
+---
+
+# Understanding the Magick Engine
+
+## Introduction to the Magick Engine
+
+The Magick Engine is the core runtime environment that powers your AI agents. Similar to a game engine, it operates at approximately 30 frames per second, continuously processing a queue of tasks known as the Fiber. This constant execution allows for real-time responsiveness and the ability to handle complex, ongoing processes within your spells.
+
+## Core Runtime Concepts
+
+### The Fiber Queue
+
+At the heart of the Magick Engine is the Fiber queue. This queue manages the order and execution of tasks within your spells. As nodes in your graph are activated, they commit work to the Fiber, ensuring that operations are performed in the correct sequence.
+
+### Committing Work
+
+Nodes in your spell graph can commit work to the Fiber queue. This process allows for dynamic and responsive behavior in your agents. When a node commits work, it's essentially telling the engine, "Here's a task that needs to be executed next."
+
+### Node Functionality
+
+Nodes are the building blocks of your spells. Each node represents a specific action or decision point. When activated, nodes can:
+
+1. Perform their designated function
+2. Commit new work to the Fiber queue
+3. Activate subsequent nodes through flow connections
+
+### Flow Connections
+
+The lines you draw between nodes in the IDE represent flow connections. These connections define the runtime order for the engine, determining which node should be activated next in the sequence.
+
+### Special Nodes: The While Node Example
+
+Some nodes have unique behaviors that interact with the engine in special ways. The While node is an excellent example of this:
+
+- It can remain active in the engine over time
+- It continuously commits work to the Fiber queue based on its condition
+- This allows for the creation of loops and ongoing processes within your spells
+
+### The OnTick Node
+
+The OnTick node is another special node that interacts directly with the engine's frame rate. It can be used to perform actions or checks at regular intervals, syncing with the engine's ~30fps operation.
+
+## IDE Runtime Management
+
+### The Run Button
+
+Located at the top of the IDE interface, the Run button is your primary tool for managing the engine's state within your development environment.
+
+### Editing vs. Running States
+
+1. **Stopped State (Editable)**
+
+   - When the engine is stopped, you can freely edit your spell graph
+   - Add, remove, or modify nodes and connections
+   - Set up your logic and structure
+
+2. **Running State (Interactive)**
+   - Click the Run button to start the engine
+   - Your spell becomes active, processing events and executing logic
+   - Nodes can commit work, and the Fiber queue is actively managed
+   - The graph cannot be edited in this state
+
+### Testing and Interaction
+
+- To test your agent or interact with it, the engine must be in the Running state
+- Use the Play Test panel to send messages or triggers to your agent
+- Observe the behavior and output in real-time
+
+### Stopping the Engine
+
+- Use the Stop button (or Kill button, depending on your IDE version) to halt the engine
+- This returns your spell to an editable state
+- Any ongoing processes or active nodes will be terminated
+
+By understanding these core concepts of the Magick Engine, you'll be better equipped to create dynamic, responsive, and powerful AI agents using the Magick platform.

@@ -1,0 +1,96 @@
+---
+title: Channels
+description: Manage and monitor your agent's active communication streams.
+---
+
+# Channels and Runtime Management
+
+## Understanding Channels
+
+Channels are a fundamental concept in the Magick platform, providing a way to manage and isolate different streams of work within your agents. They play a crucial role in how the engine handles events from various sources and maintains ongoing processes.
+
+### What are Channels?
+
+Channels in Magick are:
+
+- Separate streams of execution within an agent
+- Created by plugins when messages come in from external sources
+- Responsible for processing events and executing associated spells
+- Containers for context-specific information, including variables, memories, and other data
+
+### Channel Creation and Management
+
+Channels are typically created automatically by plugins when they receive messages from external sources. For example:
+
+- If your agent is connected to a Discord server, each Discord channel the agent is active in will create a new channel within the agent
+- Each Discord DM from users will have their own channel
+- Similarly, other integrations like Slack, email, or custom APIs can create their own channels
+
+The Magick platform provides a dedicated Channels page for managing your agent's channels:
+
+- View all active and inactive channels
+- Turn channels on or off
+- Monitor channel status and activity
+
+### Active vs. Inactive Channels
+
+Channels can be in one of two states:
+
+1. **Active Channels**:
+
+   - Process events and execute associated spells
+   - Persist even after agent updates
+   - Automatically turn back on after system restarts
+
+2. **Inactive Channels**:
+   - Do not process events
+   - Remain in the system but are dormant
+
+## Channels and the Runtime Environment
+
+### Independence from IDE Sessions
+
+One of the key features of channels is their independence from your IDE development session:
+
+- Active channels continue to run regardless of whether you're editing your draft agent
+- Running or stopping the engine in your IDE session does not affect active channels
+
+This separation allows for continuous operation of deployed agents while enabling safe development and testing in the IDE.
+
+### Propagating Changes to Active Channels
+
+While channels operate independently, updates to your spells can be propagated to running channels:
+
+1. Make changes to your spell in the IDE
+2. Click the RUN button in the IDE
+3. Changes are then propagated to all active channels
+
+This mechanism ensures that your live agent can be updated without disrupting ongoing operations.
+
+## Channels and Event Processing
+
+Channels are closely tied to the event system in Magick:
+
+- Each channel has a dedicated set of all spells to process events that come in on that channel
+- Events received on a channel trigger the execution of associated spells
+- The context (variables, memories, etc.) is generally stored against the channel, allowing for stateful interactions
+
+## Channel Persistence and Isolation
+
+Channels provide a level of persistence and isolation for your agent's operations:
+
+- Active channels will persist and be turned back on even after an update to an agent or our server
+- Each channel maintains its own context, preventing interference between different interaction streams
+- This isolation allows an agent to handle multiple conversations or tasks simultaneously without context bleed
+
+## Visualizing Channels in the IDE
+
+While the Channels page provides management capabilities, it's important to note that channels are not directly visible in the spell graph within the IDE. Instead, they operate as a backend concept that organizes the execution of your spells.
+
+## Relationship with Spells and Nodes
+
+- Spells define the logic that channels execute
+- Nodes within spells can interact with channel-specific data
+- All state for nodes, variables, and memories are stored against the channel
+
+By leveraging channels effectively, you can create robust, multi-faceted agents capable of handling various inputs and maintaining complex, ongoing operations across different contexts. The channel system, combined with the powerful Magick Engine, provides a flexible and scalable foundation for your AI development projects.
